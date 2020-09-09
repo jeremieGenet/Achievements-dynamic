@@ -23,7 +23,7 @@ class Auth{
         }
         
 
-        // Condition Si le role est défini (pas vide) et qu'il est différent du param alors...
+        // Condition Si le rôle est défini (pas vide) et qu'il est différent du param alors...
         if($role !== ""){
             //dd($_SESSION['user']['role']);
             if( $_SESSION['user']['role'] !== $role ){
