@@ -1,0 +1,55 @@
+/* 
+CSS DU FICHIER D'UNE REALISATION (achievement/show.php)
+
+Couleur violet (couleur du theme purple2) = rgb(93, 107, 167)
+*/
+
+/* Modification du thème installé */
+.__main-wrapper .container{
+    max-width: 100%;
+}
+.__main-wrapper{
+    /*
+    background-color: red;
+    */
+    /*background-color:white; */
+    /*background-image:url('../../images/blog/bg1.jpg');*/
+    background-attachment: fixed;
+    /*
+    background-image: linear-gradient(rgba(93, 107, 167) 18%, rgba(255, 255, 0, 0.3)),
+    url('../../images/blog/bg1.jpg');
+    */
+    
+    background-image: linear-gradient(to bottom, rgba(93, 107, 167) 20%, rgba(255, 255, 0, 0.3)),
+    url('../../images/blog/work.jpg');
+    
+    
+    /*background-position: bottom;*/
+    /*background: linear-gradient(black, white);*/
+    /*background-repeat:no-repeat;*/
+}
+
+/* Css ajouté au thème */
+/*
+.__card{
+    border: 2px solid white;
+}
+.__card-infos{
+    background: linear-gradient( rgba(93, 107, 167, 0.9) 10%, rgba(255, 255, 0, 0.5));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.__card-header, .__card-categories, .__card-logos, .__card-createdAt{
+    margin: 0em 1em 0em 1em;
+    color: black;
+}
+.__card-header, .__card-createdAt{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.__content{
+    color: white;
+}
+*/

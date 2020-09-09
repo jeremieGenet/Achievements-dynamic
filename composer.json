@@ -1,0 +1,22 @@
+{
+    "name": "jeremie/projetblog",
+    "authors": [
+        {
+            "name": "jamyjam52",
+            "email": "jamyjam82377@gmail.com"
+        }
+    ],
+    "autoload":{
+        "psr-4":{
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "altorouter/altorouter": "1.2.0",
+        "filp/whoops": "2.3.1"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.3",
+        "fzaninotto/faker": "^1.9"
+    }
+}
