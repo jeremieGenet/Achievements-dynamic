@@ -23,7 +23,7 @@ class PostTable extends Table{
     // Récup le prochain id de la table (l'id qui sera nouvellement créé)
     public function getNextId()
     {
-        $req = $this->pdo->query("SHOW TABLE STATUS FROM portfolio3 LIKE '{$this->table}' ");
+        $req = $this->pdo->query("SHOW TABLE STATUS FROM portfolio2 LIKE '{$this->table}' ");
         $donnees = $req->fetch();
         return $donnees['Auto_increment'];
     }

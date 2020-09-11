@@ -15,12 +15,14 @@ class Router{
      * @var Altorouter
      */
     private $router;
+    private $session;
 
     // Signature ex : $router = new App\Router(dirname(__DIR__) . '/views');
     public function __construct(string $viewPath)
     {
         $this->viewPath = $viewPath; // Chemin vers le dossier "views"
         $this->router = new \AltoRouter(); // Instance de AltoRouter (notre librairie)
+        $this->session = new Session();
     }
 
     // Permet de Mapper une url avec la méthode "get"
@@ -106,22 +108,25 @@ class Router{
         }catch(ForbiddenException $e){
             //dd($e);
             // Redirection vers la page login.php (page de connexion)
-            Session::setFlash('warning', "Vous ne pouvez pas accéder à cette page, il vous faut d'abord vous connecter !");
+            $this->session->setFlash('warning', "Vous ne pouvez pas accéder à cette page, il vous faut d'abord vous connecter !");
             header('Location: ' . $this->url('login') . '?forbidden=1');
             exit();
         }
         catch(OnlyAdminException $e){
             //dd($e);
-            Session::setFlash('warning', "Vous n'êtes pas autorisé à réaliser cette action !");
+            $this->session->setFlash('warning', "Vous n'êtes pas autorisé à réaliser cette action !");
             // Redirection vers la page admin_home.php (page d'accueil de l'administration)
             header('Location: ' . $this->url('admin_home') . '?forbidden=2');
             exit();
         }
         catch(Exception $e){
             //dd($e);
+            
             // Redirection vers la page login.php (page de connexion)
             header('Location: ' . $this->url('admin_home') . '?forbidden=3');
+            //return $e;
             exit();
+            
         }
         
         return $this; // Renvoie l'objet en cours (la classe Router)

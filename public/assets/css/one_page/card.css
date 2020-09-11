@@ -1,0 +1,32 @@
+
+/*
+    STYLE CARDS (bootstrap)
+*/
+.card{
+    border: 2px solid rgb(197, 197, 197);
+}
+
+.card-body{
+    padding: 0.75em;
+    border-top: 2px solid rgb(197, 197, 197);
+}
+.card-title{
+    margin-bottom: 0;
+}
+
+.img-container{
+   overflow: hidden; /* Permet que l'effet de zoom ne dépasse pas de la div */
+   border: 2px solid rgb(145, 145, 145);
+}
+.img-container img{
+    width: 100%;
+    height: 100%;
+    /* object-fit définit la façon dont le contenu d'un élément remplacé (<img> ou <video> par exemple) doit s'adapter à son conteneur en utilisant sa largeur et sa hauteur.*/
+    object-fit: cover;
+    transition: all 0.3s ease-out; /* Transition du zoom */
+    cursor: pointer;
+    
+}
+.img-container img:hover{
+    transform: scale(1.2); /* Effet de zoom au passage de la souris */
+}

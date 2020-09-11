@@ -22,7 +22,10 @@
                     <?php foreach($post->getCategories() as $category): ?>
                         <div class="badge">
                             <!-- Lien vers les articles qui ont la même category -->
-                            <a class="badge badge-pill badge-dark" href="<?= $router->url('achievements-category', ['slug' => $category->getSlug(), 'id' => $category->getId()]) ?>">
+                            <a 
+                                class="badge badge-pill badge-dark" 
+                                href="<?= $router->url('achievements-category', ['slug' => $category->getSlug(), 'id' => $category->getId()]) ?>"
+                            >
                                 <?= $category->getName() ?>
                             </a>
                         </div>

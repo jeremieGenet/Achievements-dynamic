@@ -31,16 +31,22 @@
     <!-- Css des Card (en forme de carousel) 
     <link rel="stylesheet" href="../../assets/css/one_page/card-carousel.css">
     -->
-    <!-- Css Cards (effet Hover)   
+    <!-- Css Cards (effet Hover) 
     <link rel="stylesheet" href="../../assets/css/one_page/card-hover.css">
     -->
-    <!-- Css Cards 3D (effet 3D) -->  
+    
+    <!-- Css Cards 3D (effet 3D des 3 images de la section STD-WEB) -->  
     <link rel="stylesheet" href="../../assets/css/one_page/card-3D.css">
+    <!-- Css Cards des réalisations (bootstrap) -->
+    <link rel="stylesheet" href="../../assets/css/one_page/card.css">
+    <!-- CSS du formulaire de contact -->
+    <link rel="stylesheet" href="../../assets/css/one_page/contact-form.css">
     
 </head> 
 
 <body>
     <header id="header" class="header">  
+        <!-- NAVBAR -->
         <div class="container">       
             <h1 class="logo">
                 <a class="scrollto" href="#hero">
@@ -71,7 +77,6 @@
         </div>
     </header>
     
-
     <!-- CAROUSSEL -->
     <div id="hero" class="hero-section">
         <div id="hero-carousel" class="hero-carousel carousel carousel-fade slide" data-ride="carousel" data-interval="10000">
@@ -137,62 +142,11 @@
 		</div>
     </div><!-- Fin du Caroussel-->
     
-    <!--  STD-WEB   LES STANDARD DU WEB AU SERVICE DE VOS PROJETS -->
-    <div id="std-web" class="std-web">
-        <div class="container text-center">
-            <h2 class="section-title">Les <strong>standards du web</strong> au service de vos projets</h2>
-            <p class="intro">Quelques langages/outils qui vous permettront d'atteindre vos objectifs numériques</p>
-            <ul class="technologies list-inline">
-                <li class="list-inline-item"><img src="../assets/icons&logos/one_page/logo-html5.svg" alt="HTML5"></li>
-                <li class="list-inline-item"><img src="../assets/icons&logos/one_page/logo-css3.svg" alt="CSS3"></li>
-                <li class="list-inline-item"><img src="../assets/icons&logos/one_page/logo-bootstrap.svg" alt="Bootstrap"></li>
-                <li class="list-inline-item"><img src="../assets/icons&logos/one_page/PHP_128x128.png" alt="less"></li>
-                <li class="list-inline-item"><img src="../assets/icons&logos/one_page/javascript_128x128.png" alt="less"></li>
-            </ul>
-            
-            <div class="items-wrapper row">
-                <div class="item col-md-4 col-12">
-                    <div class="item-inner">
-                        <div class="figure-holder">
-                            <img class="figure-image" src="../assets/images/one_page/figure-1.png" alt="image">
-                        </div>
-                        <h3 class="item-title">Etude & Réflexion</h3>
-                        <div class="item-desc">
-                            D'abord réfléchir et analyser le projet pour en déterminer le design et les outils adaptés qui amèneront à la réalisation. 
-                        </div>
-                    </div>
-                </div>
-                <div class="item col-md-4 col-12">
-                    <div class="item-inner">
-                        <div class="figure-holder">
-                            <img class="figure-image" src="../assets/images/one_page/figure-2.png" alt="image">
-                        </div>
-                        <h3 class="item-title">Design & développement</h3>
-                        <div class="item-desc">
-                            En accord avec le design déterminé, coder l'application avec les outils déterminées.
-                        </div>
-                    </div>
-                </div>
-                <div class="item col-md-4 col-12">
-                    <div class="item-inner">
-                        <div class="figure-holder">
-                            <img class="figure-image" src="../assets/images/one_page/figure-3.png" alt="image">
-                        </div>
-                        <h3 class="item-title">Finition & mise en production</h3>
-                        <div class="item-desc">
-                            Apporter les finitions et corrections, puis mettre l'application en ligne pour enfin concrétiser le projet.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
 
     <!-- CONTENU DU SITE -->
-    <div class="container-fluid mt-4">
+    <main class="">
         <?= $content ?>
-    </div>
+    </main>
     
 
     <footer class="footer text-center">

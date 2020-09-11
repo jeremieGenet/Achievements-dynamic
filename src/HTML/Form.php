@@ -6,6 +6,7 @@ class Form{
 
     private $data;
     private $errors;
+    public static $class = "form-group";
 
     // Signature : $form = new Form($post, $errors);
     public function __construct($data, ?array $errors) // '?array' = array ou null (typage)
@@ -26,10 +27,10 @@ class Form{
     public function input(string $type, string $name, string $label, string $placeholder=""): string
     {
         // TODO : Ajouter l'attribut "required" au champs input
-
+        $newClass = self::$class;
         $value = $this->getValue($name); // $value représente la valeur postée dans l'input du formulaire
         return <<<HTML
-        <div class="form-group">
+        <div class="{$newClass}">
             <label for="field{$name}">{$label}</label>
             <input type="{$type}" id="field{$name}" class="{$this->getInputClass($name)}" name="{$name}" value="{$value}" placeholder="{$placeholder}">
             <!-- Affichage de l'erreur dans une div class="invalid-feedback"-->
@@ -114,7 +115,6 @@ HTML;
         //dd($this->data);
         // Si les données reçues à l'instanciation de la class Form sont de type tableau alors on en retourne la valeur sinon...
         // (Si l'instanciation est sous la forme d'un tableau, exemple : "$form = new Form(['name' = 'Contenu de la donnée'], $errors);" alors...)
-
         if(is_array($this->data)){
             return $this->data[$name] ?? null; // On Retourne la valeur donnée dans le tableau ou null
             //dd($this->data[$name]); // Affiche "Contenu de la donnée" si l'instanciation a cette signature : "$form = new Form(['name' = 'Contenu de la donnée'], $errors)

@@ -1,7 +1,7 @@
 Dossier "uploads/" 
-    => "img-main" = Image principale
-    => "img-collection" = Collection d'images
-    => "logo-collection" = Collection de logos
+    => "img-main" = Image principale (1920x1080)
+    => "img-collection" = Collection d'images (640x480)
+    => "logo-collection" = Collection de logos (128x128)
 
 RAPPEL:
     - 24" = 1920x1080  (16/9) => full HD

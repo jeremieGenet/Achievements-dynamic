@@ -1,5 +1,8 @@
 /*   
     STYLE DE LA PAGE DE GARDE DE LA ONE PAGE
+
+    #494d55  ou  rgb(73, 77, 85) = Gris de la section contact et body
+    #40babd  ou  rgb(64, 186, 189) = Bleu turquoise (bg principal)
 */
 body {
   font-family: 'Open Sans', arial, sans-serif;
@@ -21,6 +24,14 @@ a {
   -ms-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
 }
+/************************************************************************************************************/
+
+
+.separator{
+ background-color:#339597;
+ width: 30%;
+}
+
 /* Placeholder des input (formulaire de contact) */
 #fieldname::placeholder, #fieldemail::placeholder, #fieldtel::placeholder, #fieldmessage::placeholder{
   font-size: 0.7em;
@@ -330,13 +341,12 @@ a:focus {
   color: #EA5395;
 }
 
-/* ======= Hero Section ======= */
+/* ======= Hero Section (Carousel) ======= */
 .hero-section {
   min-height: 560px;
   background: #494d55;
   position: relative;
 }
-
 .hero-section .figure-holder-wrapper {
   position: absolute;
   left: 0;
@@ -344,54 +354,46 @@ a:focus {
   width: 100%;
   overflow: hidden;
 }
-
 .hero-section .figure-holder {
   position: relative;
   height: 560px;
   width: 100%;
 }
-
 .hero-section .figure-holder .figure-image {
   position: absolute;
   bottom: 0;
   right: 0px;
   z-index: 10;
 }
-
 .hero-carousel {
   height: 560px;
   color: #fff;
 }
-
 .hero-carousel .carousel-inner .carousel-item {
   height: 560px;
   background-position: center center;
 }
-
 .hero-carousel .carousel-inner .item-1 {
-  background-image: url("../../images/one_page/work.png");
+  background-image: url("../../images/one_page/carousel1.png");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
-
 .hero-carousel .carousel-inner .item-2 {
-  background-image: url("../../images/one_page/work2.png");
+  background-image: url("../../images/one_page/carousel2.png");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
-
 .hero-carousel .carousel-inner .item-3 {
-  background-image: url("../../images/one_page/work3.png");
+  background-image: url("../../images/one_page/carousel3.png");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
-
 .hero-carousel .carousel-inner .heading {
   font-size: 30px;
   line-height: 1.4;
@@ -399,27 +401,27 @@ a:focus {
   margin-top: 0;
   margin-bottom: 15px;
 }
-
 .hero-carousel .carousel-inner .intro {
   font-size: 18px;
 }
-
 .hero-carousel .carousel-inner .intro + .btn {
   margin-top: 15px;
 }
 
-/* ======= About Section ======= */
-.std-web {
-  padding-top: 90px;
-}
 
+/* ============ STANDARD DU WEB =========== */
+.std-web {
+  /*rgb(73, 77, 85)*/
+  padding-top: 5%;
+  background-color: rgb(73, 77, 85);
+}
 .std-web .section-title {
+  color: #e0e1e2;
   margin: 0;
   margin-bottom: 15px;
   font-size: 36px;
   font-weight: 300;
 }
-
 .std-web .intro {
   color: #a2a6af;
   font-size: 16px;
@@ -427,21 +429,17 @@ a:focus {
   margin: 0 auto;
   margin-bottom: 60px;
 }
-
 .std-web .items-wrapper {
   margin-bottom: 60px;
 }
-
 .std-web .items-wrapper .figure-holder {
   min-height: 170px;
   margin-bottom: 15px;
   vertical-align: bottom;
 }
-
 .std-web .items-wrapper .item-inner {
   padding: 30px;
 }
-
 .std-web .items-wrapper .item-title {
   color: #40babd;
   font-size: 18px;
@@ -449,31 +447,27 @@ a:focus {
   margin: 0;
   margin-bottom: 15px;
 }
-
 .std-web .items-wrapper .item-desc {
   color: #616670;
 }
-
-.technologies {
-  margin-bottom: 90px;
+.logo-web {
+  margin-bottom: 60px;
 }
-
-.technologies .list-inline-item {
+.logo-web .list-inline-item {
   margin-right: 15px;
 }
-
-.technologies .list-inline-item:last-child {
+.logo-web .list-inline-item:last-child {
   margin-right: 0;
+}
+.list-inline-item:hover{
+  transition: 1s;
+  transform: scale(1.2);
 }
 
 
-
-
-
-
-/* =======  Section languages ======= */
+/* ===========  Section languages =========== */
 .languages-section {
-  background: #40babd url("../images/map.png") no-repeat center center; /*  #40babd */
+  background: #40babd url("../../images/one_page/map.png") no-repeat center center; /*  #40babd */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -481,7 +475,6 @@ a:focus {
   padding-top: 90px;
   padding-bottom: 90px;
 }
-
 .languages-section .section-title {
   margin: 0;
   margin-bottom: 30px;
@@ -489,30 +482,25 @@ a:focus {
   font-weight: 300;
   color: #fff;
 }
-
 /* Postion des images */
 .languages-section .item {
   position: relative;
   max-width: 800px;
   padding: 30px;
 }
-
 .languages-section .item:last-child {
   margin-bottom: 0;
 }
-
 /* Inversion des images */
 .languages-section .item.item-reversed .profile-holder {
   left: inherit;
   right: 30px;
 }
-
 /* Inversion des champs */
 .languages-section .item.item-reversed .quote {
   margin-left: 0;
   margin-right: 105px;
 }
-
 /* Inversion 1 sur 2 des triangles */
 .languages-section .item.item-reversed .quote:before {
   left: inherit;
@@ -523,21 +511,18 @@ a:focus {
   border-left: 10px solid rgba(0, 0, 0, 0.2);
   border-right: inherit;
 }
-
 /* Alignement des éléments */
 .languages-section .item .profile-holder {
   position: absolute;
   left: 30px;
   text-align: center;
 }
-
 .languages-section .item .profile-image {
   display: inline-block;
   margin: 0 auto;
   width: 80px;
   height: 80px;
 }
-
 /* Détourage du contenu */
 .languages-section .item .quote {
   background: rgba(0, 0, 0, 0.2);
@@ -558,7 +543,6 @@ a:focus {
   position: relative;
   padding: 30px;
 }
-
 /* Triangle de direction de la communication */
 .languages-section .item .quote:before {
   position: absolute;
@@ -571,7 +555,6 @@ a:focus {
   border-bottom: 10px solid transparent;
   border-right: 10px solid rgba(0, 0, 0, 0.2);
 }
-
 /* Couleur du sous titre */
 .languages-section .item .quote-source {
   color: rgba(0, 0, 0, 0.6);
@@ -579,11 +562,9 @@ a:focus {
 
 
 
-
-
-/* =======  Section Achievements ======= */
+/* ============  Section Achievements ============ */
 .achievements-section {
-  background: #fff9f9 url("../images/map.png") no-repeat center center; /*  #40babd */
+  background: #fff9f9 url("../../images/one_page/map.png") no-repeat center center; /*  #40babd */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -591,7 +572,6 @@ a:focus {
   padding-top: 90px;
   padding-bottom: 90px;
 }
-
 .achievements-section .section-title {
   margin: 0;
   margin-bottom: 30px;
@@ -599,30 +579,25 @@ a:focus {
   font-weight: 300;
   color: #fff;
 }
-
 /* Postion des images */
 .achievements-section .item {
   position: relative;
   max-width: 800px;
   padding: 30px;
 }
-
 .achievements-section .item:last-child {
   margin-bottom: 0;
 }
-
 /* Inversion des images */
 .achievements-section .item.item-reversed .profile-holder {
   left: inherit;
   right: 30px;
 }
-
 /* Inversion des champs */
 .achievements-section .item.item-reversed .quote {
   margin-left: 0;
   margin-right: 105px;
 }
-
 /* Inversion 1 sur 2 des triangles */
 .achievements-section .item.item-reversed .quote:before {
   left: inherit;
@@ -633,21 +608,18 @@ a:focus {
   border-left: 10px solid rgba(0, 0, 0, 0.2);
   border-right: inherit;
 }
-
 /* Alignement des éléments */
 .achievements-section .item .profile-holder {
   position: absolute;
   left: 30px;
   text-align: center;
 }
-
 .achievements-section .item .profile-image {
   display: inline-block;
   margin: 0 auto;
   width: 80px;
   height: 80px;
 }
-
 /* Détourage du contenu */
 .achievements-section .item .quote {
   background: rgba(0, 0, 0, 0.2);
@@ -668,7 +640,6 @@ a:focus {
   position: relative;
   padding: 30px;
 }
-
 /* Triangle de direction de la communication */
 .achievements-section .item .quote:before {
   position: absolute;
@@ -681,7 +652,6 @@ a:focus {
   border-bottom: 10px solid transparent;
   border-right: 10px solid rgba(0, 0, 0, 0.2);
 }
-
 /* Couleur du sous titre */
 .achievements-section .item .quote-source {
   color: rgba(0, 0, 0, 0.6);
@@ -712,34 +682,28 @@ a:focus {
 
 
 
-/* ======= FORMULAIRE DEMANDE DEVIS ======= */
-.section-demande-devis{
-  padding: 5.5em;
-  background-color: #b4b4b4; /* #fff9f9 */
-}
-
-
-
-/* ======= Contact Section ======= */
+/* =========== Contact Section =========== */
 .contact-section {
   padding-top: 90px;
   padding-bottom: 90px;
-  background: #494d55 url("../images/map.png") no-repeat center center;
-  color: #fff;
+  background:#494d55 url("../../images/one_page/map.png") no-repeat center center;
+  color: black;
 }
 
-.contact-section .section-title {
+.contact-section .section-title-contact {
   margin: 0;
   margin-bottom: 15px;
   font-size: 36px;
   font-weight: 300;
   margin-bottom: 30px;
+  color: rgb(0, 0, 0);
 }
 
 .contact-content {
   max-width: 600px;
   margin: 0 auto;
   margin-bottom: 60px;
+  color: rgb(201, 201, 201);
 }
 
 @media (max-width: 767.98px) {

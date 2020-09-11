@@ -1,0 +1,79 @@
+/*
+    CSS du formulaire de contact de la One-page
+*/
+.contact-form{
+    /* Permet de centrer le contenu (formulaire) */
+    top: 50%;
+    left: 50%;
+    transform: translate(0%, 0%); /*(-50%, -50%)*/
+
+    width: 400px;
+    /*background: #fff;*/
+    padding: 30px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 3px 10px 10px  rgba(0, 0, 0, 0.4);
+}
+
+.contact-form input{
+    padding: 10px 0;
+    margin-bottom: 30px;
+}
+.contact-form textarea{
+    height: 80px;
+    padding: 10px 0;
+    margin-bottom: 40px;
+}
+.contact-form input, 
+.contact-form textarea{
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: none;
+    outline: none; /* Supprime l'encadrement au focus de l'input ou textarea */
+    border: none;
+    border-bottom: 2px solid #999;
+    background-color: rgb(73, 77, 85);
+    box-shadow: 3px 10px 10px  rgba(0, 0, 0, 0.1);
+}
+.contact-form textarea{
+    margin-bottom: 20px;
+}
+.contact-form input[type='submit']{
+    border-bottom: none;
+    cursor: pointer;
+    background:rgb(64, 186, 189);
+    color: #fff;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+.contact-form form div{
+    position: relative;
+}
+.contact-form form div label{
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: #999;
+    transition: .5s;
+    pointer-events: none;
+}
+.contact-form input:focus ~ label, 
+.contact-form textarea:focus ~ label,
+.contact-form input:valid ~ label, 
+.contact-form textarea:valid ~ label
+{
+    top: -12px;
+    left: 0;
+    color: rgb(64, 186, 189);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus,
+.contact-form input:valid, 
+.contact-form textarea:valid
+{
+    border-bottom: 2px solid rgb(64, 186, 189);
+}

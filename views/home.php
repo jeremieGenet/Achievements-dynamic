@@ -7,7 +7,7 @@ use App\Session;
 use App\Connection;
 use App\Table\PostTable;
 
-$title = "Web développeur : Création de site web, Ajout de fonctionnalité, SEO...";
+$title = "Web développeur : Création et refonte de site web, Ajout de fonctionnalité, SEO...";
 
 $session = new Session();
 $pdo = Connection::getPDO();
@@ -18,11 +18,82 @@ $posts = (new PostTable($pdo))->findLatest(6);
 $errors = [];
 // Instanciation du formulaire de contact
 $form = new Form($_POST, $errors);
-
-
 ?>
 
-<!-- languages -->
+
+<!--  STD-WEB   LES STANDARD DU WEB AU SERVICE DE VOS PROJETS -->
+<div id="std-web" class="std-web">
+    <div class="container text-center">
+        <h2 class="section-title">Les <strong>standards du web</strong> au service de vos projets</h2>
+        <p class="intro">Quelques langages/outils qui vous permettront d'atteindre vos objectifs numériques</p>
+        <ul class="logo-web list-inline">
+            <li class="list-inline-item"><img src="../assets/icons&logos/one_page/logo-html5.svg" alt="HTML5"></li>
+            <li class="list-inline-item"><img src="../assets/icons&logos/one_page/logo-css3.svg" alt="CSS3"></li>
+            <li class="list-inline-item"><img src="../assets/icons&logos/one_page/logo-bootstrap.svg" alt="Bootstrap"></li>
+            <li class="list-inline-item"><img src="../assets/icons&logos/one_page/PHP_128x128.png" alt="less"></li>
+            <li class="list-inline-item"><img src="../assets/icons&logos/one_page/javascript_128x128.png" alt="less"></li>
+            
+            <hr class="separator"><!---------------------------------------------------------------------------------->
+        </ul>
+
+        <!-- Cards 3D (effet 3D) (Attention, CSS particulier pour les 3 Cards = card-3D.css) -->
+        <div class="row __cards">
+
+            <div class="col-lg-4 col-md-12 mb-4">
+                <h3 class="item-title-main"><strong>Analyse</strong></h3>
+                <div class="__card middle">
+                    <div class="front">
+                        <img src="../assets/images/one_page/figure-1.png" alt="Etude & Réflexion">
+                    </div>
+                    <div class="back">
+                        <div class="back-content middle">
+                            <h3 class="item-title">Etude & Réflexion</h3>
+                            <div class="item-desc">
+                                D'abord réfléchir et analyser le projet pour en déterminer le design et les outils adaptés qui amèneront à sa réalisation. 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 mb-4">
+                <h3 class="item-title-main"><strong>Réalisation</strong></h3>
+                <div class="__card middle">
+                    <div class="front">
+                        <img src="../assets/images/one_page/figure-2.png" alt="Design & développement">
+                    </div>
+                    <div class="back">
+                        <div class="back-content middle">
+                            <h3 class="item-title">Design & développement</h3>
+                            <div class="item-desc">
+                                En accord avec le design déterminé, coder l'application avec les outils déterminées.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 mb-4">
+                <h3 class="item-title-main"><strong>Contrétisation</strong></h3>
+                <div class="__card middle">
+                    <div class="front">
+                        <img src="../assets/images/one_page/figure-3.png" alt="Finition & mise en production">
+                    </div>
+                    <div class="back">
+                        <div class="back-content middle">
+                            <h3 class="item-title">Finition & mise en production</h3>
+                            <div class="item-desc">
+                                Apporter les finitions et corrections, puis mettre l'application en ligne pour enfin concrétiser le projet.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- LANGUAGES -->
 <div id="languages" class="languages-section"> <!-- class="testimonials-section" -->
     <div class="container">
         <h2 class="section-title text-center  text-dark">Les<strong> principaux langages </strong>du Web </h2>
@@ -101,9 +172,9 @@ $form = new Form($_POST, $errors);
     </div>
 </div><!--//languages-->
 
-<!-- Réalisations (achievements) -->
-<div id="achievements" class="achievements-section bg-secondary">
-    <div class="container">
+<!-- REALISATIONS (achievements) -->
+<div id="achievements" class="achievements-section">
+    <div class="container-fluid">
         <h2 class="section-title text-center text-dark mb-5"><strong>Dernières réalisations</strong></h2>
 
         <?php require ('_inc/card.php') ?>
@@ -217,30 +288,43 @@ $form = new Form($_POST, $errors);
 
 <!-- CONTACT -->        
 <div id="contact" class="contact-section">
-    <div class="container">
+    <div class="container-fluid">
+        
         <div class="text-center">
-            <h2 class="section-title">Contactez Moi</h2>
+            <h2 class="section-title-contact"><strong>Contactez-moi</strong></h2>
             <div class="contact-content">
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis.</p>
+                <p>
+                    Une question ? Un projet ? N'hésitez pas à me contacter. 
+                    Préciser bien l'objet de votre demande, je vous ferais une réponse aussi rapide que possible.
+                </p>
             </div>
         </div>
 
-        <form action="">
-
-            <div class="row">
-                <div class="col-md-6">
-                    <?= $form->input('text', 'name', 'Nom & prénom', 'Entrer nom & prénom'); ?>
-                    <?= $form->input('email', 'email', 'Email', 'Entrer email'); ?>
-                    <button type="submit" class="btn btn-info">Me contacter</button>
-                </div>
-                <div class="col-md-6">
-                    <?= $form->input('tel', 'tel', 'Téléphone', 'Entrer votre téléphone'); ?>
-                    <?= $form->textarea('message', 'Message', 'Entrer votre message'); ?>
-                </div>
+        
+        <div class="d-flex justify-content-center">
+            <div class="contact-form">
+                <form>
+                    <div>
+                        <input type="text" name="" required="">
+                        <label>Nom & Prénom</label>
+                    </div>
+                    <div>
+                        <input type="text" name="" required="">
+                        <label>Email</label>
+                    </div>
+                    <div>
+                        <input type="text" name="" required="">
+                        <label>Téléphone</label>
+                    </div>
+                    <div>
+                        <textarea name="" id="" cols="30" rows="10" required=""></textarea>
+                        <label>Message</label>
+                    </div>
+                    <input type="submit" name="" value="Envoyer">
+                </form>
             </div>
-        
-        </form>
-        
+        </div>
+
     </div><!--//container-->
 </div><!--//contact-section-->
 

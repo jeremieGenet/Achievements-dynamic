@@ -19,7 +19,7 @@ class Auth{
         // Si personne n'est connecté...
         // S'il n'y a pas dans "$_SESSION" un 'user' ("user" est inclu dans $_SESSION dans la page login.php lors de la connexion)
         if(!isset($_SESSION['user'])){
-            throw new ForbiddenException(); // (on jette une Exception) => Exception récupérér et gérée dans la classe Router (Router.php)
+            throw new ForbiddenException(); // (on jette une Exception) => Exception récupérée et gérée dans la classe Router (Router.php)
         }
         
 
@@ -27,7 +27,7 @@ class Auth{
         if($role !== ""){
             //dd($_SESSION['user']['role']);
             if( $_SESSION['user']['role'] !== $role ){
-                throw new OnlyAdminException(); // (on jette une Exception) => Exception récupérér et gérée dans la classe Router (Router.php)
+                throw new OnlyAdminException(); // (on jette une Exception) => Exception récupérée et gérée dans la classe Router (Router.php)
             }
 
         }

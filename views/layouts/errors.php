@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.css">   
     <!-- Css One_page -->  
     <link rel="stylesheet" href="../../assets/css/one_page/one_page.css">
-    
 </head> 
 
 <body class="d-flex flex-column h-100">
@@ -86,6 +85,7 @@
 
 		</div>
     </div><!-- Fin du Caroussel-->
+
     
     <!-- CONTENU DU SITE -->
     <a class="btn btn-primary btn-lg" href="<?= $router->url('home') ?>" >
@@ -95,7 +95,6 @@
         <?= $content ?>
     </div>
     
-
 
     <footer class="footer text-center mt-auto">
         <div class="container">
