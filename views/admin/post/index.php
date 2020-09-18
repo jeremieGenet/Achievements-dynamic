@@ -9,7 +9,7 @@ use App\HTML\Notification;
 Auth::check();
 
 $session = new Session();
-$messages = $session->getFlashes('flash');
+$messages = $session->getMessage('flash');
 
 $title = "Administration des articles";
 $pdo = Connection::getPDO();
@@ -19,7 +19,6 @@ $link = $router->url('admin_posts');
 //dd($posts);
 foreach($posts as $post){
     //dd($post);
-
 }
 
 ?>

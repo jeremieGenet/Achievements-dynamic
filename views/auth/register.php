@@ -20,7 +20,6 @@ $errors = [];
 if(!empty($_POST)){
 
     $data = $_POST;
-    //dd($data);
     $user->setUsername($_POST['username']); // Pour que le champs username reste rempli même si il y a une erreur
     
     $validate = new UserValidator($data);
@@ -31,21 +30,19 @@ if(!empty($_POST)){
     $errors = $validate->samePassword($_POST['password'], $_POST['passwordConfirm']); // Vérif si le password et le passwordConfirm sont les mêmes
     $errors = $validate->passwordVulnerability($_POST['password']); // Permet de Sécurisé le mot de passe (param 2 à null par défaut, mais peu $être : 'max', "middle", "mini")
 
-    //dd($errors);
     if(empty($errors)){
         // Ajout des données (dans l'objet 'user')
         $user->setUsername(htmlentities($_POST['username']));
         $user->setEmail(htmlentities($_POST['email']));
         $user->setPassword(password_hash(($_POST['password']), PASSWORD_BCRYPT));
         $user->setRole('user');
-        //dd($user);
 
         // ENREGISTREMENT DES DONNEES DANS LA BDD
         $userTable->insert($user);
         
         
         // REDIRECTION ET MESSAGE FEEDBACK UTILISATEUR
-        $session->setFlash('success', "Vous êtes maintenant enregistrer, connectez vous !");
+        $session->setMessage('flash', 'success', "Vous êtes maintenant enregistrer, connectez vous !");
         header('Location: ' . $router->url('login'));
     }
     

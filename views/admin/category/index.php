@@ -12,7 +12,7 @@ use App\Table\CategoryTable;
 Auth::check();
 
 $session = new Session();
-$messages = $session->getFlashes('flash');
+$messages = $session->getMessage('flash');
 
 $title = "Gestion des catégories";
 $pdo = Connection::getPDO();

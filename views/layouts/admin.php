@@ -14,17 +14,19 @@
 
         <!-- Style Bootstrap -->
         <link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap_cyborg.css">
-        
+
+        <!-- Script ckeditor (éditeur de text) (basic/standard/standard-all/full) -->
+        <script src="https://cdn.ckeditor.com/4.15.0/full/ckeditor.js"></script>
     </head>
 
     <!-- class "d-flex h-100" pour height 100% (et permettre de mettre le footer tout en bas) -->
     <body class="d-flex flex-column h-100"> 
-
         <!-- HEADER DU SITE -->
         <header>
-            
             <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-                <a class="navbar-brand" href="<?= $router->url('home') ?>">Mon Site</a>
+                <a class="navbar-brand" href="<?= $router->url('home') ?>">
+                    <span class="logo-icon-wrapper"><img class="logo-icon" style="width: 20px;" src="../../assets/icons&logos/one_page/logo.svg" alt="logo site"></span>
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -50,15 +52,21 @@
                     <ul class="navbar-nav">
                             
                         <?php if(isset($_SESSION['user'])): ?>
-                            <!-- DECONNEXION (formulaire pour éviter que qqun puisse envoyer le lien et déconnecter l'utilisateur de force) -->
                             <li class="nav-item">
+                                <!-- MON PROFIL -->
+                                <a class="btn btn-light btn-sm mr-2" href="<?= $router->url('account', ['idUser' => $_SESSION['user']['id']]) ?>">
+                                    <?=$_SESSION['user']['username']?>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <!-- DECONNEXION (formulaire pour éviter que qqun puisse envoyer le lien et déconnecter l'utilisateur de force) -->
                                 <form action="<?= $router->url('logout') ?>" method="POST" class="nav-item">
-                                    <button type="submit" class="btn btn-warning">Se déconnecter</button>
+                                    <button type="submit" class="btn btn-warning btn-sm">Se déconnecter</button>
                                 </form>
                             </li>
                         <?php elseif(empty($_SESSION['user'])): ?>
                             <li class="nav-item">
-                                <!-- SE CONNECTER -->
+                                <!-- S'INSCRIRE -->
                                 <a class="btn btn-light mr-2" href="<?= $router->url('register') ?>">S'inscrire</a>
                             </li>
                             <li class="nav-item">
@@ -73,6 +81,7 @@
             
             <!-- Debug session utilisateur (affichage) -->
             <?php 
+                
                 if(isset($_SESSION)){
                     var_dump($_SESSION);
                 }
@@ -82,6 +91,10 @@
                 if(isset($_SESSION['infoUser'])){
                     var_dump($_SESSION['infoUser']);
                 }
+
+                //var_dump($_SERVER);
+                //var_dump($_SERVER['HTTP_REFERER']); // Dernière url absolue visitée
+
             ?>
         </header>
 
@@ -103,7 +116,6 @@
         <!-- Les 2 scripts suivants servent au fonctionnement de bootstrap -->
         <script src="../../assets/plugins/jquery-3.3.1.min.js"></script>
         <script src="../../assets/plugins/bootstrap/js/bootstrap.js"></script>
-    
 
     </body>
 

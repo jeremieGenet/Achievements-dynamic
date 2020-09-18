@@ -1,5 +1,5 @@
 /*
-    CSS du formulaire de contact de la One-page
+    CSS FORMULAIRE DE CONTACT (de la One-page)
 */
 .contact-form{
     /* Permet de centrer le contenu (formulaire) */
@@ -25,7 +25,9 @@
     margin-bottom: 40px;
 }
 .contact-form input, 
-.contact-form textarea{
+.contact-form textarea
+{
+    color: rgb(0, 0, 0);/**/
     width: 100%;
     box-sizing: border-box;
     box-shadow: none;
@@ -34,15 +36,19 @@
     border-bottom: 2px solid #999;
     background-color: rgb(73, 77, 85);
     box-shadow: 3px 10px 10px  rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-out; /* Transition du zoom */
 }
-.contact-form textarea{
-    margin-bottom: 20px;
+.contact-form input:hover, 
+.contact-form textarea:hover{
+    transform: scale(1.03); /* Effet de zoom au passage de la souris */
+    box-shadow: 3px 10px 10px  rgba(0, 0, 0, 0.5);
 }
 .contact-form input[type='submit']{
     border-bottom: none;
     cursor: pointer;
     background:rgb(64, 186, 189);
-    color: #fff;
+    color: rgb(73, 77, 85);;
+    font-weight: bold;
     margin-bottom: 0;
     text-transform: uppercase;
 }
@@ -76,4 +82,16 @@
 .contact-form textarea:valid
 {
     border-bottom: 2px solid rgb(64, 186, 189);
+}
+
+#__tooltip{
+    color: rgb(192, 131, 0);
+    margin-top: -30px;
+    padding-bottom: 20px;
+    
+}
+#myToast{ /* Message lorsque le formulaire de contact est ok */
+    display: flex;
+    justify-content: center;
+    color: rgb(13, 202, 44);
 }

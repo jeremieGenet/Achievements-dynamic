@@ -12,7 +12,7 @@ $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
-// Redirection générique pour toute url que possède un param "?page=1" vers la même url sans ce param
+// Redirection générique pour toute url que possède un param "?page=1" vers la même url mais sans ce param (Evite de voir lors de la pagination dans l'url: ...?page=1)
 if(isset($_GET['page']) && $_GET['page'] === '1'){
     $uri = explode('?', $_SERVER['REQUEST_URI'])[0];
     $get = $_GET;
@@ -30,6 +30,8 @@ $router = new Router(dirname(__DIR__) . '/views');
 
 // ACCUEIL DU SITE (one_page)
 $router->get('/', 'home.php', 'home'); // Direction vers la page d'accueil du site (one_page)
+$router->post('/', '_inc/mail.php', 'mail'); // Direction vers l'envoi d'email
+$router->match('/error/[i:codeError]', '_inc/e.404.php', 'error'); // Direction vers l'envoi d'email
 
 /*
     REALISATIONS
@@ -38,11 +40,12 @@ $router->match('/realisations', 'realisations/achievement/index.php', 'achieveme
 $router->get('/realisations/category/[*:slug]-[i:id]', 'realisations/category/show.php', 'achievements-category'); // Direction vers la page des réalisations de la catégorie selectionnée
 $router->get('/realisations/[*:slug]-[i:id]', 'realisations/achievement/show.php', 'achievement'); // Direction vers la vue d'une réalisation
 
-// CONNEXION/AUTHENTIFICATION
+// CONNEXION / AUTHENTIFICATION / PROFIL
 $router->match('/auth/login', 'auth/login.php', 'login');
 $router->match('/auth/logout', 'auth/logout.php', 'logout');
 $router->match('/auth/register', 'auth/register.php', 'register');
-$router->match('/auth/account', 'auth/account.php', 'account');
+$router->match('/auth/account/[i:idUser]', 'auth/account.php', 'account');
+
 
 /*
     ADMINISTRATION (accueil)
@@ -70,7 +73,9 @@ $router->match('/admin/category/[i:id]', 'admin/category/edit.php', 'admin_categ
 $router->post('/admin/category/[i:id]/delete', 'admin/category/delete.php', 'admin_category_delete'); // Direction vers l'administration Supprimer d'un article 
 $router->match('/admin/category/new', 'admin/category/new.php', 'admin_category_new'); // Direction vers l'administration Création d'un articles (match pour y accéder en "get" et en "post")
 
-
+/*
+    Voir Router.php pour la gestion des layout et Exceptions
+*/
 // LANCE LE SERVEUR (en fonction des layout et Exception)
 $router->run();
 

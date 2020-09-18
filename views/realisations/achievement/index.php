@@ -2,11 +2,9 @@
 /*
     PAGE DES REALISATIONS (Liste des réalisations)
 */
-use App\Auth;
 use App\Connection;
 use App\Table\PostTable;
 
-//Auth::check();
 
 $title = 'Réalisations';
 
@@ -20,20 +18,20 @@ $link = $router->url('achievements');
 ?>
 
 <div class="main-wrapper">
-    <section class="pt-4">
+    <section class="pt-5">
         <div class="container text-center">
             <h1 class="heading"><strong>Quelques Réalisations Personnelles</strong></h1>
             <p class="text-light">Voici quelques réalisations/projets qui m'ont permis de découvrir différentes technologies Web</p>
         </div><!--//container-->
     </section>
 
-    <section class="container blog-list px-3 py-2 p-md-5">
+    <section class="container blog-list py-2">
 
         <!-- Boucle sur l'ensemble des réalisations -->
         <?php foreach($posts as $k => $post): ?>
             <div class="cards mb-4">
             <!-- Condition pour switcher de card (l'une affiche à droite, l'autre à gauche s-->
-            <?php $k % 2 === 0 ? require 'card-right.php' : require 'card-left.php' ?>
+            <?php $k % 2 === 0 ? require 'inc/card-right-index.php' : require 'inc/card-left-index.php' ?>
             </div>
         <?php endforeach ?>
 

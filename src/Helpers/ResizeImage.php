@@ -31,9 +31,11 @@ Class ResizeImage{
         }
 
         switch(pathinfo($file, PATHINFO_EXTENSION)){
+            case 'JPG':
             case 'jpg': 
             case 'jpeg': return imagecreatefromjpeg($file); 
             case 'gif':	 return imagecreatefromgif($file);
+            case 'PNG':
             case 'png':	 return imagecreatefrompng($file);
         }
 

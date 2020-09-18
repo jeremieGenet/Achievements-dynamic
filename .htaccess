@@ -1,0 +1,3 @@
+# Rédirection du nom de domaine vers le dossier "public"
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L]

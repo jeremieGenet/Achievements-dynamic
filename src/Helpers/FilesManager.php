@@ -4,6 +4,8 @@ namespace App\Helpers;
 use App\Connection;
 use App\Helpers\ResizeImage;
 use App\Table\{ImageTable, LogoTable, PostTable};
+use Exception;
+
 
 
 /**
@@ -46,7 +48,7 @@ class FilesManager{
             $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
             if($ext){
                 // Validation des extensions des fichiers
-                if(!in_array($ext, array('jpg','jpeg','png','gif'))){
+                if(!in_array($ext, array('jpg', 'JPG', 'jpeg','png','gif'))){
                     $this->errors[$fieldName] = "L'extension du fichier '{$name}' n'est pas valide.";
                 }
             }
@@ -71,6 +73,7 @@ class FilesManager{
   
             // Validation des extensions des fichiers
             foreach($exts as $ext){
+                //dd($ext);
                 if(!in_array($ext, array('jpg','jpeg','png','gif'))){
                     $this->errors[$fieldName] = 'L\'extension d\'un ou plusieurs fichier(s) n\'est pas valide.';
                 }
@@ -99,126 +102,141 @@ class FilesManager{
      */
     public function upload($fieldName, string $path, int $currentPostId = null) // '$currentPostId' pour l'id du post en cours (null par défaut, utilisé lors de l'édition d'un post)
     {
-        //dd($fieldName); // 'picture' ou 'image-collection', ou 'logo-collection
+        try{
+            //dd($fieldName); // 'picture' ou 'image-collection', ou 'logo-collection...
+            // Données du fichier reçu
+            $data = $this->data[$fieldName];
+            // UPLOAD D'UNE IMAGE (image seule)
+            // Si c'est une image seule (pour notre image principale) alors on upload le fichier
+            if(is_string($data['name'])){
 
-        // Données du fichier reçu
-        $data = $this->data[$fieldName];
-        // UPLOAD D'UNE IMAGE (image seule)
-        // Si c'est une image seule (pour notre image principale) alors on upload le fichier
-        if(is_string($data['name'])){
-
-            $file = $data['name']; // vimeo.png
-            //dd($file);
-
-            $name = pathinfo($file, PATHINFO_FILENAME); // nom du fichier sans son extension (vimeo)
-            $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION)); // extension du fichier (png)
-
-            // Si l'image à uploader existe déjà dans la bdd ('exists()' retourne true si un fichier existe dans la bdd)
-            if($this->postTable->exists($fieldName, $file)){ 
-                // Condition si le param de 'upload()' est défini (c'est que nous sommes en Edition, donc on ajoute l'id du post actuel)
-                if($currentPostId !== null){
-                    // On renomme le fichier avec des parenthèses et l'id du post actuel (édition)
-                    $newfile = $name .'('. $currentPostId . ')' . '.'. $ext; // ex : image(12).jpg
-                    $file = $newfile;
-                // Sinon si le param de "upload()" n'est pas défini (c'est que nous sommes en Création, donc on ajoute l'id du post qui va être créé)
-                }else{
-                    // On récup l'id du post qui va être créé (création)
-                    $nextPostId = $this->postTable->getNextId();
-                    // On renomme le fichier avec des parenthèses et l'id du post en cours de création (création)
-                    $newfile = $name .'('. $nextPostId . ')' . '.'. $ext; // ex : image(12).jpg
-                    $file = $newfile;
-                }
-            }
-
-            // Chemin + nom du fichier (assets/uploads/img-main/monImage.jpg)
-            $pathFile = $path . $file;
-
-            if($file){
-                // UPLOAD des images reçues (stockage et si modification de l'image du post, alors suppression de l'image dans le dossier)
-                copy( // Copy le nom du fichier "ackechi.png" dans le dossier "img/persona" (copy(source, destination))
-                    $data['tmp_name'], // d:\Code\xampp\tmp\phpF319.tmp (chemin du fichier enregistré en le dossier tmp du serveur, qui crypte le nom)
-                    $pathFile // direction ou le fichier est envoyé
-                );
-            }
-
-            // GESTION DE LA REDIMENSION DE L'IMAGE PRINCIPALE
-            // Création de notre "resizer" (en param le chemin complet du fichier)
-            $resizer = new ResizeImage($pathFile);
-            // Redimension de l'image (crop = redimentionne en gardant les proportions mais pas le ration largeur/hauteur, voir classe ResizeImage)
-            $resizer->resizeImage(1920, 1080, 'crop'); 
-            // Sauve l'image redimensionnée à la place de celle d'origine
-            $resizer->saveImage('assets/uploads/img-main/'.$file, 100); 
-
-            return $file;
-        }
-        
-        // UPLOAD D'UNE COLLECTION D'IMAGES
-        // Si c'est une collection d'images (pour les images ou les logos) alors on upload les fichiers
-        if(is_array($data['name'])){
-            // Contiendra les données (nom et size des fichiers) après vérif si le nom du fichier exist
-            $newData = []; 
-            // Compte total des fichiers
-            $countfiles = count($data['name']);
-
-            // Boucle sur tous les fichiers
-            for($i=0; $i<$countfiles; $i++){
-
-                $file = $data['name'][$i];
-
+                $file = strtolower($data['name']); // vimeo.png
                 $name = pathinfo($file, PATHINFO_FILENAME); // nom du fichier sans son extension (vimeo)
-                $ext  = strtolower(pathinfo($file, PATHINFO_EXTENSION)); // extension du fichier (png)
-                $size = $data['size'][$i];
+                $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION)); // extension du fichier (png)
 
-                // Si un nom de fichier (de la collection de logos OU de la collection d'images) existe déja dans la bdd alors... on renomme avec son id (image(12).jpg)
-                if($this->logoTable->existsLogo($file) || $this->imageTable->existsImage($file)){
-                    // Condition si le param 'currentPostId' de 'upload()' est défini (c'est que nous sommes en Edition, donc on ajoute l'id du post actuel)
+                // Si l'image à uploader existe déjà dans la bdd ('exists()' retourne true si un fichier existe dans la bdd)
+                if($this->postTable->exists($fieldName, $file)){ 
+                    // Condition si le param de 'upload()' est défini (c'est que nous sommes en Edition, donc on ajoute l'id du post actuel)
                     if($currentPostId !== null){
                         // On renomme le fichier avec des parenthèses et l'id du post actuel (édition)
                         $newfile = $name .'('. $currentPostId . ')' . '.'. $ext; // ex : image(12).jpg
                         $file = $newfile;
-                    // Sinon si le param 'currentPostId' de "upload()" n'est pas défini (c'est que nous sommes en Création, donc on ajoute l'id du post qui va être créé)
+                    // Sinon si le param de "upload()" n'est pas défini (c'est que nous sommes en Création, donc on ajoute l'id du post qui va être créé)
                     }else{
-                        // On récup l'id du post qui va être créé
-                        $nextPostId = $this->postTable->getNextId() - 1;
-                        // On renomme le fichier avec des parenthèses et l'id du post
+                        // On récup l'id du post qui va être créé (création)
+                        $nextPostId = $this->postTable->getNextId();
+                        // On renomme le fichier avec des parenthèses et l'id du post en cours de création (création)
                         $newfile = $name .'('. $nextPostId . ')' . '.'. $ext; // ex : image(12).jpg
                         $file = $newfile;
                     }
                 }
 
-                // Chemin et nom du fichier (assets/uploads/img-collection/momFichier.jpg)
-                $pathFile = $path . $file; 
-                // Upload des fichiers (move_uploaded_file() permet de déplacer un fichier param1 = nom du fichier à déplacer, param2= direction)
-                move_uploaded_file($data['tmp_name'][$i], $pathFile);
-                // On rempli notre tableau '$newDate' avec le nom et taille des fichiers
-                $newData['name'][$i] = $file; 
-                $newData['size'][$i] = $size;
+                // Chemin + nom du fichier (assets/uploads/img-main/monImage.jpg)
+                $pathFile = $path . $file;
 
-                // GESTION DE LA REDIMENSION DES COLLECTIONS D'IMAGES (Images et logos)
-                // Si le champs est la collection d'images alors... RESIZE des images
-                if($fieldName === "image-collection"){
-                    // Création de notre "resizer" (en param le chemin complet du fichier)
-                    $resizer = new ResizeImage($pathFile);
-                    // Redimension de l'image (crop = redimentionne en gardant les proportions mais pas le ration largeur/hauteur, voir classe ResizeImage)
-                    $resizer->resizeImage(640, 480, 'crop');
-                    // Sauve l'image redimensionnée à la place de celle d'origine (param2 = qualité)
-                    $resizer->saveImage('assets/uploads/img-collection/'.$file, 100);
+                if($file){
+                    // UPLOAD des images reçues (stockage et si modification de l'image du post, alors suppression de l'image dans le dossier)
+                    copy( // Copy le nom du fichier "ackechi.png" dans le dossier "img/persona" (copy(source, destination))
+                        $data['tmp_name'], // d:\Code\xampp\tmp\phpF319.tmp (chemin du fichier enregistré en le dossier tmp du serveur, qui crypte le nom)
+                        $pathFile // direction ou le fichier est envoyé
+                    );
                 }
-                /*
-                // Si le champs est la collection de logos alors... RESIZE des logos
-                if($fieldName === "logo-collection"){
-                    // Création de notre "resizer" (en param le chemin complet du fichier)
-                    $resizer = new ResizeImage($pathFile);
-                    // Redimension de l'image (crop = redimentionne en gardant les proportions mais pas le ration largeur/hauteur, voir classe ResizeImage)
-                    $resizer->resizeImage(128, 128, 'crop');
-                    // Sauve l'image redimensionnée à la place de celle d'origine
-                    $resizer->saveImage('assets/uploads/logo-collection/'.$file, 50);
-                }
-                */
+
+                // GESTION DE LA REDIMENSION DE L'IMAGE PRINCIPALE
+                // Création de notre "resizer" (en param le chemin complet du fichier)
+                $resizer = new ResizeImage($pathFile);
+                // Redimension de l'image (crop = redimentionne en gardant les proportions mais pas le ration largeur/hauteur, voir classe ResizeImage)
+                $resizer->resizeImage(1920, 1080, 'landscape'); 
+                // Sauve l'image redimensionnée à la place de celle d'origine
+                $resizer->saveImage('assets/uploads/img-main/'.$file, 100); 
+
+                return $file;
             }
-            return $newData; // Retourne le tableau avec les données traitées (le nom s'il a été renommé)
+            
+            // UPLOAD D'UNE COLLECTION D'IMAGES
+            // Si c'est une collection d'images (pour les images ou les logos) alors on upload les fichiers
+            if(is_array($data['name'])){
+                //dd($data['name']); // /******************************************************************/
+                /*
+                array:1 [▼
+                    0 => "placeholder2.png"
+                ]
+                */
+                // Contiendra les données (nom et size des fichiers) après vérif si le nom du fichier exist
+                $newData = []; 
+                // Compte total des fichiers
+                $countfiles = count($data['name']);
+
+                // Boucle sur tous les fichiers
+                for($i=0; $i<$countfiles; $i++){
+
+                    $file = strtolower($data['name'][$i]);
+
+                    $name = pathinfo($file, PATHINFO_FILENAME); // nom du fichier sans son extension (vimeo)
+                    $ext  = strtolower(pathinfo($file, PATHINFO_EXTENSION)); // extension du fichier (png)
+                    $size = $data['size'][$i];
+
+                    // Si un nom de fichier (de la collection de logos OU de la collection d'images) existe déja dans la bdd alors... on renomme avec son id (image(12).jpg)
+                    if($this->logoTable->existsLogo($file) || $this->imageTable->existsImage($file)){
+                        // Condition si le param 'currentPostId' de 'upload()' est défini (c'est que nous sommes en Edition, donc on ajoute l'id du post actuel)
+                        if($currentPostId !== null){
+                            // On renomme le fichier avec des parenthèses et l'id du post actuel (édition)
+                            $newfile = $name .'('. $currentPostId . ')' . '.'. $ext; // ex : image(12).jpg
+                            $file = $newfile;
+                        // Sinon si le param 'currentPostId' de "upload()" n'est pas défini (c'est que nous sommes en Création, donc on ajoute l'id du post qui va être créé)
+                        }else{
+                            // On récup l'id du post qui va être créé
+                            $nextPostId = $this->postTable->getNextId() - 1;
+                            // On renomme le fichier avec des parenthèses et l'id du post
+                            $newfile = $name .'('. $nextPostId . ')' . '.'. $ext; // ex : image(12).jpg
+                            $file = $newfile;
+                        }
+                    }
+                    
+                    // Chemin et nom du fichier (assets/uploads/img-collection/momFichier.jpg)
+                    $pathFile = $path . $file;
+
+                    //dd($pathFile, $data['tmp_name'][$i]); // "assets/uploads/img-collection/placeholder.JPG" et "D:\Code\xampp\tmp\php6F98.tmp"  /*********************/
+
+                    // Upload des fichiers (move_uploaded_file() permet de déplacer un fichier param1 = nom du fichier à déplacer, param2= direction)
+                    move_uploaded_file($data['tmp_name'][$i], $pathFile);
+                    // On rempli notre tableau '$newDate' avec le nom et taille des fichiers
+                    $newData['name'][$i] = $file; 
+                    $newData['size'][$i] = $size;
+
+                    //dd($newData['name'][$i]); /*********************** */
+
+                    
+                    // GESTION DE LA REDIMENSION DES COLLECTIONS D'IMAGES (Images et logos)
+                    // Si le champs est la collection d'images alors... RESIZE des images
+                    if($fieldName === "image-collection"){
+                        // Création de notre "resizer" (en param le chemin complet du fichier)
+                        $resizer = new ResizeImage($pathFile);
+                        // Redimension de l'image (crop = redimentionne en gardant les proportions mais pas le ration largeur/hauteur, voir classe ResizeImage)
+                        $resizer->resizeImage(1920, 1080, 'crop');
+                        // Sauve l'image redimensionnée à la place de celle d'origine (param2 = qualité)
+                        $resizer->saveImage('assets/uploads/img-collection/'.$file, 100);
+                    }
+                    
+
+                    /*
+                    // Si le champs est la collection de logos alors... RESIZE des logos
+                    if($fieldName === "logo-collection"){
+                        // Création de notre "resizer" (en param le chemin complet du fichier)
+                        $resizer = new ResizeImage($pathFile);
+                        // Redimension de l'image (crop = redimentionne en gardant les proportions mais pas le ration largeur/hauteur, voir classe ResizeImage)
+                        $resizer->resizeImage(128, 128, 'crop');
+                        // Sauve l'image redimensionnée à la place de celle d'origine
+                        $resizer->saveImage('assets/uploads/logo-collection/'.$file, 50);
+                    }
+                    */
+                }
+                return $newData; // Retourne le tableau avec les données traitées (le nom s'il a été renommé)
+            }
+        }catch(Exception $e){
+            return false;
         }
-        return false;
+        
         
     }
 

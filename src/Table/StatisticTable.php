@@ -27,7 +27,7 @@ class StatisticTable{
     // Récup le nb d'utilisateur (en fonction du role)
     public function totalUserRoleUser()
     {
-        $query = $this->pdo->query("SELECT COUNT(id) FROM User WHERE role = 'user'");
+        $query = $this->pdo->query("SELECT COUNT(id) FROM user WHERE role = 'user'");
         //$query->setFetchMode(\PDO::FETCH_CLASS, User::class); // On change le mode de recherche (Fetch) et on signifie que l'on va utiliser par classe
         return (int)$query->fetch(PDO::FETCH_NUM)[0]; // retourne un nombre
     }
@@ -35,7 +35,7 @@ class StatisticTable{
     // Récup le nb d'utilisateur (en fonction du role)
     public function totalUserRoleAdmin()
     {
-        $query = $this->pdo->query("SELECT COUNT(id) FROM User WHERE role = 'admin'");
+        $query = $this->pdo->query("SELECT COUNT(id) FROM user WHERE role = 'admin'");
         //$query->setFetchMode(\PDO::FETCH_CLASS, User::class); // On change le mode de recherche (Fetch) et on signifie que l'on va utiliser par classe
         return (int)$query->fetch(PDO::FETCH_NUM)[0]; // retourne un nombre
     }
@@ -72,7 +72,7 @@ class StatisticTable{
         foreach($idUsers as $key => $idUser){
 
             $nbIds = ['bonjour'];
-            $query = $this->pdo->query("SELECT COUNT(id) FROM Post WHERE author_id = $idUser");
+            $query = $this->pdo->query("SELECT COUNT(id) FROM post WHERE author_id = $idUser");
             //$nbIdPerUser = (int)$query->fetch(PDO::FETCH_NUM)[0]; // Foncitionne mais
             //$query->setFetchMode(\PDO::FETCH_NUM);
             //var_dump($query->fetchAll()[0][0]);
@@ -86,14 +86,13 @@ class StatisticTable{
         }
         //die();
         dd($nbIds);
-        dd($tab);
 
 
-        $query = $this->pdo->query("SELECT COUNT(id) FROM User");
+        $query = $this->pdo->query("SELECT COUNT(id) FROM user");
         $nbUsers = (int)$query->fetch(PDO::FETCH_NUM)[0];
 
         for($i=0; $i<$nbUsers; $i++){
-            $query = $this->pdo->query("SELECT id FROM User");
+            $query = $this->pdo->query("SELECT id FROM user");
             
         }
         //dd($nbUsers);

@@ -16,16 +16,18 @@ $categories = $tableCategories->findAll();
         <?= $title ?? 'Mon site' ?> 
     </title>
     <!-- Meta -->
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<link rel="icon" href="favicon.ico" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Blog Template">
     <meta name="author" content="Jérémie Genet">    
-    <link rel="shortcut icon" href="../assets/icons/blog/favicon.ico"> <!-- Icon du title-->
-    
-    <!-- FontAwesome JS-->
-	<script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js"
-	 integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous">
+
+	<!-- Fontawesome -->
+    <link href="../../assets/plugins/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="../../assets/plugins/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="../../assets/plugins/fontawesome/css/solid.css" rel="stylesheet"> 
+	 
 	</script>
     <!-- Theme CSS -->  
 	<link id="theme-style" rel="stylesheet" href="../../assets/css/blog/themes/theme-7_purple2-1.css">
@@ -36,8 +38,12 @@ $categories = $tableCategories->findAll();
 
 <body class="d-flex flex-column h-100">
 
-	<header class="header text-center">	    
-		<h1 class="blog-name text-dark pt-4"><strong>Blog de Jérémie</strong></h1>
+	<header class="header text-center">	 
+		  
+		<h1 class="blog-name text-light pt-4">
+			<span class="logo-icon-wrapper"><img class="logo-icon" style="width: 20px;" src="../../assets/icons&logos/one_page/logo.svg" alt="logo site"></span> 
+			<strong>Blog de Jérémie</strong>
+		</h1>
 		
 		<nav class="navbar navbar-expand-lg navbar-dark" >
 			<button 
@@ -102,17 +108,17 @@ $categories = $tableCategories->findAll();
 	</main>
 	
 	<footer class="footer text-center mt-auto py-4 bg-primary">
-		<div class="">
+		<div class="container">
 			<small class="copyright">
-				<p>© 2018 - 2020. <strong>Proudly</strong> created with by my fingers <i class="fas fa-heart"></i></p> 
-				<p>Page générée en <a href=""><strong><?= round(1000 * (microtime(true) - DEBUG_TIME)) ?></strong> millisecondes</a></p>
+				<p><strong class="text-light">© 2018 - 2020 . </strong> <strong class="text-dark"> Proudly created with by my fingers</strong> <i class="fas fa-heart"></i></p> 
+				<p>Page générée en <strong class="text-info"><?= round(1000 * (microtime(true) - DEBUG_TIME)) ?> millisecondes</strong></p>
 			</small>
 		</div>
 	</footer>
     
     <!-- Javascript (jQuery, bootstrap) -->          
-    <script src="../assets/plugins/jquery-3.3.1.min.js"></script>
-    <script src="../assets/plugins/bootstrap/js/bootstrap.js"></script> 
+    <script src="../../assets/plugins/jquery-3.3.1.min.js"></script>
+    <script src="../../assets/plugins/bootstrap/js/bootstrap.js"></script> 
     
 </body>
 </html> 

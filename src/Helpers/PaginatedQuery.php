@@ -4,6 +4,8 @@ namespace App\Helpers;
 use PDO;
 use App\Helpers\URL;
 use App\Connection;
+use App\Security\PaginationException;
+
 
 class PaginatedQuery{
 
@@ -38,7 +40,7 @@ class PaginatedQuery{
             $pages = $this->getPages();
 
             if($currentPage > $pages){
-                throw new \Exception('Cette page n\'existe pas !');
+                throw new PaginationException('Cette page n\'existe pas !', 404);
             }
 
             // $offset Représente le décallage du nb d'items entre chaques pages ()

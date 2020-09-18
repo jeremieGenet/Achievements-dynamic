@@ -14,7 +14,7 @@ Auth::check();
 
 
 $session = new Session();
-$messages = $session->getFlashes('flash');
+$messages = $session->getMessage('flash');
 
 // Tableaux erreurs de formulaire ($errors regroupera les 4 autres tableaux après traitement)
 $errors = []; 
@@ -45,7 +45,7 @@ if(!empty($_POST)){
 
     $errorsPost = $validate->fieldEmpty(['category', 'title', 'content']);
     $errorsPost = $validate->fieldLength(3, 150, ['title']);
-    $errorsPost = $validate->fieldLength(5, 2000, ['content']);
+    $errorsPost = $validate->fieldLength(5, 10000, ['content']);
     $errorsPost = $validate->fieldExist(['title']);
 
 
@@ -80,8 +80,8 @@ if(!empty($_POST)){
 
     // ON PARAM LE MESSAGE FLASH DE LA SESSION (s'il y a des erreurs)
     if(!empty($errors)){
-        $session->setFlash('danger', "Il faut corriger vos erreurs !"); // On crée un message flash
-        $messages = $session->getFlashes('flash'); // On l'affiche
+        $session->setMessage('flash', 'danger', "Il faut corriger vos erreurs !"); // On crée un message flash
+        $messages = $session->getMessage('flash'); // On l'affiche
     }
     
     // S'il n'y a pas d'erreurs...
@@ -117,6 +117,7 @@ if(!empty($_POST)){
         if($imageCollection['error'][0] !== 4){
             // Upload (et rename si l'un d'entre eux existe déjà) de la collection d'image dans le dossier dédié (retourne les noms des fichiers)
             $imageNames = $filesManager->upload('image-collection', 'assets/uploads/img-collection/');
+            //dd($imageNames); // Retourn false /********************************************* */
 
             // ENREGISTREMENT DE LA COLLECTION D'IMAGE DANS LA BDD
             // Récup du nb d'image dans la collection postée
@@ -124,7 +125,7 @@ if(!empty($_POST)){
             for($i=0; $i<$countImages; $i++){
                 // Transformation des Images reçus en objets Image
                 $newImage = new Image();
-                $newImage->setName($imageNames['name'][$i]);
+                $newImage->setName($imageNames['name'][$i]);/************** reçoit null ???*****************/
                 $newImage->setSize($imageNames['size'][$i]);
                 $newImage->setPost_id($post->getId()); // On récup l'id du post nouvellement créé
 
@@ -163,7 +164,7 @@ if(!empty($_POST)){
         }
 
         // Param du message flash de SESSION, puis redirection
-        $session->setFlash('success', "L'article est crée !");
+        $session->setMessage('flash', 'success', "L'article est crée !");
         header('Location: ' . $router->url('admin_posts'));
     }
 

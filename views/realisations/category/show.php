@@ -41,8 +41,8 @@ $link = $router->url('achievements-category', ['id' => $category->getId(), 'slug
             <!-- Boucle sur l'ensemble des réalisations -->
             <?php foreach($posts as $k => $post): ?>
                 <div class="cards mb-4">
-                <!-- Condition pour switcher de card (l'une affiche à droite, l'autre à gauche s-->
-                <?php $k % 2 === 0 ? require dirname(__DIR__) . '/achievement/card-right.php' : require dirname(__DIR__) . '/achievement/card-left.php' ?>
+                <!-- Condition pour switcher de card (l'une affiche l'image à droite, l'autre à gauche -->
+                <?php $k % 2 === 0 ? require dirname(__DIR__) . '/achievement/inc/card-right-index.php' : require dirname(__DIR__) . '/achievement/inc/card-left-index.php' ?>
                 </div>
             <?php endforeach ?>
             

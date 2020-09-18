@@ -12,33 +12,31 @@ Couleur violet (couleur du theme purple2) = rgb(93, 107, 167)
     color: black !important;
 }
 .main-wrapper{
-    /*
-    background-color: red;
-    */
     background-color:white; 
-    /*background-image:url('../../images/blog/bg1.jpg');*/
     background-attachment: fixed;
-    /*
-    background-image: linear-gradient(rgba(93, 107, 167) 18%, rgba(255, 255, 0, 0.3)),
-    url('../../images/blog/bg1.jpg');
-    */
-    
     background-image: linear-gradient(to bottom, rgba(93, 107, 167) 20%, rgba(255, 255, 0, 0.3)),
     url('../../images/blog/bg1.jpg');
-    
-    
-    /*background-position: bottom;*/
-    /*background: linear-gradient(black, white);*/
-    /*background-repeat:no-repeat;*/
+}
+.heading{
+    color: rgb(218, 218, 218);
+}
+.footer .fa-heart {
+    color: #EA5395;
+    margin-left: 4px;
+}
+.logo-icon{
+    margin-right: 10px;
+    margin-bottom: 5px;
 }
 
-/* Css ajouté au thème */
+/* Css des cards (valable dans realistions/achievement/index.php et show.php */
 .__card{
-    border: 1px solid white;
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: 3px 6px 6px  rgba(0, 0, 0, 0.5);
 }
 .__card-infos{
     /*background: linear-gradient( rgba(93, 107, 167, 0.9) 10%, rgba(255, 255, 0, 0.3));*/
-    background: linear-gradient( rgba(93, 107, 167, 0.9) 10%, rgba(255, 255, 0, 0.5));
+    background: linear-gradient( rgba(93, 107, 167, 0.9) 10%, rgba(207, 207, 0, 0.5));
     /*opacity: 0.5;*/
     display: flex;
     flex-direction: column;
@@ -49,10 +47,10 @@ Couleur violet (couleur du theme purple2) = rgb(93, 107, 167)
     margin: 0em 1em 0em 1em;
     color: black;
 }
+.__card-categories{
+    padding-top: 2%;
+}
 .__card-header, .__card-createdAt{
     margin-top: 1em;
     margin-bottom: 1em;
-}
-.__content{
-    color: white;
 }

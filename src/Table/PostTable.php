@@ -23,7 +23,7 @@ class PostTable extends Table{
     // Récup le prochain id de la table (l'id qui sera nouvellement créé)
     public function getNextId()
     {
-        $req = $this->pdo->query("SHOW TABLE STATUS FROM portfolio2 LIKE '{$this->table}' ");
+        $req = $this->pdo->query("SHOW TABLE STATUS FROM portfolio2 LIKE '{$this->table}' ");/*************A MODIFIER EN PRODUCTION******************************************** */
         $donnees = $req->fetch();
         return $donnees['Auto_increment'];
     }
@@ -352,7 +352,7 @@ class PostTable extends Table{
     public function findCategoriesById(array $ids)
     {
         foreach($ids as $id){
-            $query = $this->pdo->query("SELECT * FROM Category WHERE id = {$id}");
+            $query = $this->pdo->query("SELECT * FROM category WHERE id = {$id}");
             $query->setFetchMode(\PDO::FETCH_CLASS, Category::class); // On change le mode de recherche (Fetch) et on signifie que l'on va utiliser par classe
             $categories[] = $query->fetch();
         }
@@ -362,7 +362,7 @@ class PostTable extends Table{
     // Récup la collection de logos appartenant à un post (via son id)
     public function findLogoCollection(int $id)
     {
-        $query = $this->pdo->query("SELECT * FROM Logo WHERE post_id = {$id}");
+        $query = $this->pdo->query("SELECT * FROM logo WHERE post_id = {$id}");
         $query->setFetchMode(\PDO::FETCH_CLASS, Logo::class); // On change le mode de recherche (Fetch) et on signifie que l'on va utiliser par classe
         return $query->fetchAll();
     }
@@ -370,7 +370,7 @@ class PostTable extends Table{
     // Récup la collection d'images appartenant à un post (via son id)
     public function findImageCollection(int $id)
     {
-        $query = $this->pdo->query("SELECT * FROM Images WHERE post_id = {$id}");
+        $query = $this->pdo->query("SELECT * FROM images WHERE post_id = {$id}");
         $query->setFetchMode(\PDO::FETCH_CLASS, Image::class); // On change le mode de recherche (Fetch) et on signifie que l'on va rechercher par classe
         return $query->fetchAll();
     }
@@ -378,7 +378,7 @@ class PostTable extends Table{
     // Récup l'auteur d'un post (via l'id de l'auteur)
     public function findAuthor(int $id): User
     {
-        $query = $this->pdo->query("SELECT * FROM User WHERE id = {$id}");
+        $query = $this->pdo->query("SELECT * FROM user WHERE id = {$id}");
 
         $query->setFetchMode(\PDO::FETCH_CLASS, User::class); // On change le mode de recherche (Fetch) et on signifie que l'on va utiliser par classe
         return $query->fetch();

@@ -31,8 +31,9 @@ class Image{
     {
         return pathinfo($this->name, PATHINFO_FILENAME);
     }
-    public function setName(string $name): self
+    public function setName(string $name): self /************* retirer le nullable de $name ********************** */
     {
+        //dd($name);
         $this->name = $name;
         return $this;
     }

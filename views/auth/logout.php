@@ -1,7 +1,6 @@
 <?php
 
-// Démarrage de la session, pour ensuite la détruire
-session_start();
+// Destruction de la session
 session_destroy();
 
 // Redirection vers la page de connexion

@@ -80,7 +80,7 @@ $form = new Form($post, $errors);
                         >
                         <!-- Lien/bouton de suppression de l'image (en param d'url l'id du post et l'id de l'image) -->
                         <a href="<?= $router->url('admin_post_image_delete', ['postId' => $post->getId(), 'imageId' => $image->getId()]) ?>" 
-                            class="btn btn-danger btn-xs" 
+                            class="btn btn-danger btn-xs mb-2" 
                             role="button">Remove
                         </a>
                     </div>
@@ -108,14 +108,11 @@ $form = new Form($post, $errors);
                 <?= $errors['image-collection'] ?>
             <?php endif; ?>
         </div>
-        <!--
-        <button type="button" id="add_image" class="btn btn-info btn-sm mt-3">Ajouter une image</button>
-        -->
     </div>
     
     <hr class="bg-light my-2"><!---------------------------------------------------------------------------------->
 
-    <!-- INPUT CONTENT -->
+    <!-- INPUT CONTENT ('content')-->
     <?= $form->textarea('content', 'Contenu'); ?>
 
     <hr class="bg-light my-2"><!---------------------------------------------------------------------------------->
@@ -140,9 +137,6 @@ $form = new Form($post, $errors);
                         <?= $errors['logo-collection'] ?>
                     <?php endif; ?>
                 </div>
-                <!--
-                <button type="button" id="add_logo" class="btn btn-info btn-sm mt-3">Ajouter un logo</button>
-                -->
             </div>
         </div>
         <!-- AFFICHAGE DES LOGOS (avec boutton suppression) -->                
@@ -192,12 +186,18 @@ $form = new Form($post, $errors);
             <?php endif ?>
         </button>
         <!-- BOUTON DE RETOUR -->
-        <a href="<?= $router->url('admin_posts') ?>" class="btn btn-primary ml-auto">Retour &raquo;</a>
+        <a href="<?= $_SERVER['HTTP_REFERER'] ?>" class="btn btn-primary ml-auto">Retour &raquo;</a>
     </div>
     
 </form>
 
 <!-- Script drop-file (module JS qui permet d'importer des images dans une zone dédiée) -->
-<script type="module" src="//unpkg.com/@grafikart/drop-files-element"></script>
+<script type="module" src="../../../assets/js/admin/drop-files.js"></script>
+<!-- Script ckeditor (éditeur de text) -->
+<script>
+    CKEDITOR.replace( 'content' );
+</script>
+
+
 
 

@@ -2,7 +2,6 @@
 namespace App\Validators;
 
 use App\Connection;
-use App\FilesManager;
 use App\Table\LogoTable;
 use App\Table\PostTable;
 

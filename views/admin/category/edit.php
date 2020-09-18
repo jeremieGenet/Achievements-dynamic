@@ -14,7 +14,7 @@ use App\Validators\CategoryValidator;
 Auth::check('admin');
 
 $session = new Session();
-$messages = $session->getFlashes('flash');
+$messages = $session->getMessage('flash');
 
 $id = $params['id'];
 $pdo = Connection::getPDO();
@@ -29,13 +29,6 @@ if(!empty($_POST)){
     
     // DONNEE DU FORMULAIRE ($_POST + $_FILES)
     $data = array_merge($_POST, $_FILES);
-    //dd($data);
-    /*
-    $data = [
-        "name" => "qsdfqsdf",
-        "slug" => "qsdfqsdf"
-    ];
-    */
 
     // VERIFICATION DES DONNEES
     // On instancie notre CategoryValidator (qui contient la librairie Valitron/Validator),
@@ -52,15 +45,15 @@ if(!empty($_POST)){
 
     // ON PARAM LE MESSAGE FLASH DE LA SESSION (s'il y a des erreurs)
     if(!empty($errors)){
-        $session->setFlash('danger', "Il faut corriger vos erreurs !"); // On crée un message flash
-        $messages = $session->getFlashes('flash'); // On l'affiche
+        $session->setMessage('flash', 'danger', "Il faut corriger vos erreurs !"); // On crée un message flash
+        $messages = $session->getMessage('flash'); // On l'affiche
     }
     
     // s'il ny a pas d'erreur de validation (CategoryValidator.php)...
     if(empty($errors)){
         // MODIFICATION DE LA BDD 
         $categoryTable->update($category);
-        $session->setFlash('success', "Modification réussie !!!!");
+        $session->setMessage('flash', 'success', "Modification réussie !!!!");
 
         header('Location: ' . $router->url('admin_categories'));
     }

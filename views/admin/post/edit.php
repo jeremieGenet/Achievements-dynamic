@@ -14,10 +14,10 @@ $pdo = Connection::getPDO();
 Auth::check();
 
 $session = new Session();
-$messages = $session->getFlashes('flash');
+$messages = $session->getMessage('flash');
 $id = $params['id']; // id du post en cours de modification
 
-// Tableaux erreurs de formulaire ($errors regroupera les 4 autres tableaux après traitement)
+// Tableaux erreurs de formulaire ('$errors' regroupera les 4 autres tableaux après traitement)
 $errors = []; 
 $errorsPost = [];
 $errorsFilePicture = [];
@@ -40,17 +40,8 @@ $categories = $category->findAll();
 // Si le formulaire est validé...
 if(!empty($_POST)){
 
-    // PERMISSION: Si l'utilisateur n'est pas 'admin' et n'est pas l'auteur du post alors... (redirection, et message erreur)
-    // Si l'utilisateur n'a pas le rôle 'admin'...
-    if($_SESSION['user']['role'] !== "admin"){
-        // Vérif si l'id de l'auteur du post est le même que l'id de l'utilisateur en cours (session)
-        if($post->getAuthor_id() !== $_SESSION['user']['id']){
-            // Param du message flash de SESSION, puis redirection
-            $session->setFlash('danger', "Vous ne possédez pas l'autorisation de modifier cette réalisation !");
-            header('Location: ' . $router->url('admin_posts'));
-            exit();
-        }
-    }
+    // PERMISSION QUI Vérif que ceui qui va modifier un post est soit 'admin' soit l'auteur du post (sinon message et redirection)
+    Auth::permissionUpdatePost($post, $router->url('admin_posts'),  "Vous ne possédez pas l'autorisation de modifier cette réalisation.");
 
     // Pour que le nom, et contenu persistent en cas d'erreurs formulaire
     $post->setTitle($_POST['title']); 
@@ -61,7 +52,7 @@ if(!empty($_POST)){
 
     $errorsPost = $validate->fieldEmpty(['title', 'content']);
     $errorsPost = $validate->fieldLength(3, 50, ['title']);
-    $errorsPost = $validate->fieldLength(5, 2000, ['content']);
+    $errorsPost = $validate->fieldLength(5, 10000, ['content']);
     $errorsPost = $validate->fieldExist(['title']);
 
     // VERIFICATION DE L'IMAGE PRINCIPALE ET DE LA COLLECTION DE LOGOS ($_FILES)
@@ -95,8 +86,8 @@ if(!empty($_POST)){
 
     // ON PARAM LE MESSAGE FLASH DE LA SESSION (s'il y a des erreurs)
     if(!empty($errors)){
-        $session->setFlash('danger', "Il faut corriger vos erreurs !"); // On crée un message flash
-        $messages = $session->getFlashes('flash'); // On l'affiche
+        $session->setMessage('flash', 'danger', "Il faut corriger vos erreurs !"); // On crée un message flash
+        $messages = $session->getMessage('flash'); // On l'affiche
     }
 
     // MODIFICATION DES DONNEES DE L'ARTICLE (par les données postées dans le formulaire)
@@ -176,9 +167,8 @@ if(!empty($_POST)){
             }
         }
 
+        // Modification du contenu
         $post->setContent($_POST['content']);  
-        $post->setCreatedAt($_POST['createdAt']);
-
 
         // TRAITEMENT DE L'IMAGE PRINCIPALE (upload, et suppression de l'ancienne puis enregistrement dans le post)
         // Si l'image actuelle du post est différente de l'image postée et que l'image postée est différente de vide ("") alors...
@@ -198,7 +188,7 @@ if(!empty($_POST)){
         $postTable = new PostTable($pdo);
         $postTable->update($post, $id); // $id = "$params['id']" qui est l'id du post à modifier (récup via les param altorouter)
         // Param du message flash de SESSION, puis redirection
-        $session->setFlash('success', "Modification réussie !!!!");
+        $session->setMessage('flash', 'success', "Modification réussie !!!!");
         header('Location: ' . $router->url('admin_posts'));
         exit();
     }

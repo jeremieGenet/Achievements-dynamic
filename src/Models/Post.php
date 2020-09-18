@@ -124,7 +124,7 @@ class Post{
             return null;
         }
         // "nl2br" permet de respecter les sauts de lignes
-        return nl2br(htmlentities(Text::excerpt((string)$this->content, $limit))); /****************************************** (string) Corrige??? *************************/
+        return nl2br(Text::excerpt((string)$this->content, $limit)); /****************************************** (string) Corrige??? *************************/
     }
     // Retourne le contenu de l'article avec sauts de lignes et sécurisé par htmlentities()
     public function getFormatedContent(): ?string

@@ -5,7 +5,6 @@
 use App\HTML\Form;
 // Instanciation du formulaire de création d'une catégorie
 $form = new Form($category, $errors);
-//$form::$class = "essai";
 
 
 ?>

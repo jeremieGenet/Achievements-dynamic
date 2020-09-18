@@ -2,7 +2,7 @@
 /*
     PAGE D'ACCUEIL DU SITE (one_page)
 */
-use App\HTML\Form;
+use App\HTML\{Notification, Form};
 use App\Session;
 use App\Connection;
 use App\Table\PostTable;
@@ -10,10 +10,12 @@ use App\Table\PostTable;
 $title = "Web développeur : Création et refonte de site web, Ajout de fonctionnalité, SEO...";
 
 $session = new Session();
+$messages = $session->getMessage('flash');
+
 $pdo = Connection::getPDO();
 
 //$posts = (new PostTable($pdo))->findByCategory(1, 3);
-$posts = (new PostTable($pdo))->findLatest(6);
+$posts = (new PostTable($pdo))->findLatest(8); // Nombre de réalisations affichées
 //dd($posts);
 $errors = [];
 // Instanciation du formulaire de contact
@@ -21,17 +23,25 @@ $form = new Form($_POST, $errors);
 ?>
 
 
+
+<!-- Notification Utilisateur (utilisé ici pour le feedback lors de la soumission du formulaire de contact) -->
+<?= Notification::toast($messages) ?>
+
 <!--  STD-WEB   LES STANDARD DU WEB AU SERVICE DE VOS PROJETS -->
 <div id="std-web" class="std-web">
     <div class="container text-center">
         <h2 class="section-title">Les <strong>standards du web</strong> au service de vos projets</h2>
-        <p class="intro">Quelques langages/outils qui vous permettront d'atteindre vos objectifs numériques</p>
+        <p class="intro">
+            Quelques langages/outils qui vous permettront d'atteindre vos objectifs numériques.
+            <br> 
+            (Il en existe évidemment beaucoup d'autres).
+        </p>
         <ul class="logo-web list-inline">
-            <li class="list-inline-item"><img src="../assets/icons&logos/one_page/logo-html5.svg" alt="HTML5"></li>
-            <li class="list-inline-item"><img src="../assets/icons&logos/one_page/logo-css3.svg" alt="CSS3"></li>
-            <li class="list-inline-item"><img src="../assets/icons&logos/one_page/logo-bootstrap.svg" alt="Bootstrap"></li>
-            <li class="list-inline-item"><img src="../assets/icons&logos/one_page/PHP_128x128.png" alt="less"></li>
-            <li class="list-inline-item"><img src="../assets/icons&logos/one_page/javascript_128x128.png" alt="less"></li>
+            <li class="list-inline-item"><img src="../../assets/icons&logos/one_page/logo-html5.svg" alt="HTML5"></li>
+            <li class="list-inline-item"><img src="../../assets/icons&logos/one_page/logo-css3.svg" alt="CSS3"></li>
+            <li class="list-inline-item"><img src="../../assets/icons&logos/one_page/logo-bootstrap.svg" alt="Bootstrap"></li>
+            <li class="list-inline-item"><img src="../../assets/icons&logos/one_page/PHP_128x128.png" alt="PHP"></li>
+            <li class="list-inline-item"><img src="../../assets/icons&logos/one_page/javascript_128x128.png" alt="Javascript"></li>
             
             <hr class="separator"><!---------------------------------------------------------------------------------->
         </ul>
@@ -43,7 +53,7 @@ $form = new Form($_POST, $errors);
                 <h3 class="item-title-main"><strong>Analyse</strong></h3>
                 <div class="__card middle">
                     <div class="front">
-                        <img src="../assets/images/one_page/figure-1.png" alt="Etude & Réflexion">
+                        <img src="../../assets/images/one_page/figure-1.png" alt="Etude & Réflexion">
                     </div>
                     <div class="back">
                         <div class="back-content middle">
@@ -59,7 +69,7 @@ $form = new Form($_POST, $errors);
                 <h3 class="item-title-main"><strong>Réalisation</strong></h3>
                 <div class="__card middle">
                     <div class="front">
-                        <img src="../assets/images/one_page/figure-2.png" alt="Design & développement">
+                        <img src="../../assets/images/one_page/figure-2.png" alt="Design & développement">
                     </div>
                     <div class="back">
                         <div class="back-content middle">
@@ -75,7 +85,7 @@ $form = new Form($_POST, $errors);
                 <h3 class="item-title-main"><strong>Contrétisation</strong></h3>
                 <div class="__card middle">
                     <div class="front">
-                        <img src="../assets/images/one_page/figure-3.png" alt="Finition & mise en production">
+                        <img src="../../assets/images/one_page/figure-3.png" alt="Finition & mise en production">
                     </div>
                     <div class="back">
                         <div class="back-content middle">
@@ -99,7 +109,7 @@ $form = new Form($_POST, $errors);
         <h2 class="section-title text-center  text-dark">Les<strong> principaux langages </strong>du Web </h2>
         <div class="item mx-auto">
             <div class="profile-holder">
-                <img class="profile-image" src="../assets/icons&logos/one_page/logo-html5.svg" alt="HTLM5" alt="profile">
+                <img class="profile-image" src="../../assets/icons&logos/one_page/logo-html5.svg" alt="HTLM5" alt="profile">
             </div>
             <div class="quote-holder">
                 <blockquote class="quote">
@@ -117,15 +127,20 @@ $form = new Form($_POST, $errors);
         </div>
         <div class="item item-reversed mx-auto">
             <div class="profile-holder">
-                <img class="profile-image" src="../assets/icons&logos/one_page/logo-css3.svg" alt="CSS3">
+                <img class="profile-image" src="../../assets/icons&logos/one_page/logo-css3.svg" alt="CSS3">
+            </div>
+            <div class="profile-holder profile-2">
+                <img class="profile-image" src="../../assets/icons&logos/one_page/logo-bootstrap.svg" alt="bootstrap">
             </div>
             <div class="quote-holder">
                 <blockquote class="quote">
-                    <h3 class="text-center text-dark">CSS 3</h3>
+                    <h3 class="text-center text-dark">CSS 3 & Bootstrap</h3>
                     <p>
                         Feuilles de style en cascade, le CSS (Cascading Style Sheets) est un langage qui décrit la présentation des document HTML ou XML.
-                        Il permet de donner du style (couleurs, dimensions, animations, placements...) aux éléments HTLM d'un site et le rend plus agréable
-                        à regarder (ou pas).
+                        Il permet de donner du style (couleur, dimension, animation, placement...) aux éléments HTLM d'un site.
+                        <br>
+                        Bootstrap, est une collection d'outils qui aident principalement à la création d'un design (CSS et HTML). C'est Twitter qui
+                        démocratisera ce framework en le rendant open source, et ses différentes évolutions lui permettent aujourd'hui d'aller plus loin.
                     </p>
                     <div class="quote-source">
                         <span class="meta">Le style du Web</span>
@@ -134,8 +149,8 @@ $form = new Form($_POST, $errors);
             </div>
         </div>
         <div class="item mx-auto">
-            <div class="profile-holder">
-                <img class="profile-image" src="../assets/icons&logos/one_page/javascript_128X128.png" alt="Javascript">
+            <div class="profile-holder">        
+                <img class="profile-image" src="../../assets/icons&logos/one_page/javascript_128x128.png" alt="logo Javascript">
             </div>
             <div class="quote-holder">
                 <blockquote class="quote">
@@ -151,8 +166,8 @@ $form = new Form($_POST, $errors);
             </div>
         </div>
         <div class="item item-reversed mx-auto">
-            <div class="profile-holder">
-                <img class="profile-image" src="../assets/icons&logos/one_page/PHP_128X128.png" alt="PHP">
+            <div class="profile-holder">        
+                <img class="profile-image" src="../../assets/icons&logos/one_page/PHP_128x128.png" alt="logo PHP">
             </div>
             <div class="quote-holder">
                 <blockquote class="quote">
@@ -172,10 +187,10 @@ $form = new Form($_POST, $errors);
     </div>
 </div><!--//languages-->
 
-<!-- REALISATIONS (achievements) -->
+<!-- DERNIERES REALISATIONS (achievements) -->
 <div id="achievements" class="achievements-section">
     <div class="container-fluid">
-        <h2 class="section-title text-center text-dark mb-5"><strong>Dernières réalisations</strong></h2>
+        <h2 class="section-title text-center mb-5"><strong>Dernières réalisations</strong></h2>
 
         <?php require ('_inc/card.php') ?>
         <?php //require ('_inc/card-carousel.php') ?>
@@ -236,9 +251,9 @@ $form = new Form($_POST, $errors);
 
                 <!-- Image au centre des Services -->
                 <div class="col-xs-12 col-md-2 d-none d-lg-block">
-                    <img class="figure-image img-fluid m3" src="../assets/images/one_page/figure-1.png" alt="image" />
-                    <img class="figure-image img-fluid m3" src="../assets/images/one_page/figure-2.png" alt="image" />
-                    <img class="figure-image img-fluid m3" src="../assets/images/one_page/figure-3.png" alt="image" />
+                    <img class="figure-image img-fluid m3" src="../../assets/images/one_page/figure-1.png" alt="image" />
+                    <img class="figure-image img-fluid m3" src="../../assets/images/one_page/figure-2.png" alt="image" />
+                    <img class="figure-image img-fluid m3" src="../../assets/images/one_page/figure-3.png" alt="image" />
                 </div>
 
                 <!-- Services (droite) -->
@@ -296,35 +311,55 @@ $form = new Form($_POST, $errors);
                 <p>
                     Une question ? Un projet ? N'hésitez pas à me contacter. 
                     Préciser bien l'objet de votre demande, je vous ferais une réponse aussi rapide que possible.
+                    <span class="tooltip">Un prénom ne peut pas faire moins de 2 caractères</span>
                 </p>
             </div>
         </div>
-
+        
+        <!-- Message d'info de validation du formulaire (mon toast) -->
+        <div class="" id="myToast"></div>
         
         <div class="d-flex justify-content-center">
+
+            <!-- FORMULAIRE DE CONTACT -->
             <div class="contact-form">
-                <form>
+                <form id="myForm" method="POST" action="<?php $router->url('mail') ?>">
                     <div>
-                        <input type="text" name="" required="">
-                        <label>Nom & Prénom</label>
+                        <input type="text" name="name" id="name" autocomplete="off" required>
+                        <label>Nom (& Prénom)</label>
+                        <!-- Message d'erreur gérer en Js (voir js/form-contact.js) -->
+                        <small class="__tooltip" id="__tooltip"></small>
                     </div>
                     <div>
-                        <input type="text" name="" required="">
+                        <input type="text" name="email" id="email" autocomplete="off" required>
                         <label>Email</label>
+                        <!-- Message d'erreur gérer en Js (voir js/form-contact.js) -->
+                        <small class="__tooltip" id="__tooltip"></small>
                     </div>
                     <div>
-                        <input type="text" name="" required="">
-                        <label>Téléphone</label>
+                    <input type="text" name="subject" id="subject" autocomplete="off" required>
+                        <label>Objet</label>
+                        <!-- Message d'erreur gérer en Js (voir js/form-contact.js) -->
+                        <small class="__tooltip" id="__tooltip"></small>
                     </div>
                     <div>
-                        <textarea name="" id="" cols="30" rows="10" required=""></textarea>
+                        <textarea name="message" id="message" cols="30" rows="10" required></textarea>
                         <label>Message</label>
+                        <!-- Message d'erreur gérer en Js (voir js/form-contact.js) -->
+                        <small class="__tooltip" id="__tooltip"></small>
                     </div>
-                    <input type="submit" name="" value="Envoyer">
+                    <!-- NOTRE CHAMP POT DE MIEL (caché pour que les bot tombent dedant-->
+                    <input type="hidden" name="raison">
+
+                    <input type="submit" value="Envoyer">
                 </form>
             </div>
         </div>
 
     </div><!--//container-->
 </div><!--//contact-section-->
+
+<!-- Gestion du formularie de contact -->
+<script type="text/javascript" src="../../assets/js/one_page/form-contact.js"></script>
+
 

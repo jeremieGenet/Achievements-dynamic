@@ -1,4 +1,4 @@
-# Portfolio dynamique (avec multi-layout)
+# Portfolio dynamique V2.2-LOCAL (avec multi-layout)
 
 ## Technos :
   PHP, Javascript, Bootstrap (administration)
@@ -26,7 +26,11 @@
 
 #### Amélioration à prévoir :
 Administration:
+    ROUTER:
+        - Gerer les Exceptions finales
+        
     ESPACE MEMBRE :
+        - Afficher le nom de l'utilisateur dans la navbar
         - Créer un affichage du profil de l'utilisateur
         - Créer un formulaire de modification du profil d'utilisateur, avec ajout d'avatars.
 
@@ -40,6 +44,7 @@ php -S localhost:8000 -t public
 
 #### Outils installés :
 * altorouter = librairie router
+* PHPMailer = librairie d'envoi d'email (composer require phpmailer/phpmailer)
 * fzaninotto/faker = fausse donnée pour notre bdd (dev)
 * var_dumper = librairie qui permet un affichage propre des tableaux, objets... (dev)
 * whoops = librairie d'aide à l'affichage et le débug des erreurs (dev)

@@ -2,7 +2,7 @@
 /*
     SUPPRESSION D'UN POST (traitement uniquement, utilisé pour le boutton supprimer dans post/index.php)
 */
-use App\Session;
+use App\{Session, Auth};
 use App\Connection;
 use App\Helpers\FilesManager;
 use App\Models\Post;
@@ -17,17 +17,8 @@ $post = $postModel->hydrate($id);
 
 $session = new Session();
 
-// PERMISSION: Si l'utilisateur n'est pas 'admin' et n'est pas l'auteur du post alors... (redirection, et message erreur)
-// Si l'utilisateur n'a pas le rôle 'admin'...
-if($_SESSION['user']['role'] !== "admin"){
-    // Vérif si l'id de l'auteur du post est le même que l'id de l'utilisateur en cours (session)
-    if($post->getAuthor_id() !== $_SESSION['user']['id']){
-        // Param du message flash de SESSION, puis redirection
-        $session->setFlash('danger', "Vous ne possédez pas l'autorisation pour supprimer cette réalisation !");
-        header('Location: ' . $router->url('admin_posts'));
-        exit();
-    }
-}
+// PERMISSION QUI Vérif que ceui qui va modifier un post est soit 'admin' soit l'auteur du post (sinon message et redirection)
+Auth::permissionUpdatePost($post, $router->url('admin_posts'), "Vous ne possédez pas l'autorisation de modifier cette réalisation.");
 
 // GESTION DE LA SUPPRESSION DES IMAGES DANS LES DOSSIERS (image principale, images collection, et logo collection)
 // Suppression de l'image Principale du dossier
@@ -49,7 +40,7 @@ $postTable = new PostTable($pdo);
 $postTable->delete($post, $params['id']);
 
 // Création d'un message flash
-$session->setFlash('success', "L'article a bien été supprimé !");
+$session->setMessage('flash', 'success', "L'article a bien été supprimé !");
 
 // Redirection vers la pages d'accueil des articles de l'administration (param pour l'affichage de message utilisateurs)
 header('Location: ' . $router->url('admin_posts')); 

@@ -12,16 +12,14 @@ use App\Table\UserTable;
 use App\HTML\Notification;
 use App\Table\Exception\NotFoundException;
 
-// Lecture puis suppression des message Flash de la session (lors de la connexion au site)
+
 $session = new Session();
-$messages = $session->read('flash');
-$session->delete('flash');
+$messages = $session->getMessage('flash');
 
 $user = new User();
 $errors = [];
 
 if(!empty($_POST)){
-    //dd($_POST);
     $user->setEmail($_POST['email']); // pour que le nom de l'utilisateur reste en cas d'erreurs
 
     // Si les champs email et password ne sont pas vide (différents de vide)
@@ -30,10 +28,9 @@ if(!empty($_POST)){
         $userTable = new UserTable($pdo);
         // Récup de l'utilisateur ("$u") via son email
         $u = $userTable->findByEmail($_POST['email']);
-        //dd($u);
         // Si l'adresse email n'existe pas dans la bdd...
         if($u === false){
-            $session->setFlash('danger', "Adresse email invalide !!!");
+            $session->setMessage('flash', 'danger', "Adresse email invalide !!!");
             header('Location: ' . $router->url('login')); // Redirection
             exit();
         }
@@ -42,10 +39,9 @@ if(!empty($_POST)){
         try{
             // Si le password posté est le même que celui dans la bdd (retournera true si c'est le cas, sinon false)...
             if(password_verify($_POST['password'], $u->getPassword()) === true){
-                //dd($_POST['password'], $u->getPassword());
-                //dd($u->getUsername());
+
                 // ON PARAM LA SESSION (1 Message flash + l'id, le nom et le role de l'utilisateur stockés)
-                $session->setFlash('success', "Vous êtes maintenant connecté !");
+                $session->setMessage('flash', 'success', "Vous êtes maintenant connecté !");
                 $session->writeForUser('id', $u->getId());
                 $session->writeForUser('username', $u->getUsername());
                 $session->writeForUser('role', $u->getRole());
@@ -63,7 +59,6 @@ if(!empty($_POST)){
         }
     }
     
-
 }
 $form = new Form($user, $errors);
 ?>

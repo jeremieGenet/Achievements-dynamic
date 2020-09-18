@@ -1,14 +1,5 @@
 /*
-* {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    font-family: "montserrat";
-}
-
-body {
-    background: #333;
-}
+    CSS DES 3 'IMAGES' de la section Les standard du web (std-web)
 */
 .__cards{
     padding-bottom: 10%;
@@ -21,14 +12,15 @@ body {
     transform: translate(-50%, -50%);
 }
 .item-title{
-    color: rgb(214, 214, 214);
+    color: #40babd;
+    /*color: rgb(214, 214, 214);*/
     font-size: 18px;
     font-weight: bold;
     margin: 0;
     margin-bottom: 15px;
 }
 .item-title-main{
-    color: #40babd;
+    color: rgb(32, 32, 32);
     font-weight: bold;
 }
 
@@ -61,7 +53,8 @@ body {
 }
 
 .back {
-    background: #494d55;
+    /*background: #494d55;*/
+    background: rgba(73, 77, 85, 0.2);
     transform: perspective(600px) rotateY(180deg);
 }
 

@@ -1,6 +1,8 @@
+/*
+    GESTION DU SCROLL DE NAVIGATION
+*/
 $(document).ready(function() {
 
-    
     /* ======= Fixed header when scrolled ======= */
     
     $(window).bind('scroll', function() {

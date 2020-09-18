@@ -37,7 +37,7 @@ $nbUserRoleAdmin = $statisticTable->totalUserRoleAdmin();
 */
 
 $session = new Session();
-$messages = $session->getFlashes('flash');
+$messages = $session->getMessage('flash');
 
 //dd($messages);
 //dd($posts);

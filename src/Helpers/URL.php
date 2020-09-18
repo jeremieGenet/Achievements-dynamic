@@ -1,6 +1,7 @@
 <?php
 namespace App\Helpers;
 
+use App\Security\PaginationException;
 use Exception;
 
 class URL{
@@ -14,7 +15,8 @@ class URL{
         if($_GET[$name] === '0') return 0;
         // Si le param d'url n'est pas un entier on renvoi une exception
         if(!filter_var($_GET[$name], FILTER_VALIDATE_INT)){
-            throw new Exception("Le paramètre d'url : $name, n'est pas un entier!!!");
+            //throw new Exception("Le paramètre d'url : $name, n'est pas un entier!!!", 400);
+            throw new PaginationException("Le paramètre d'url : $name, n'est pas un entier!!!", 400);
         }
         return (int)$_GET[$name]; // Sinon on retourne le param d'url
     }
@@ -24,7 +26,8 @@ class URL{
     {
         $paramUrl = self::getInt($name, $default);
         if($paramUrl !== null && $paramUrl <= 0){
-            throw new Exception("Le paramètre d'url : $name, n'est pas un entier Positif!!!");
+            //throw new Exception("Le paramètre d'url : $name, n'est pas un entier Positif!!!", 400);
+            throw new PaginationException("Le paramètre d'url : $name, n'est pas un entier Positif!!!", 400);
         }
         return $paramUrl;
     }
