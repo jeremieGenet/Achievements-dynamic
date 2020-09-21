@@ -12,10 +12,6 @@ $code = $params['codeError'];
 $message="";
 $description="";
 //dd($message);
-if($code === 400){
-    $message = 'Bad Request';
-    $description = 'La syntaxe de la requête est erronée.';
-}
 
 switch($code){
     case 400 : 
@@ -35,6 +31,7 @@ switch($code){
         $description = 'Ressource non trouvée.';
     break;
     default : 
+        $code = 404;
         $message = 'Not Found';
         $description = 'Ressource non trouvée. Cette page n\'existe pas.';
         //throw new \Exception ("La page n'existe pas.");

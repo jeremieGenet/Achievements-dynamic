@@ -2,8 +2,7 @@
 namespace App\Table;
 
 use PDO;
-use App\Table\Exception\NotFoundException;
-//se App\Table\Exception\NotFoundException;
+use App\Exception\NotFoundException;
 
 // Cette classe sert de modèle (elle n'a pas vocation à être instanciée) d'ou le "abstract" devant
 abstract class Table{
@@ -45,12 +44,12 @@ abstract class Table{
 
     /**
      * Vérif si une valeur existe dans la table de la bdd (utilisé dans le constructeur de la classe PostValidator)
-     * Signature : $postTable->exists($field, $value); 
+     * Signature : $postTable->exists($field, $value); ou $userTable->exists('email', $_POST['email']);
      *
      * @param string $field Champs à rechercher
      * @param mixed $value Valeur du champ
      * @param int $except Permet d'exclure un id de la recherche, null par défaut (permet de ne pas chercher sur l'id du post en cours)
-     * @return boolean
+     * @return boolean retourne true si un item existe dans la bdd sinon false
      */
     public function exists(string $field, $value, ?int $except = null): bool
     {

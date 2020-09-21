@@ -8,6 +8,7 @@ use App\Table\UserTable;
 // Permet de valider les données d'un champ de formulaire
 class UserValidator{
 
+    private $pdo;
     private $data; // Données postées, reçues pour validation ($_POST)
     /*
     $data = [
@@ -17,13 +18,15 @@ class UserValidator{
     ];
     */
     private $errors = [];
-    private $pdo;
+    private $userTable;
+    private $userId;
 
     // Signature : $v = new categoryValidator($_POST, $categoryTable, $category->getId());
     public function __construct(array $data)
     {
         $this->pdo = Connection::getPDO();
         $this->data = $data; // Données reçues en $_POST du formulaire
+        $this->userTable = new UserTable($this->pdo);
     }
 
     // Vérif si un champs est vide (en param un tableau avec le ou les noms des champs à vérifier) (NE FONCTIONNE PAS SUR LE CHAMPS PICTURE)
@@ -69,8 +72,8 @@ class UserValidator{
     {
         foreach($fieldNames as $fieldName){
             // Méthode exist() permet de vérif dans la bdd si un champ est déja présent (voir dans Table.php)
-            // exists() param 1 = Nom du champ, param2 = valeur du nom du champ, param3 = id du category actuel (en traitement)
-            if($this->categoryTable->exists($fieldName, $this->data[$fieldName], $this->categoryId)){
+            // exists() param 1 = Nom du champ, param2 = valeur du nom du champ, param3 = id de l'utilisateur actuel (en traitement)
+            if($this->userTable->exists($fieldName, $this->data[$fieldName], $this->userId)){
                 $this->errors[$fieldName] = "Le champ '{$fieldName}' existe déjà !";
             }       
         }

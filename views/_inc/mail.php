@@ -10,7 +10,7 @@ $session = new Session();
 //dd($_SERVER['HTTP_ORIGIN']) = "http://jeremie-genet.ovh"
 // PREMIERE COUCHE DU POT DE MIEL
 // Vérif que le visiteur vient de bien de notre site ($_SERVER['HTTP_ORIGIN'] permet de voir d'ou vient le visiteur, et s'il ne vient pas de notre site cette superGlobale n'existe pas)
-if(isset($_SERVER['HTTP_ORIGIN']) && $_SERVER['HTTP_ORIGIN'] == "http://jeremie-genet.ovh"){ // EN PRODUCTION mettre : http://jeremie-genet.ovh  au lieu de /  http://localhost:8000
+if(isset($_SERVER['HTTP_ORIGIN']) && $_SERVER['HTTP_ORIGIN'] == "http://jeremie-genet.fr"){ // EN PRODUCTION mettre : http://jeremie-genet.fr  au lieu de /  http://localhost:8000
 
     // Vérif si le formulaire est envoyé en méthode POST
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -52,10 +52,10 @@ if(isset($_SERVER['HTTP_ORIGIN']) && $_SERVER['HTTP_ORIGIN'] == "http://jeremie-
                 $messageFormated='
                 <html>
                     <body>
-                        <div align="center">
+                        <div align="left">
                             <hr>
                             <br />'
-                            .$message.
+                                .$message.
                             '<br />
                             <hr>
                         </div>

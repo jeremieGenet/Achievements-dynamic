@@ -18,7 +18,7 @@ Couleur violet (couleur du theme purple2) = rgb(93, 107, 167)
     url('../../images/blog/bg1.jpg');
 }
 .heading{
-    color: rgb(218, 218, 218);
+    /*color: rgb(218, 218, 218);*/
 }
 .footer .fa-heart {
     color: #EA5395;

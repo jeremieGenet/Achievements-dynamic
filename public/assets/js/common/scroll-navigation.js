@@ -1,5 +1,6 @@
 /*
     GESTION DU SCROLL DE NAVIGATION
+    (Utilisé sur la page principal (one-page) et sur la page CV)
 */
 $(document).ready(function() {
 

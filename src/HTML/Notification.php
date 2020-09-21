@@ -18,7 +18,7 @@ class Notification{
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <strong>{$message}</strong>
                     </div>
-                HTML;
+HTML;
             }
         }
         

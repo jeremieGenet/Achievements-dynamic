@@ -37,8 +37,9 @@
 
         <div class="col-md-3 __card-infos">
             
-            <div class="__card-categories mt-3">
+            <div class="__card-categories mt-2">
                 <h3 class=""><strong>Catégories :</strong></h3>
+                    <p>
                     <!-- CATEGORIES -->
                     <?php foreach($post->getCategories() as $category): ?>
                         <!-- Lien vers les articles qui ont la même category -->
@@ -46,7 +47,7 @@
                             <?= $category->getName() ?>
                         </a>
                     <?php endforeach ?>
-                </small>
+                    </p>
                 
             </div>
 
@@ -54,9 +55,9 @@
 
             <div class="__card-logos">
                 
-                <h3 class=""><strong>Technos :</strong></h3>
+                <h3 class=" mt-2"><strong>Technos :</strong></h3>
                 <p class="">
-                    <small class="">
+                    
                     <!-- LOGOS -->
                     <?php foreach($post->getLogoCollection() as $logo): ?>
                         <img 
@@ -66,7 +67,7 @@
                             alt="<?= $logo->getName() ?>"
                         >
                     <?php endforeach ?>
-                    </small>
+                    
                 </p>
                 
             </div>

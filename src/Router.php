@@ -1,9 +1,7 @@
 <?php
 namespace App;
 
-use App\Security\AuthException;
-use App\Security\AuthRoleException;
-use App\Security\PaginationException;
+use App\Exception\{AuthException, AuthRoleException, PaginationException, NotFoundException};
 use App\Session;
 use Exception;
 
@@ -66,16 +64,13 @@ class Router{
         $params = $match['params']; // Permet de récup les params d'url (id, slug...)
         $router = $this;
 
-
         // CHANGEMENT DE LAYOUT
         // SI ADMINISTRATION ('admin/' dans l'url) ALORS NOUVEAU LAYOUT, sinon layout par défaut
         $admin = strpos($view, "admin/") !== false; // Si il y a la chaine "admin/" dans '$view' Alors retournera true, sinon false
         $blog = strpos($view, "realisations/") !== false;
         $auth = strpos($view, "auth/") !== false;
-        $error = strpos($view, "error/") !== false;
-        
+        $cv = strpos($view, "cv/") !== false;
         //dd($view);
-
         
         // Condition lorsque l'url est différente des urls définis dans le fichier index.php alors "$view" prend la valeur "null"
         // par exemple si on tape localhost:8000/adminmlqkjsdmf alors $view vaudra null
@@ -85,21 +80,20 @@ class Router{
         }
         //dd($view);
 
-        
         if($blog){
             $layout = 'layouts/blog.php';
         }elseif($admin){
             $layout = 'layouts/admin.php';
         }elseif($auth){
             $layout = 'layouts/admin.php';
+        }elseif($cv){
+            $layout = 'layouts/cv.php';
         }elseif($view === '_inc/e.404.php'){
             $layout = 'layouts/errors.php';
         }else{
             $layout = 'layouts/home.php';
         }
-        
         //dd($layout);
-
 
         try{
             // Système de bufferisation (mise en mémoire)
@@ -108,49 +102,40 @@ class Router{
             //require $this->viewPath . DIRECTORY_SEPARATOR . $view . 'php'; // Chemin complet de notre template
             $content = ob_get_clean();
             // Affichage de la vue (qui contient la variable $content qui est bufferisée)
-            require $this->viewPath . DIRECTORY_SEPARATOR . $layout; // le layout pourra être modifié à l'instanciation de la cette classe $Router()
-        // Erreur de type ForbiddenException jetté (si l'url n'est pas authorisée)  
+            require $this->viewPath . DIRECTORY_SEPARATOR . $layout; // le layout pourra être modifié à l'instanciation de la cette classe $Router() 
         }catch(AuthException $e){
+            // ERREUR (lorsqu'on veut accéder à '/admin' mais que l'on est pas connecté)
             //dd($e);
             // Redirection vers la page login.php (page de connexion)
             $this->session->setMessage('flash', 'warning', "Vous ne pouvez pas accéder à cette page, il vous faut d'abord vous connecter !");
             header('Location: ' . $this->url('login') . '?forbidden=1');
             exit();
         }catch(AuthRoleException $e){
+            // ERREUR (lorsque le rôle de l'utilisateur ne permet pas de réaliser une action)
             //dd($e);
             $this->session->setMessage('flash', 'warning', "Vous n'êtes pas autorisé à réaliser cette action !");
             // Redirection vers la page admin_home.php (page d'accueil de l'administration)
             header('Location: ' . $this->url('admin_home') . '?forbidden=2');
             exit();
         }catch(PaginationException $e){
-            //dd($e->getCode());
-            $code = $e->getCode();
-            
+            // ERREUR (lorsque l'url de la pagination est modifiéé ou erronnée)
+            $code = $e->getCode(); // Code de l'erreur
             // Redirection vers la page login.php (page de connexion)
-            //header('Location: ' . $this->url('errors', ['message' => $message]) . '?forbidden=3');
             header('Location: ' . $this->url('error', ['codeError' => $code ]).'?forbidden=3');
-            //return $e->getCode();
             exit();
-        }
-        
-        catch(Exception $e){
+        }catch(NotFoundException $e){
+            // ERREUR
+            $code = $e->getCode(); // Code de l'erreur
+            //dd($e, $e->getCode());
+            header('Location: ' . $this->url('error', ['codeError' => $code ]).'?forbidden=3');
+            exit();
+        }catch(Exception $e){
+            // On attrate et stop toutes les autres Exception ici
             dd($e, $e->getCode());
-            
-            /*
-            $code = $e->getCode();
-            // Redirection vers la page login.php (page de connexion)
-            //header('Location: ' . $this->url('errors', ['message' => $message]) . '?forbidden=3');
-            header('Location: ' . $this->url('error', ['codeError' => $code ]).'?forbidden=3');
-            //return $e->getCode();
-            exit();
-            */
-            
-            
+
         }
         
-        
-        
-        
+
         return $this; // Renvoie l'objet en cours (la classe Router)
     }
 

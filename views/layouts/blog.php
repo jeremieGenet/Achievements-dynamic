@@ -40,12 +40,14 @@ $categories = $tableCategories->findAll();
 
 	<header class="header text-center">	 
 		  
-		<h1 class="blog-name text-light pt-4">
-			<span class="logo-icon-wrapper"><img class="logo-icon" style="width: 20px;" src="../../assets/icons&logos/one_page/logo.svg" alt="logo site"></span> 
+		<h1 class="blog-name text-dark pt-4">
+			<a href="<?= $router->url('home') ?>">
+				<span class="logo-icon-wrapper"><img class="logo-icon" style="width: 20px;" src="../../assets/icons&logos/one_page/logo.svg" alt="logo site"></span> 
+			</a>
 			<strong>Blog de Jérémie</strong>
 		</h1>
 		
-		<nav class="navbar navbar-expand-lg navbar-dark" >
+		<nav class="navbar navbar-expand-lg navbar-dark pt-0" >
 			<button 
 				class="navbar-toggler" 
 				type="button" 
@@ -60,11 +62,12 @@ $categories = $tableCategories->findAll();
 
 			<div id="navigation" class="collapse navbar-collapse flex-column" >
 				<div class="profile-section pt-3 pt-lg-0">
-					<img class="profile-image mb-3 rounded-circle mx-auto" src="../../assets/images/blog/maPhoto.jpg" alt="Ma photo" >			
-					
+					<a href="<?= $router->url('cv') ?>">
+						<img class="profile-image mb-3 rounded-circle mx-auto" src="../../assets/images/blog/maPhoto.jpg" alt="Ma photo" >			
+					</a>
 					<div class="bio mb-3">
 						Hi, mon nom est Jeremie Genet. Passionné du web depuis de nombreuses années.
-						<br><a class="__link-about-me" href="<?= $router->url('home') ?>">Find out more about me</a>
+						<br><a class="__link-about-me" href="<?= $router->url('cv') ?>">En savoir plus sur moi</a>
 					</div><!--//bio-->
 					<ul class="social-list list-inline py-3 mx-auto">
 						<li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
@@ -79,23 +82,24 @@ $categories = $tableCategories->findAll();
 				<ul class="navbar-nav flex-column text-left">
 					<li class="nav-item active">
 						<a class="nav-link" href='<?= $router->url('achievements') ?>'>
-							<i class="fas fa-home fa-fw mr-2"></i>
-							Catégories de réalisation
+							<i class="fas fa-keyboard mr-2"></i>
+							<strong>Voir mes réalisations</strong>
 						</a>
 					</li>
 					<?php foreach($categories as $categorie): ?>
 						<li class="nav-item">
 							<!-- Lien vers les articles qui ont la même category -->
 							<a class="nav-link" href="<?= $router->url('achievements-category', ['slug' => $categorie->getSlug(), 'id' => $categorie->getId()]) ?>">
-								<i class="fas fa-bookmark fa-fw mr-2"></i>
-								<small><?= $categorie->getName() ?></small>
+								<i class="fas fa-arrow-circle-right"></i>
+								<small class="ml-1"><span class="text-black">Réalisations '</span><strong><?= $categorie->getName() ?></strong>'</small>
 							</a>
 						</li>
 					<?php endforeach; ?>
 				</ul>
 				
 				<div class="my-2 my-md-3">
-					<a class="btn btn-primary" href="<?= $router->url('home') ?>" target="_blank">Get in Touch</a>
+					<!-- REDIRECTION vers la page contact (du one-page) -->
+					<a class="btn btn-primary" href="<?= $router->url('home#contact') ?>" target="_blank">Get in Touch</a>
 				</div>
 			</div>
 		</nav>

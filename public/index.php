@@ -30,13 +30,17 @@ $router = new Router(dirname(__DIR__) . '/views');
 
 // ACCUEIL DU SITE (one_page)
 $router->get('/', 'home.php', 'home'); // Direction vers la page d'accueil du site (one_page)
+$router->get('/#contact', 'home.php', 'home#contact'); // Direction vers la page d'accueil du site (one_page) => Section Contact
 $router->post('/', '_inc/mail.php', 'mail'); // Direction vers l'envoi d'email
-$router->match('/error/[i:codeError]', '_inc/e.404.php', 'error'); // Direction vers l'envoi d'email
+$router->get('/error/[i:codeError]', '_inc/e.404.php', 'error'); // Direction vers l'envoi d'email
+
+// CV
+$router->get('/cv', 'cv/cv.php', 'cv');
 
 /*
     REALISATIONS
 */
-$router->match('/realisations', 'realisations/achievement/index.php', 'achievements');
+$router->get('/realisations', 'realisations/achievement/index.php', 'achievements');
 $router->get('/realisations/category/[*:slug]-[i:id]', 'realisations/category/show.php', 'achievements-category'); // Direction vers la page des réalisations de la catégorie selectionnée
 $router->get('/realisations/[*:slug]-[i:id]', 'realisations/achievement/show.php', 'achievement'); // Direction vers la vue d'une réalisation
 

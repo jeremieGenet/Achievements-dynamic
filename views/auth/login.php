@@ -10,7 +10,6 @@ use App\Connection;
 use App\Models\User;
 use App\Table\UserTable;
 use App\HTML\Notification;
-use App\Table\Exception\NotFoundException;
 
 
 $session = new Session();
@@ -35,28 +34,25 @@ if(!empty($_POST)){
             exit();
         }
         
-        // Si l'adresse email exist bien dans la bdd...
-        try{
-            // Si le password posté est le même que celui dans la bdd (retournera true si c'est le cas, sinon false)...
-            if(password_verify($_POST['password'], $u->getPassword()) === true){
+        // Si le password posté est le même que celui dans la bdd (retournera true si c'est le cas, sinon false)...
+        if(password_verify($_POST['password'], $u->getPassword()) === true){
 
-                // ON PARAM LA SESSION (1 Message flash + l'id, le nom et le role de l'utilisateur stockés)
-                $session->setMessage('flash', 'success', "Vous êtes maintenant connecté !");
-                $session->writeForUser('id', $u->getId());
-                $session->writeForUser('username', $u->getUsername());
-                $session->writeForUser('role', $u->getRole());
+            // ON PARAM LA SESSION (1 Message flash + l'id, le nom et le role de l'utilisateur stockés)
+            $session->setMessage('flash', 'success', "Vous êtes maintenant connecté !");
+            $session->writeForUser('id', $u->getId());
+            $session->writeForUser('username', $u->getUsername());
+            $session->writeForUser('role', $u->getRole());
 
 
-                header('Location: ' . $router->url('admin_home')); // Redirection
-                exit(); // On stop le script après la redirection
-            }
-            
+            header('Location: ' . $router->url('admin_home')); // Redirection
+            exit(); // On stop le script après la redirection
+
+        }else{
+
             $errors['password'] = 'Identifiant ou mot de passe incorrect !!!'; // si le test vaut false alors erreur
-
-        // Sinon c'est que le mot de passe posté est différent de celui de la bdd...
-        }catch(NotFoundException $e){
-            $errors['password'] = 'Identifiant ou mot de passe incorrect'; // erreur
         }
+        
+        
     }
     
 }

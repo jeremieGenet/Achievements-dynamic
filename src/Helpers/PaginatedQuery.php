@@ -4,7 +4,7 @@ namespace App\Helpers;
 use PDO;
 use App\Helpers\URL;
 use App\Connection;
-use App\Security\PaginationException;
+use App\Exception\PaginationException;
 
 
 class PaginatedQuery{

@@ -2,12 +2,12 @@
 /*
     Exception concernant le role de l'utilisateur
 */
-namespace App\Security;
+namespace App\Exception;
 
 use Exception;
 
 
-class PaginationException extends Exception{
+class AuthRoleException extends Exception{
     
 
 

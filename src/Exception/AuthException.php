@@ -2,7 +2,7 @@
 /*
     Exception concernant le type d'utilisateur (user/vistor/admin)
 */
-namespace App\Security;
+namespace App\Exception;
 
 use Exception;
 

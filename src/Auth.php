@@ -1,8 +1,8 @@
 <?php
 namespace App;
 
-use App\Security\AuthException;
-use App\Security\AuthRoleException;
+use App\Exception\AuthException;
+use App\Exception\AuthRoleException;
 //use App\Models\Post;
 
 class Auth{

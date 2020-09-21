@@ -29,6 +29,7 @@ if(!empty($_POST)){
     $errors = $validate->fieldLength(['password'], 4, 30); // entre 4 et 30 caractères minimum pour le mot de passe
     $errors = $validate->samePassword($_POST['password'], $_POST['passwordConfirm']); // Vérif si le password et le passwordConfirm sont les mêmes
     $errors = $validate->passwordVulnerability($_POST['password']); // Permet de Sécurisé le mot de passe (param 2 à null par défaut, mais peu $être : 'max', "middle", "mini")
+    $errors = $validate->fieldExist(['email']); // Vérif si l'email existe déjà (Un email doit être unique, clé unique dans la bdd)
 
     if(empty($errors)){
         // Ajout des données (dans l'objet 'user')
@@ -39,7 +40,6 @@ if(!empty($_POST)){
 
         // ENREGISTREMENT DES DONNEES DANS LA BDD
         $userTable->insert($user);
-        
         
         // REDIRECTION ET MESSAGE FEEDBACK UTILISATEUR
         $session->setMessage('flash', 'success', "Vous êtes maintenant enregistrer, connectez vous !");

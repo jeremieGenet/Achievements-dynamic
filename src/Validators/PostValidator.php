@@ -9,8 +9,8 @@ use App\Table\PostTable;
 // Permet de valider les données d'un champ de formulaire
 class PostValidator{
 
-    private $data; // Données reçues pour validation ($_POST)
     private $pdo;
+    private $data; // Données reçues pour validation ($_POST)
     /*
     $data = [
         "name" => "qsdfqsdf",
@@ -37,7 +37,7 @@ class PostValidator{
         $this->pdo = Connection::getPDO();
         $this->postTable = new PostTable($this->pdo);
         $this->logoTable = new LogoTable($this->pdo);
-        $this->postId = $postId;
+        //$this->postId = $postId;
     }
 
     // Vérif si un champs est vide (en param un tableau avec le ou les noms des champs à vérifier) (NE FONCTIONNE PAS SUR LE CHAMPS PICTURE)

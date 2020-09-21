@@ -11,7 +11,7 @@ use App\HTML\Notification;
 use App\Table\CategoryTable;
 use App\Validators\CategoryValidator;
 
-Auth::check('admin');
+Auth::check('admin'); // Seul le rôle admin est autorisé
 
 $session = new Session();
 $messages = $session->getMessage('flash');

@@ -21,21 +21,13 @@ class StatisticTable{
     {
         $userTable = new UserTable($this->pdo);
         $users = $userTable->findAll();
-        return $total = count($users);
+        return count($users);
     }
 
     // Récup le nb d'utilisateur (en fonction du role)
-    public function totalUserRoleUser()
+    public function totalUserRole(string $role)
     {
-        $query = $this->pdo->query("SELECT COUNT(id) FROM user WHERE role = 'user'");
-        //$query->setFetchMode(\PDO::FETCH_CLASS, User::class); // On change le mode de recherche (Fetch) et on signifie que l'on va utiliser par classe
-        return (int)$query->fetch(PDO::FETCH_NUM)[0]; // retourne un nombre
-    }
-
-    // Récup le nb d'utilisateur (en fonction du role)
-    public function totalUserRoleAdmin()
-    {
-        $query = $this->pdo->query("SELECT COUNT(id) FROM user WHERE role = 'admin'");
+        $query = $this->pdo->query("SELECT COUNT(id) FROM user WHERE role = '{$role}'");
         //$query->setFetchMode(\PDO::FETCH_CLASS, User::class); // On change le mode de recherche (Fetch) et on signifie que l'on va utiliser par classe
         return (int)$query->fetch(PDO::FETCH_NUM)[0]; // retourne un nombre
     }

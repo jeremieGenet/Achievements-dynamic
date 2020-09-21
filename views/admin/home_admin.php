@@ -25,8 +25,10 @@ $posts = $postTable->statistics();
 
 $statisticTable = new StatisticTable($pdo);
 $nbUser = $statisticTable->totalUser();
-$nbUserRoleUser = $statisticTable->totalUserRoleUser();
-$nbUserRoleAdmin = $statisticTable->totalUserRoleAdmin();
+
+$nbUserRoleUser = $statisticTable->totalUserRole('user');
+$nbUserRoleAdmin = $statisticTable->totalUserRole('admin');
+$nbUserRoleVisitor = $statisticTable->totalUserRole('visitor');
 
 //$nb = $statisticTable->averageRealizationPerUser();
 //dd($nb);
@@ -63,7 +65,8 @@ $messages = $session->getMessage('flash');
         <div class="alert alert-dismissible alert-secondary">
             <div class="row">
                 <div class="col-md-6">
-                    <strong><h5>Nombre total d'utilisateurs (user, admin)</h5> </strong> <a href="#" class="alert-link">Liste de tout les utilisateurs</a>
+                    <strong><h5>Nombre total d'utilisateurs (user, admin, visitor)</h5> </strong> 
+                    <a href="#" class="alert-link">Liste de tout les utilisateurs</a>
                 </div>
                 <div class="col-md-6">
                     <button class="badge-info badge-pill float-right btn-lg"><?= $nbUser ?></button>
@@ -73,7 +76,8 @@ $messages = $session->getMessage('flash');
         <div class="alert alert-dismissible alert-dark ">
             <div class="row"> 
                 <div class="col-md-6">
-                    <strong><h5>Nombre d'utilisateur qui ont le role 'user'</h5> </strong> <a href="#" class="alert-link">Liste des utilisateur qui ont le rôle 'user'</a>
+                    <strong><h5>Nombre d'utilisateur qui ont le rôle d'utilisateur</h5> </strong> 
+                    <a href="#" class="alert-link">Liste des utilisateur qui ont le rôle 'user'</a>
                 </div>
                 <div class="col-md-6">
                     <button class="badge-info badge-pill float-right btn-lg"><?= $nbUserRoleUser ?></button>
@@ -83,17 +87,29 @@ $messages = $session->getMessage('flash');
         <div class="alert alert-dismissible alert-primary">
         <div class="row">
                 <div class="col-md-6">
-                    <strong><h5>Nombre d'utilisateur qui ont le role 'admin'</h5> </strong> <a href="#" class="alert-link">Liste des utilisateur qui ont le rôle 'admin'</a>
+                    <strong><h5>Nombre d'utilisateur qui ont le rôle d'administrateur</h5> </strong> 
+                    <a href="#" class="alert-link">Liste des utilisateur qui ont le rôle 'admin'</a>
                 </div>
                 <div class="col-md-6">
                     <button class="badge-info badge-pill float-right btn-lg"><?= $nbUserRoleAdmin ?></button>
                 </div>
             </div>
         </div>
+        <div class="alert alert-dismissible alert-dark ">
+            <div class="row"> 
+                <div class="col-md-6">
+                    <strong><h5>Nombre d'utilisateur qui ont le rôle de visiteur</h5> </strong> 
+                    <a href="#" class="alert-link">Liste des utilisateur qui ont le rôle 'user'</a>
+                </div>
+                <div class="col-md-6">
+                    <button class="badge-info badge-pill float-right btn-lg"><?= $nbUserRoleVisitor ?></button>
+                </div>
+            </div>
+        </div>
         <div class="alert alert-dismissible alert-secondary">
             <div class="row">
                 <div class="col-md-6">
-                    <strong><h5>Nombre moyen de réalisation par utilisateur (user, admin)</h5> </strong>
+                    <strong><h5>Nombre moyen de réalisation par utilisateur</h5> </strong>
                 </div>
                 <div class="col-md-6">
                     <button class="badge-info badge-pill float-right btn-lg">141</button>

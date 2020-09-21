@@ -93,7 +93,7 @@
             		<div class="row justify-content-end">
                 		<div class="figure-holder">
                             <!-- IMAGE IMAC -->
-                            <a href="">
+                            <a href="<?= $router->url('cv') ?>">
                                 <img class="figure-image img-fluid" src="../../assets/images/one_page/imac3.png" alt="image" />
                             </a>
                         </div>
@@ -169,12 +169,12 @@
     <!-- JAVASCRIPT -->  
     <!-- Jquery v3.3.1 (utile au fonctionnement de bootstrap, et de jquery.scrollTo) -->        
     <script type="text/javascript" src="../../assets/plugins/jquery-3.3.1.min.js"></script>
-    <!-- Utile au fonctionnement du scroll de jquery.scrollTo.js -->
-    <script type="text/javascript" src="../../assets/plugins/jquery-scrollTo/jquery.scrollTo.js"></script>
     <!-- Javascript utile au fonctionnement de Bootstrap -->
     <script type="text/javascript" src="../../assets/plugins/bootstrap/js/bootstrap.js"></script>
-    <!-- Gestion du scroll de la page en jquery -->
-    <script type="text/javascript" src="../../assets/js/one_page/main.js"></script> 
+    <!-- Utile au fonctionnement du scroll de jquery.scrollTo.js -->
+    <script type="text/javascript" src="../../assets/plugins/jquery-scrollTo/jquery.scrollTo.js"></script>
+    <!-- Gestion du scroll de la page en jquery (class 'scrollto') -->
+    <script type="text/javascript" src="../../assets/js/common/scroll-navigation.js"></script>
      
        
 </body>

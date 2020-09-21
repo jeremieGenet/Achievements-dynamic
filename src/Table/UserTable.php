@@ -2,7 +2,7 @@
 namespace App\Table;
 
 use App\Models\User;
-use App\Table\Exception\NotFoundException;
+use App\Exception\NotFoundException;
 
 
 // Gère les requêtes de la table "user" (table des utilisateurs)

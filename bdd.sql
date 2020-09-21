@@ -6,7 +6,7 @@
 */
 
 /*********************** BDD PORTFOLIO V3 ********************************/
-CREATE DATABASE portfolio3 CHARACTER SET 'utf8';
+CREATE DATABASE portfolio2 CHARACTER SET 'utf8';
 SET lc_time_names = 'fr_FR'; /* PERMET D'AFFICHER LES JOURS ET MOIS DES DATE EN FRANCAIS */
 
 

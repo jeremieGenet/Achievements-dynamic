@@ -97,7 +97,7 @@ if(!empty($_POST)){
             $post->setCategories($cat);
         }
 
-        $post->setContent(htmlentities($_POST['content']));
+        $post->setContent($_POST['content']);
         $post->setAuthor_id($_SESSION['user']['id']);
         $post->setLikes('0');
         $post->setIsLiked('0');

@@ -1,7 +1,7 @@
 <?php
 namespace App\Helpers;
 
-use App\Security\PaginationException;
+use App\Exception\PaginationException;
 use Exception;
 
 class URL{
