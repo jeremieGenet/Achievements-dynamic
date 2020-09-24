@@ -6,7 +6,7 @@ use App\Connection;
 use App\Table\PostTable;
 
 
-$title = 'Réalisations';
+$title = 'Détail des réalisations, jeremie-genet.fr';
 
 $pdo = Connection::getPDO();
 

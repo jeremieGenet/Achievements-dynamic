@@ -2,11 +2,11 @@
 namespace App\Helpers;
 
 use App\Exception\PaginationException;
-use Exception;
+
 
 class URL{
 
-    // Permet de vérif si le param d'url est bien un entier
+    // Permet de vérif si le param d'url est bien un entier (pour éviter les erreurs)
     public static function getInt(string $name, ?int $default = null): ?int
     {
         // S'il n'y a pas de param d'url, on retourne null (param par défaut)
@@ -16,7 +16,7 @@ class URL{
         // Si le param d'url n'est pas un entier on renvoi une exception
         if(!filter_var($_GET[$name], FILTER_VALIDATE_INT)){
             //throw new Exception("Le paramètre d'url : $name, n'est pas un entier!!!", 400);
-            throw new PaginationException("Le paramètre d'url : $name, n'est pas un entier!!!", 400);
+            throw new PaginationException("Le paramètre d'url : $name, n'est pas un entier!!!", 400); // 400 pour le code erreur de l'exception
         }
         return (int)$_GET[$name]; // Sinon on retourne le param d'url
     }

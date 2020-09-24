@@ -53,7 +53,6 @@ if(!empty($_POST)){
     $errorsPost = $validate->fieldEmpty(['title', 'content']);
     $errorsPost = $validate->fieldLength(3, 50, ['title']);
     $errorsPost = $validate->fieldLength(5, 10000, ['content']);
-    $errorsPost = $validate->fieldExist(['title']);
 
     // VERIFICATION DE L'IMAGE PRINCIPALE ET DE LA COLLECTION DE LOGOS ($_FILES)
     $filesManager = new FilesManager($_FILES);

@@ -186,7 +186,7 @@ $form = new Form($post, $errors);
             <?php endif ?>
         </button>
         <!-- BOUTON DE RETOUR -->
-        <a href="<?= $_SERVER['HTTP_REFERER'] ?>" class="btn btn-primary ml-auto">Retour &raquo;</a>
+        <a href="<?= $router->url('admin_posts') ?>" class="btn btn-primary ml-auto">Retour &raquo;</a>
     </div>
     
 </form>

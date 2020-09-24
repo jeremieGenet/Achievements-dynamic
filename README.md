@@ -1,4 +1,4 @@
-# Portfolio dynamique V2.3-local (avec multi-layout)
+# Portfolio dynamique V2.5-local (avec multi-layout)
 
 ## Technos :
   PHP, Javascript, Bootstrap (administration)
@@ -30,12 +30,9 @@ Administration:
         - Gerer les Exceptions finales
         
     ESPACE MEMBRE :
-        - Afficher le nom de l'utilisateur dans la navbar
-        - Créer un affichage du profil de l'utilisateur
         - Créer un formulaire de modification du profil d'utilisateur, avec ajout d'avatars.
-
-        - Améliorer les messages (feedback) utilisateur avec disparition du message après quelques secondes (sleep()?)
-        - Créer la page d'accueil de l'administration avec des stats sur les données du site (Nb d'articles, nb d'utilisateur)
+        - Améliorer la page d'accueil de l'administration avec des stats sur les données du site (Nb d'articles, nb d'utilisateur)
+        - Ajouter Un table 'categories' et mettre les catégories actuelles comme sous-catégories (Grosse Mise à jour à prévoir, et modif de la bdd et des relations)
 
 
 #### Pour lancer le projet (serveur interne PHP sur le dossier "public") :

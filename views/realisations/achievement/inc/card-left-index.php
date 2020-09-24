@@ -18,7 +18,7 @@
             <div class="__card-header">
                 <a class="" href="<?=  $router->url('achievement', ['slug' => $post->getSlug(), 'id' => $post->getId()]) ?>">
                     <!-- TITRE -->
-                    <h5 class=""><strong><?= $post->getTitle() ?></strong></h5>
+                    <h3 class=""><strong><?= $post->getTitle() ?></strong></h3>
                 </a>
                 <hr class="bg-light w-100">
             </div>

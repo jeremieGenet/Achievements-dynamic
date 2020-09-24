@@ -3,13 +3,21 @@
 
     #494d55  ou  rgb(73, 77, 85) = Gris de la section contact et body
     #40babd  ou  rgb(64, 186, 189) = Bleu turquoise (bg principal)
+    #e0e1e2 = blanc des titres
 */
 body {
   font-family: 'Open Sans', arial, sans-serif;
-  color: #494d55;
+  color: #282b30;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Oswald', sans-serif;
+}
+h1, h2{
+  text-shadow: 2px 5px 5px  rgba(0, 0, 0, 0.5);
 }
 
 p {
@@ -523,6 +531,9 @@ a:focus {
 .profile-2{ /*alignement du second logo de la section*/
   margin-top: 95px;
 }
+.quote{
+  box-shadow: 3px 6px 6px  rgba(0, 0, 0, 0.5);
+}
 .languages-section .item .profile-image {
   display: inline-block;
   margin: 0 auto;
@@ -683,9 +694,22 @@ a:focus {
   font-weight: bold;
 }
 .services-icons-texts-1{
-  background:#39b4b6;
+  background:#36a6a8;
+}
+.services-icons-texts-2{
+  background:#2f8f91;
+}
+.services-icons-texts-1, .services-icons-texts-2{
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
+.services-icons-texts-1 p, .services-icons-texts-2  p{
+  color: #e0e1e2;
+}
+.services-intro{
+  padding: 15px;
+}
 
 
 /* =========== Contact Section =========== */
@@ -702,14 +726,16 @@ a:focus {
   font-size: 36px;
   font-weight: 300;
   margin-bottom: 30px;
-  color: rgb(0, 0, 0);
+  color: #e0e1e2;
 }
 
 .contact-content {
   max-width: 600px;
   margin: 0 auto;
   margin-bottom: 60px;
-  color: rgb(201, 201, 201);
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  font-size: medium;
 }
 
 @media (max-width: 767.98px) {

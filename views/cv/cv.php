@@ -1,6 +1,6 @@
 <?php
 
-$title = "cv";
+$title = "Curriculum Vitae web";
 
 ?>
 
@@ -100,7 +100,7 @@ $title = "cv";
                 <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="resume-content">
                         <p class="job">
-                            DEVELOPPEUR BACK & FRONT-END 
+                            <span id="shadow">DEVELOPPEUR BACK & FRONT-END</span> 
                             <span class="job_location">&nbsp;Zoo d'Amnéville</span>
                         </p>
 
@@ -157,7 +157,7 @@ $title = "cv";
                 <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="resume-content">
                         <p class="job">
-                            DEVELOPPEUR BACK & FRONT-END 
+                            <span id="shadow">DEVELOPPEUR BACK & FRONT-END</span> 
                             <span class="job_location">&nbsp;St Dizier</span>
                         </p>
 
@@ -206,7 +206,7 @@ $title = "cv";
                 <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="resume-content">
                         <p class="job">
-                            DEVELOPPEUR BACK & FRONT-END 
+                            <span id="shadow">DEVELOPPEUR BACK & FRONT-END</span> 
                             <span class="job_location">&nbsp;Lyon (Bussa Immobilier)</span>
                         </p>
 
@@ -264,7 +264,7 @@ $title = "cv";
                 <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="resume-content">
                         <p class="job">
-                            DEVELOPPEUR FRONT-END 
+                            <span id="shadow">DEVELOPPEUR FRONT-END</span> 
                             <span class="job_location">&nbsp;Chaumont</span>
                         </p>
 
@@ -316,7 +316,7 @@ $title = "cv";
                 <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="resume-content">
                         <p class="job">
-                            RESPONSABLE MULTI-RAYONS
+                            <span id="shadow">RESPONSABLE MULTI-RAYONS</span>
                             <span class="job_location">&nbsp;à Leclerc Chaumont</span>
                         </p>
 
@@ -349,7 +349,7 @@ $title = "cv";
                 <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">   
                     <div class="resume-content">
                         <p class="job">
-                            RESPONSABLE RAYONS
+                            <span id="shadow">RESPONSABLE RAYONS</span>
                             <span class="job_location">&nbsp;à Leclerc Chaumont</span>
                         </p>
 
@@ -378,7 +378,7 @@ $title = "cv";
                 <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="resume-content">
                         <p class="job">
-                            ADJOINT RESPONSABLE RAYONS
+                            <span id="shadow">ADJOINT RESPONSABLE RAYONS</span>
                             <span class="job_location">&nbsp;à Leclerc Chaumont</span>
                         </p>
 
@@ -404,7 +404,7 @@ $title = "cv";
                 <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="resume-content">
                         <p class="job">
-                            Employé COMMERCIAL
+                            <span id="shadow">Employé COMMERCIAL</span>
                             <span class="job_location">&nbsp;à Leclerc Chaumont</span>
                         </p>
 
@@ -427,7 +427,7 @@ $title = "cv";
                 <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="resume-content">
                         <p class="job">
-                            LIVREUR
+                            <span id="shadow">LIVREUR</span>
                             <span class="job_location">&nbsp;pour ADA à Chaumont</span>
                         </p>
                         <p>Description :</p>
@@ -445,7 +445,7 @@ $title = "cv";
                 <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="resume-content">
                         <p class="job">
-                            MENUISIER
+                            <span id="shadow">MENUISIER</span>
                             <span class="job_location">&nbsp;pour Matfor à Rimaucourt</span>
                         </p>
                         <p>Description :</p>
@@ -476,7 +476,7 @@ $title = "cv";
                 <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="resume-content">
                         <p class="job">
-                            Bac + 2 WEBDESIGNER/WEBMASTER
+                            <span id="shadow">Bac + 2 WEBDESIGNER/WEBMASTER</span>
                             <span class="job_location">&nbsp;Formation 31</span>
                         </p>
                         <p>Description :</p>
@@ -500,7 +500,7 @@ $title = "cv";
                 <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="resume-content">
                         <p class="job">
-                            Bac Pro CAB (Construction et Aménagement du Batiment)
+                            <span id="shadow">Bac Pro CAB (Construction et Aménagement du Batiment)</span>
                             <span class="job_location">&nbsp;à Chaumont</span>
                         </p>
                     </div>
@@ -512,7 +512,7 @@ $title = "cv";
                 <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="resume-content">
                         <p class="job">
-                            BEP et CAP Menuiserie
+                            <span id="shadow">BEP et CAP Menuiserie</span>
                             <span class="job_location">&nbsp;à Romilly sur Seine</span>
                         </p>
                     </div>
@@ -531,123 +531,165 @@ $title = "cv";
             <div class="w-100">
                 <h2 class="section-title mb-5">COMPÉTENCES</h2>
 
-                <div class="subheading mb-3">
-                    Informatique :
-                </div>
-                <p class="competences_explication">
-                    J'ai de bonnes connaissances sur la suite de <strong>Office de Microsoft</strong>.
-                </p>
-                <ul class="list-inline dev-icons">
-                    <li class="list-inline-item">
-                        <i class="fas fa-file-excel"></i>
-                    </li>
-                    <li class="list-inline-item">
-                        <i class="fas fa-file-word"></i>
-                    </li>
-                    <li class="list-inline-item">
-                        <i class="fas fa-file-powerpoint"></i>
-                    </li>
-                </ul>
+                <!-- Compétences informatique (Général) -->
+                <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="resume-content">
+                        <p class="job">
+                            <span id="shadow"></span>
+                            <span class="job_location">&nbsp;(Général)</span>
+                        </p>
+                        
+                        <ul class="mt-2">
+                            <li>
+                                <p>Trés bonne connaissance de la suite de logiciel <span id="__white">Microsoft</span>.</p>
+                                <ul class="list-inline dev-icons">
+                                    <li class="list-inline-item">
+                                        <i class="fas fa-file-excel"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fas fa-file-word"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fas fa-file-powerpoint"></i>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Bonne connaissance de la plupart des logiciel <span id="__white">ADOBE</span>.
+                            </li>
+                            <p></p>
+                            <ul class="list-inline dev-icons">
+                                <li class="list-inline-item">
+                                    <img src="../../assets/icons&logos/cv/Ps_128x128.png" style="width: 60px;" alt="logo Photoshop">
+                                </li>
+                                <li class="list-inline-item">
+                                    <img src="../../assets/icons&logos/cv/ai_128x128.png" style="width: 60px;" alt="logo Illustrator">
+                                </li>
+                                <li class="list-inline-item">
+                                    <img src="../../assets/icons&logos/cv/Ae_128x128.png" style="width: 60px;" alt="logo After-Effect">
+                                </li>
+                                <li class="list-inline-item">
+                                    <img src="../../assets/icons&logos/cv/premierePro_128x128.png" style="width: 60px;" alt="logo Premiere-Pro">
+                                </li>
+                            </ul>
+                        </ul>
 
-                <div class="subheading mb-3">
-                    Langages de Programation &amp; outils/technos :
+                        <p class="job mt-5">
+                            <span id="shadow">Programation</span>
+                            <span class="job_location">&nbsp;(Web et autre)</span>
+                        </p>
+
+                        <ul class="mt-2">
+                            
+                            <div class="subheading mb-3">
+                                Langages de Programation &amp; outils/technos :
+                            </div>
+                            <ul class="">
+                                <li class="">
+                                    <p class="competences_explication">
+                                        En langages front pour le web je connais évidemment bien <span id="__white">HTML, CSS et Javascript</span> (indispensables).<br>
+                                        <span id="__white">Bootstrap</span> est le framework que je privilègie lorsque que je dois prototyper une application, ou tester une nouvelle techno,
+                                        mais <span id="__white">Bluma</span> est une bonne alternative que j'utilise parfois. 
+                                        Lorsque je fais du style en front, j'utilise exclusivement <span id="__white">SASS</span> comme pré-processeur.<br>
+                                        Coté Back en web j'ai une préférence pour le <span id="__white">PHP</span> qui est à mon avis le langage le plus "mûr" coté serveur.
+                                        Mais en Back, j'aime aussi beaucoup codé en <span id="__white">Javascript</span> à l'aide de <span id="__white">NodeJs</span>, 
+                                        la possiblité d'asyncrone des requêtes HTTP rend l'expérience utilisateur plus fluide.
+                                    </p>
+                                </li>
+                                <li class="">
+                                    <p class="competences_explication">
+                                        Concernant les <span id="__white">Framework/Librairies</span>, en PHP j'ai pu tester <span id="__white">Laravel</span> rapidement, 
+                                        mais c'est avec <span id="__white">Symfony</span> que je me sens le plus à l'aise.<br>
+                                        Sa flexibilité, sa documentation, et sa communauté font que c'est pour moi le framework ultime pour le moment.
+                                        Et j'ai surtout l'expérience de plusieurs gros projets sur ce framework.
+                                    </p>
+                                </li>
+                                <li class="">
+                                    <p class="competences_explication">
+                                        Pour les les <span id="__white">Framework/Librairies</span>, en <span id="__white">Javascript</span> 
+                                        (sans parler de <span id="__white">NodeJs</span> qui est indispensable et permet à lui seul de faire de petites applications),
+                                        <span id="__white">React</span> est pour moi le Framework/Librairie le plus intéressant d'un point de vue expérience utilisateur.<br>
+                                        J'ai découvert récemment (sur un petit projet perso) <span id="__white">Vue.Js</span> que je trouve très intéressant, léger et très facile à mettre en place.
+                                    </p>
+                                </li>
+                                <li class="">
+                                    <p class="competences_explication">
+                                        En dehors du Web, j'ai de bonne notions en <span id="__white">C</span>, un langage bas niveau qui se perd un peu mais très intéressant pour comprendre
+                                        un peu mieux la gestion de mémoire avec le typage des variables, mais surtout les notions de pointeurs.<br>
+                                        Je sais aussi codé en <span id="__white">LUA</span>, un langage de script très facile à apprendre. Et avec <span id="__white">LOVE</span> 
+                                        (Librairie LUA) il peut permettre de créer jeux vidéo plutôt facilement.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="competences_explication">
+                                        Beaucoup d'autres outils me sont utiles lors de mes développements, en vrac: <span id="__white">Faker</span> 
+                                        (librairie d'infos fake), <span id="__white">Material-ui</span> (librairiede composant React ou Vue.js), 
+                                        <span id="__white">Formik</span> (permet la vérification et validation rapide de formulaire avec REACT).
+                                        <span id="__white">PHPMailer, var_dumper, whoops</span>...
+                                    </p>
+                                </li>
+                                
+                                <ul class="list-inline dev-icons p-4">
+                                    <li class="list-inline-item">
+                                        <i class="fab fa-html5"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fab fa-css3-alt"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fab fa-php"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fab fa-symfony"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fab fa-js-square"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fab fa-react"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fab fa-node"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fab fa-sass"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fab fa-wordpress"></i>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fab fa-npm"></i>
+                                    </li>
+                                </ul>
+                                
+                            </ul>
+                            
+                        </ul>
+
+
+                    <p class="job">
+                        <span id="shadow">Autre</span>
+                        <span class="job_location">&nbsp;(Compétences)</span>
+                    </p>
+                    <ul class="fa-ul mb-0">
+                        <li class="mb-1">
+                            <i class="fa-li fa fa-check"></i>
+                            Expériences et connaissance en management.
+                        </li>
+                        <li class="mb-1">
+                            <i class="fa-li fa fa-check"></i>
+                            Connaissances en gestion de stock et d'approvisionnement.
+                        </li>
+                        <li class="mb-1">
+                            <i class="fa-li fa fa-check"></i>
+                            Connaissance générales en e-commerce et marketing.
+                        </li>
+                    </ul>
+
+                    </div>
+                    
                 </div>
-                <li>
-                    <p class="competences_explication">
-                        En langages front pour le web je connais évidemment bien <span id="__white">HTML, CSS et Javascript</span> (indispensables).<br>
-                        <span id="__white">Bootstrap</span> est le framework que je privilègie lorsque que je dois prototyper une application, ou tester une nouvelle techno,
-                        mais <span id="__white">Bluma</span> est une bonne alternative que j'utilise parfois. 
-                        Lorsque je fais du style en front, j'utilise exclusivement <span id="__white">SASS</span> comme pré-processeur.<br>
-                        Coté Back en web j'ai une préférence pour le <span id="__white">PHP</span> qui est à mon avis le langage le plus "mûr" coté serveur.
-                        Mais en Back, j'aime aussi beaucoup codé en <span id="__white">Javascript</span> à l'aide de <span id="__white">NodeJs</span>, 
-                        la possiblité d'asyncrone des requêtes HTTP rend l'expérience utilisateur plus fluide.
-                    </p>
-                </li>
-                <p></p>
-                <li>
-                    <p class="competences_explication">
-                        Concernant les <span id="__white">Framework/Librairies</span>, en PHP j'ai pu tester <span id="__white">Laravel</span> rapidement, 
-                        mais c'est avec <span id="__white">Symfony</span> que je me sens le plus à l'aise.<br>
-                        Sa flexibilité, sa documentation, et sa communauté font que c'est pour moi le framework ultime pour le moment.
-                        Et j'ai surtout l'expérience de plusieurs gros projets sur ce framework.
-                    </p>
-                </li>
-                <p></p>
-                <li>
-                    <p class="competences_explication">
-                        Pour les les <span id="__white">Framework/Librairies</span>, en <span id="__white">Javascript</span> 
-                        (sans parler de <span id="__white">NodeJs</span> qui est indispensable et permet à lui seul de faire de petites applications),
-                        <span id="__white">React</span> est pour moi le Framework/Librairie le plus intéressant d'un point de vue expérience utilisateur.<br>
-                        J'ai découvert récemment (sur un petit projet perso) <span id="__white">Vue.Js</span> que je trouve très intéressant, léger et très facile à mettre en place.
-                    </p>
-                </li>
-                <p></p>
-                <li>
-                    <p class="competences_explication">
-                        En dehors du Web, j'ai de bonne notions en <span id="__white">C</span>, un langage bas niveau qui se perd un peu mais très intéressant pour comprendre
-                        un peu mieux la gestion de mémoire avec le typage des variables, mais surtout les notions de pointeurs.<br>
-                        Je sais aussi codé en <span id="__white">LUA</span>, un langage de script très facile à apprendre. Et avec <span id="__white">LOVE</span> 
-                        (Librairie LUA) il peut permettre de créer jeux vidéo plutôt facilement.
-                    </p>
-                </li>
-                <p></p>
-                <li>
-                    <p class="competences_explication">
-                        Beaucoup d'autres outils me sont utiles lors de mes développements, en vrac: <span id="__white">Faker</span> 
-                        (librairie d'infos fake), <span id="__white">Material-ui</span> (librairiede composant React ou Vue.js), 
-                        <span id="__white">Formik</span> (permet la vérification et validation rapide de formulaire avec REACT).
-                        <span id="__white">PHPMailer, var_dumper, whoops</span>...
-                    </p>
-                </li>
                 
-                <ul class="list-inline dev-icons p-4">
-                    <li class="list-inline-item">
-                        <i class="fab fa-html5"></i>
-                    </li>
-                    <li class="list-inline-item">
-                        <i class="fab fa-css3-alt"></i>
-                    </li>
-                    <li class="list-inline-item">
-                        <i class="fab fa-php"></i>
-                    </li>
-                    <li class="list-inline-item">
-                        <i class="fab fa-symfony"></i>
-                    </li>
-                    <li class="list-inline-item">
-                        <i class="fab fa-js-square"></i>
-                    </li>
-                    <li class="list-inline-item">
-                        <i class="fab fa-react"></i>
-                    </li>
-                    <li class="list-inline-item">
-                        <i class="fab fa-node"></i>
-                    </li>
-                    <li class="list-inline-item">
-                        <i class="fab fa-sass"></i>
-                    </li>
-                    <li class="list-inline-item">
-                        <i class="fab fa-wordpress"></i>
-                    </li>
-                    <li class="list-inline-item">
-                        <i class="fab fa-npm"></i>
-                    </li>
-                </ul>
-
-                <div class="subheading mb-3">Autre</div>
-                <ul class="fa-ul mb-0">
-                    <li class="mb-1">
-                        <i class="fa-li fa fa-check"></i>
-                        Expériences et connaissance en management.
-                    </li>
-                    <li class="mb-1">
-                        <i class="fa-li fa fa-check"></i>
-                        Connaissances en gestion de stock et d'approvisionnement.
-                    </li>
-                    <li class="mb-1">
-                        <i class="fa-li fa fa-check"></i>
-                        Connaissance générales en e-commerce et marketing.
-                    </li>
-                </ul>
             </div>
         </section>
 
@@ -657,46 +699,48 @@ $title = "cv";
         <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="interests">
             <div class="w-100">
                 <h2 class="section-title mb-5">CENTRES D'INTÉRÊTS</h2>
-                <li>
-                    <p class="mb-1">
-                        Le sport en général.<br>
-                        J'ai joué au football plus de dix ans en compétition à un niveau local certe, mais un niveau qui permet de s'amuser.<br>
-                        Le VTT, la natation et la pétanque (lol) sont aussi des sports que je pratique toujours.
-                        Mais au dela du sport, c'est la compétition que m'attirais le plus.
-                    </p>
-                </li>
-                <p></p>
-                <li>
-                    <p class="mb-1">
-                        La culture asiatique m'a toujours rendu curieux. Particulièrement la Corée, le Japon et la Chine.<br>
-                        La <span id="__white">Corée</span> probablement parce qu'une telle différence culturelle entre le Nord et le Sud est frappante, et fait réfléchir.
-                        Le <span id="__white">Japon</span>, un des pays les plus isolé au monde et pourtant technologiquement pionnié. Et culturellement plein de paradoxes.
-                        La <span id="__white">Chine</span>, parce qu'il savent faire les meilleurs nouilles au monde!!!
-                    </p>
-                </li>
-                <p></p>
-                <li>
-                    <p class="mb-1">
-                        Cuisiner et déguster. Plus que la cuisine, c'est le partage qui me plaît le plus, faire un bon repas avec les personnes qu'on aime.<br>
-                        <span id="__white">Cuisiner c'est aimer.</span> Un dicton que j'aime beaucoup.
-                    </p>
-                </li>
-                <p></p>
-                <li>
-                    <p class="mb-1">
-                        La culture web et geekerie en tout genre. J'aime le cinéma, les série TV (THE BOYS!!!!), la litérature,
-                        le sport électronique et les jeux vidéo.<br>
-                        Je m'intéresse très facilement de façon générale.
-                    </p>
-                </li>
-                <p></p>
-                <li>
-                    <p class="mb-1">
-                        J'ai été community manager du site <span id="__white">Hedge.fr</span> pendant cinq ans, et j'ai développé 
-                        le forum de <span id="__white">puissance-zelda.com</span> dans sa version 2.<br>
-                        Mon intérêt pour la licence Zelda m'a aussi permis de développer un wiki Zelda qui n'est plus en ligne aujourd'hui.
-                    </p>
-                </li>
+
+                <ul class="fa-ul mb-0">
+                    <li class="">
+                        <p class="mb-3">
+                            Le sport en général.<br>
+                            J'ai joué au football plus de dix ans en compétition à un niveau local certe, mais un niveau qui permet de s'amuser.<br>
+                            Le VTT, la natation et la pétanque (lol) sont aussi des sports que je pratique toujours.
+                            Mais au dela du sport, c'est la compétition que m'attirais le plus.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-3">
+                            La culture web et geekerie en tout genre. J'aime le cinéma, les série TV (THE BOYS!!!!), la litérature,
+                            le sport électronique et les jeux vidéo.<br>
+                            Je m'intéresse très facilement de façon générale.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-3">
+                            La culture asiatique m'a toujours rendu curieux. Particulièrement la Corée, le Japon et la Chine.<br>
+                            La <span id="__white">Corée</span> probablement parce qu'une telle différence culturelle entre le Nord et le Sud est frappante, et fait réfléchir.
+                            Le <span id="__white">Japon</span>, un des pays les plus isolé au monde et pourtant technologiquement pionnié. Et culturellement plein de paradoxes.
+                            La <span id="__white">Chine</span>, parce qu'il savent faire les meilleurs nouilles au monde!!!
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-3">
+                            Cuisiner et déguster. Plus que la cuisine, c'est le partage qui me plaît le plus, faire un bon repas avec les personnes qu'on aime.<br>
+                            <span id="__white">Cuisiner c'est aimer.</span> Un dicton que j'aime beaucoup.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-3">
+                            Participation associative et autre projet.<br>
+                            J'ai été community manager du site <span id="__white">Hedge.fr</span> pendant cinq ans, et participé au développement
+                            du forum de <span id="__white">puissance-zelda.com</span> dans sa version 2.<br>
+                            Mon intérêt pour la licence Zelda m'a aussi permis de développer un wiki Zelda qui n'est plus en ligne aujourd'hui.<br>
+                            Refonte complète du site des <span id="__white">Papillons blancs</span> de Reims...
+                        </p>
+                    </li>
+                </ul>
+
             </div>
         </section>
 

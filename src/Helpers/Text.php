@@ -3,9 +3,10 @@ namespace App\Helpers;
 
 class Text{
 
-    // Permet de limiter une chaîne de caractère à 60 lettres si celle-ci est supérieur à 60 lettres
+    // Permet de limiter une chaîne de caractère en fonction de $limit (et de ne pas couper le dernier mot)
     public static function excerpt(string $content, int $limit = 50)
     {
+        // mb_strlen() retourne la taille d'une chaîne de caractères
         if(mb_strlen($content) <= $limit){
             return $content;
         }

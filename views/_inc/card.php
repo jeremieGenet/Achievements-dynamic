@@ -1,4 +1,4 @@
-<!-- CARDS de la section DERNIERES REALISATIONS (BOOTSTRAP) -->
+<!-- CARDS de la section DERNIERES REALISATIONS (BOOTSTRAP) de la one-page home (CSS PARTICULIER voir card.css) -->
 
 <div class="card-deck">
     <?php foreach($posts as $post) : ?>

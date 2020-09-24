@@ -5,6 +5,9 @@ Couleur violet (couleur du theme purple2) = rgb(93, 107, 167)
 */
 
 /* Modification du thème installé */
+h1, h2, h3{
+    text-shadow: 2px 2px 2px  rgba(0, 0, 0, 0.4);
+}
 .main-wrapper .container{
     max-width: 60%;
 }

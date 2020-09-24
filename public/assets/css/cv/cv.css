@@ -11,6 +11,9 @@ body {
     padding-top: 54px;
     color: #97a0aa;
 }
+h1, h2{
+    text-shadow: 5px 5px 2px  rgba(0, 0, 0, 0.5);
+}
 
 @media (min-width: 992px) {
     body {
@@ -32,6 +35,9 @@ h1, h2, h3, h4, h5, h6,.job {
 }
 .section-title{
     color: #fff;
+}
+#shadow{
+    text-shadow: 5px 5px 2px  rgba(0, 0, 0, 0.5);
 }
 
 .job {

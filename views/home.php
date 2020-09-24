@@ -192,10 +192,8 @@ $form = new Form($_POST, $errors);
     <div class="container-fluid">
         <h2 class="section-title text-center mb-5"><strong>Dernières réalisations</strong></h2>
 
+        <!-- Contient la boucle des cards sur les réalisations -->
         <?php require ('_inc/card.php') ?>
-        <?php //require ('_inc/card-carousel.php') ?>
-        <?php //require ('_inc/card-hover.php') ?>
-        <?php //require ('_inc/card-3D.php') ?>
 
     </div>
 </div>
@@ -207,93 +205,93 @@ $form = new Form($_POST, $errors);
             <h2 class="services-title">MES <strong>SERVICES</strong></h2>
             <p class="services-intro">Des prestations adaptées à vos besoins</p>
         </header>
-        <div class="bg-services">
+        <div class="bg-services mb-5">
             <div class="row services">
                 <!-- Services (gauche) -->
-                <div class="col-xs-12 col-sm-6 col-md-5">
+                <div class="col-xs-12 col-sm-6 col-lg-5">
                     <div class="row services-icons-texts-1">
-                        <div class="col-md-9">
+                        <div class="col-md-10">
                             <h4 class="services-titles">Gestion & Conception de projets Web</h4>
                             <p>Site vitrine, corporate, évènementiel, <br> e-commerce, intranet, application mobile.</p>
                         </div>
-                        <div class="col-md-3 mt-3 d-none d-lg-block">
+                        <div class="col-md-2 mt-3 d-none d-lg-block">
                             <i class="services-icon fas fa-keyboard fa-2x"></i>
                         </div>
                     </div>
                     <div class="row services-icons-texts-2">
-                        <div class="col-md-9">
+                        <div class="col-md-10">
                             <h4 class="services-titles">Intégration Web</h4>
                             <p>Des intégrations HTML & CSS <br> qui respectent les standards du Web.</p>
                         </div>
-                        <div class="col-md-3 mt-3 d-none d-lg-block">
+                        <div class="col-md-2 mt-3 d-none d-lg-block">
                             <i class="services-icon fas fa-laptop-code fa-2x"></i>
                         </div>
                     </div>
                     <div class="row services-icons-texts-1">
-                        <div class="col-md-9">
+                        <div class="col-md-10">
                             <h4 class="services-titles">Développement Spécifiques</h4>
                             <p>Outils adaptés à votre coeur de métier, <br> application & solutions personnalisées.</p>
                         </div>
-                        <div class="col-md-3 mt-3 d-none d-lg-block">
+                        <div class="col-md-2 mt-3 d-none d-lg-block">
                             <i class="services-icon fas fa-marker fa-2x"></i>
                         </div>
                     </div>
                     <div class="row services-icons-texts-2">
-                        <div class="col-md-9">
+                        <div class="col-md-10">
                             <h4 class="services-titles">Référencement Naturel</h4>
                             <p>Affichage sémantique des informations <br> pour un référencement optimal.</p>
                         </div>
-                        <div class="col-md-3 mt-3 d-none d-lg-block">
+                        <div class="col-md-2 mt-3 d-none d-lg-block">
                             <i class="services-icon fas fa-sitemap fa-2x"></i>
                         </div>
                     </div>
                 </div>
 
                 <!-- Image au centre des Services -->
-                <div class="col-xs-12 col-md-2 d-none d-lg-block">
+                <div class="col-lg-2 d-none d-lg-block mt-5">
                     <img class="figure-image img-fluid m3" src="../../assets/images/one_page/figure-1.png" alt="image" />
                     <img class="figure-image img-fluid m3" src="../../assets/images/one_page/figure-2.png" alt="image" />
                     <img class="figure-image img-fluid m3" src="../../assets/images/one_page/figure-3.png" alt="image" />
                 </div>
 
                 <!-- Services (droite) -->
-                <div class="col-xs-12 col-sm-6 col-md-5">
+                <div class="col-xs-12 col-sm-6 col-lg-5">
                     <div class="row services-icons-texts-1">
-                        <div class="col-md-3 mt-3 d-none d-lg-block">
+                        <div class="col-md-2 mt-3 d-none d-lg-block">
                             <i class="services-icon fas fa-drafting-compass fa-2x"></i>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-10">
                             <h4 class="services-titles">Conception Graphique & WebDesign</h4>
                             <p>Logos, templates Web, plaquettes publicitaires,<br> carte de visite, charte graphique...</p>
                         </div>
                     </div>
                     <div class="row services-icons-texts-2">
-                        <div class="col-md-3 mt-3 d-none d-lg-block">
+                        <div class="col-md-2 mt-3 d-none d-lg-block">
                             <i class="services-icon fas fa-project-diagram fa-2x"></i>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-10">
                             <h4 class="services-titles">Pages Dynamiques</h4>
                             <p>Des animations de contenu non intrusives<br> pour améliorer vos projets.</p>
                         </div>
                     </div>    
                     <div class="row services-icons-texts-1">
-                        <div class="col-md-3 mt-3 d-none d-lg-block">
+                        <div class="col-md-2 mt-3 d-none d-lg-block">
                             <i class="services-icon fas fa-database fa-2x"></i>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-10">
                             <h4 class="services-titles">Interface d'administration</h4>
                             <p>Outils spécifiques au bon fonctionnement <br>de votre entreprise.</p>
                         </div>
                     </div>
                     <div class="row services-icons-texts-2">
-                        <div class="col-md-3 mt-3 d-none d-lg-block">
+                        <div class="col-md-2 mt-3 d-none d-lg-block">
                             <i class="services-icon fas fa-tablet-alt fa-2x"></i>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-10">
                             <h4 class="services-titles">Responsive Design</h4>
                             <p>Compatible et adapté tous supports,<br> tablettes, mobiles et ordinateurs.</p>
                         </div>
-                    </div>
+                    </div>                
                 </div>
             </div>
         </div>
@@ -306,7 +304,7 @@ $form = new Form($_POST, $errors);
     <div class="container-fluid">
         
         <div class="text-center">
-            <h2 class="section-title-contact"><strong>Contactez-moi</strong></h2>
+            <h2 class="section-title-contact mt-1"><strong>Contactez-moi</strong></h2>
             <div class="contact-content">
                 <p>
                     Une question ? Un projet ? N'hésitez pas à me contacter. 

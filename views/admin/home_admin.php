@@ -41,8 +41,7 @@ $nbUserRoleVisitor = $statisticTable->totalUserRole('visitor');
 $session = new Session();
 $messages = $session->getMessage('flash');
 
-//dd($messages);
-//dd($posts);
+$title = 'Administration du blog des réalisations'
 ?>
 
 <div class="container-fluid">

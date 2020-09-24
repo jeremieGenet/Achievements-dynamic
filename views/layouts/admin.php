@@ -3,9 +3,14 @@
 <!-- class "h-100" pour height 100% (et permettre de mettre le footer tout en bas)-->
 <html lang="fr" class="h-100"> 
     <head>
+        <!-- Meta -->
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="administration du blog">
+        <meta name="author" content="Jérémie Genet">
+        <!-- Icon du site -->
+        <link rel="shortcut icon" href="logo.png">
 
         <!-- Affichera "Mon site" si la variable "$title" n'est pas définie -->
         <title>

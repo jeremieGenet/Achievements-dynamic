@@ -8,11 +8,15 @@
     </title>
     <!-- Meta -->
     <meta charset="UTF-8">
-    <link rel="icon" href="./favicon.ico" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Rapide aperçu de quelques projets perso, et présentation rapide">
-    <meta name="author" content="Jeremie Genet">    
+    <meta name="description" content="Développement Web, jeremie-genet.fr">
+    <meta name="author" content="Jérémie Genet">
+
+    <!-- Icon du site -->
+    <link rel="shortcut icon" href="logo.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
 
     <!-- Fontawesome -->
     <link href="../../assets/plugins/fontawesome/css/fontawesome.css" rel="stylesheet">

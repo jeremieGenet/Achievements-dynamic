@@ -5,6 +5,7 @@
 .card{
     border: 2px solid rgb(197, 197, 197);
     background-color: rgb(223, 223, 223);
+    box-shadow: 2px 5px 5px  rgba(0, 0, 0, 0.5);
 }
 .card-body{
     padding: 0.75em;
