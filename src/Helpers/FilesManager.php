@@ -2,11 +2,10 @@
 namespace App\Helpers;
 
 use App\Connection;
+use App\Exception\UploadFileException;
 use App\Helpers\ResizeImage;
 use App\Table\{ImageTable, LogoTable, PostTable};
 use Exception;
-
-
 
 /**
  * Permet de gérer une collection d'images (vérif, upload, suppression)
@@ -156,7 +155,6 @@ class FilesManager{
             // UPLOAD D'UNE COLLECTION D'IMAGES
             // Si c'est une collection d'images (pour les images ou les logos) alors on upload les fichiers
             if(is_array($data['name'])){
-                //dd($data['name']); // /******************************************************************/
                 /*
                 array:1 [▼
                     0 => "placeholder2.png"
@@ -171,15 +169,17 @@ class FilesManager{
                 for($i=0; $i<$countfiles; $i++){
 
                     $file = strtolower($data['name'][$i]);
-
+                    //dd($file); // c++.png
                     $name = pathinfo($file, PATHINFO_FILENAME); // nom du fichier sans son extension (vimeo)
                     $ext  = strtolower(pathinfo($file, PATHINFO_EXTENSION)); // extension du fichier (png)
                     $size = $data['size'][$i];
 
                     // Si un nom de fichier (de la collection de logos OU de la collection d'images) existe déja dans la bdd alors... on renomme avec son id (image(12).jpg)
+                    // ('existsLogo()' et 'existsImage()' retournent true si un fichier existe dans la bdd)
                     if($this->logoTable->existsLogo($file) || $this->imageTable->existsImage($file)){
                         // Condition si le param 'currentPostId' de 'upload()' est défini (c'est que nous sommes en Edition, donc on ajoute l'id du post actuel)
                         if($currentPostId !== null){
+                            //dd('test');
                             // On renomme le fichier avec des parenthèses et l'id du post actuel (édition)
                             $newfile = $name .'('. $currentPostId . ')' . '.'. $ext; // ex : image(12).jpg
                             $file = $newfile;
@@ -187,6 +187,7 @@ class FilesManager{
                         }else{
                             // On récup l'id du post qui va être créé
                             $nextPostId = $this->postTable->getNextId() - 1;
+                            //dd($nextPostId);
                             // On renomme le fichier avec des parenthèses et l'id du post
                             $newfile = $name .'('. $nextPostId . ')' . '.'. $ext; // ex : image(12).jpg
                             $file = $newfile;
@@ -196,17 +197,12 @@ class FilesManager{
                     // Chemin et nom du fichier (assets/uploads/img-collection/momFichier.jpg)
                     $pathFile = $path . $file;
 
-                    //dd($pathFile, $data['tmp_name'][$i]); // "assets/uploads/img-collection/placeholder.JPG" et "D:\Code\xampp\tmp\php6F98.tmp"  /*********************/
-
                     // Upload des fichiers (move_uploaded_file() permet de déplacer un fichier param1 = nom du fichier à déplacer, param2= direction)
                     move_uploaded_file($data['tmp_name'][$i], $pathFile);
                     // On rempli notre tableau '$newDate' avec le nom et taille des fichiers
                     $newData['name'][$i] = $file; 
                     $newData['size'][$i] = $size;
 
-                    //dd($newData['name'][$i]); /*********************** */
-
-                    
                     // GESTION DE LA REDIMENSION DES COLLECTIONS D'IMAGES (Images et logos)
                     // Si le champs est la collection d'images alors... RESIZE des images
                     if($fieldName === "image-collection"){
@@ -231,9 +227,11 @@ class FilesManager{
                     }
                     */
                 }
+                
                 return $newData; // Retourne le tableau avec les données traitées (le nom s'il a été renommé)
             }
         }catch(Exception $e){
+            //throw new UploadFileException($this->table, $id);
             return false;
         }
         

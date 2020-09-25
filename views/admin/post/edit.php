@@ -114,8 +114,17 @@ if(!empty($_POST)){
 
         if($imageCollection['error'][0] !== 4){ // Si la collection d'image n'est pas vide
             $pathImage = 'assets/uploads/img-collection/';
-            // // Upload (et rename si l'un d'entre eux existe déjà) de la collection de logo dans le dossier dédié (retourne les noms des fichiers) (et rename si l'un d'entre eux existe déjà) de la collection de logo dans le dossier dédié (retourne les noms des fichiers)
-            $uploadImages = $filesManager->upload('image-collection', $pathImage);
+            // Upload (et rename si l'un d'entre eux existe déjà) de la collection de logo dans le dossier dédié (retourne les noms des fichiers) 
+            //(et rename si l'un d'entre eux existe déjà) de la collection de logo dans le dossier dédié (retourne les noms des fichiers)
+            $uploadImages = $filesManager->upload('image-collection', $pathImage, $post->getId());
+
+            // Si l'upload de logo n'a pas fonctionné...
+            if($uploadImages === false){
+                // On crée un message flash
+                $session->setMessage('flash', 'danger', "L'upload d'images n'a pas fonctionné (Problème encore inconnu."); 
+                header('Location: ' . $router->url('admin_post', ['id' => $id]));
+                exit();     
+            }
 
             // Récup du nb d'images dans la collection postée
             $countImages = count($imageCollection['name']);
@@ -140,14 +149,25 @@ if(!empty($_POST)){
         // ENREGISTREMENT DE LA COLLECTION DE LOGO DANS LA BDD
         // Récup des logos postés
         $logoCollection = $_FILES['logo-collection'];
+        //dd($logoCollection); // Ok
 
         if($logoCollection['error'][0] !== 4){ // Si la collection de logo n'est pas vide
             $pathLogo = 'assets/uploads/logo-collection/';
-            // // Upload (et rename si l'un d'entre eux existe déjà) de la collection de logo dans le dossier dédié (retourne les noms des fichiers) (et rename si l'un d'entre eux existe déjà) de la collection de logo dans le dossier dédié (retourne les noms des fichiers)
-            $uploadLogos = $filesManager->upload('logo-collection', $pathLogo);
+            // Upload (et rename si l'un d'entre eux existe déjà) de la collection de logo dans le dossier dédié (retourne les noms des fichiers) 
+            // (et rename si l'un d'entre eux existe déjà) de la collection de logo dans le dossier dédié (retourne les noms des fichiers)
+            $uploadLogos = $filesManager->upload('logo-collection', $pathLogo, $post->getId());
+            
+            // Si l'upload de logo n'a pas fonctionné...
+            if($uploadLogos === false){
+                // On crée un message flash
+                $session->setMessage('flash', 'danger', "L'upload de logo n'a pas fonctionné, (Problème encore inconnu."); 
+                header('Location: ' . $router->url('admin_post', ['id' => $id]));
+                exit();     
+            }
 
             // Récup du nb de logos dans la collection postée
             $countLogos = count($logoCollection['name']);
+            //dd($countLogos); // Ok
             for($i=0; $i<$countLogos; $i++){
                 // On vide la collection de logos
                 $post->removeCollectionLogo();
@@ -162,6 +182,7 @@ if(!empty($_POST)){
                 $post->addlogo($logo); // Ne sert à rien(si pas utilisé sur cette page), puisque les logos ne persitent pas dans un post 
                 // Insertion des logos dans la bdd
                 $logoTable = new LogoTable($pdo);
+                //dd($logo);
                 $logoTable->insert($logo);
             }
         }
@@ -176,6 +197,13 @@ if(!empty($_POST)){
             $pathImage = 'assets/uploads/img-main/'; 
             // Upload (et rename si elle existe déjà) de l'image principale dans le dossier (retourne le nom du fichier)
             $fileName = $filesManager->upload('picture', $pathImage, $post->getId());
+            // Si l'upload de logo n'a pas fonctionné...
+            if($fileName === false){
+                // On crée un message flash
+                $session->setMessage('flash', 'danger', "L'upload de l'image principale n'a pas fonctionné, Problème encore inconnu."); 
+                header('Location: ' . $router->url('admin_post', ['id' => $id]));
+                exit();     
+            }
             // On supprime le fichier (ex : 'assets/img/haru.jpg') du post actuel s'il existe (puisqu'on vient d'en ajouter de nouveaux)
             $filesManager->remove($post->getPicture(), $pathImage);
             

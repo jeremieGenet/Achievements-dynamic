@@ -12,6 +12,9 @@ use App\Table\{PostTable, LogoTable, ImageTable, CategoryTable};
 $pdo = Connection::getPDO();
 Auth::check();
 
+$postTable = new PostTable($pdo);
+$id = $postTable->getNextId(); // Récup de l'id du post qui va être crée
+//dd($id);
 
 $session = new Session();
 $messages = $session->getMessage('flash');
@@ -89,8 +92,7 @@ if(!empty($_POST)){
         // ENREGISTREMENT DES DONNEES DE L'ARTICLE (par les données postées dans le formulaire)
         $post->setTitle(htmlentities($_POST['title']));
 
-        // Gestion des catégories
-        $postTable = new PostTable($pdo);
+        // GESTION DES CATEGORIES
         // Récup des catégories sous forme d'objet via leurs id (passés via le formulaire)
         $cats = $postTable->findCategoriesByid($_POST['category']); 
         foreach($cats as $cat){
@@ -102,6 +104,7 @@ if(!empty($_POST)){
         $post->setLikes('0');
         $post->setIsLiked('0');
 
+        // GESTION DE L'IMAGE PRINCIPALE
         // Upload (et rename si elle existe déjà) de l'image principale dans le dossier (retourne le nom du fichier)
         $fileName = $filesManager->upload('picture', 'assets/uploads/img-main/');
         // Modif de l'image du post (avec le nom de fichier traité via la méthode "upload()")
@@ -116,8 +119,17 @@ if(!empty($_POST)){
         // Si la collection d'image n'est pas vide
         if($imageCollection['error'][0] !== 4){
             // Upload (et rename si l'un d'entre eux existe déjà) de la collection d'image dans le dossier dédié (retourne les noms des fichiers)
-            $imageNames = $filesManager->upload('image-collection', 'assets/uploads/img-collection/');
-            //dd($imageNames); // Retourn false /********************************************* */
+            $uploadImages = $filesManager->upload('image-collection', 'assets/uploads/img-collection/');
+            
+            //dd($uploadImages); // Retourn false /********************************************* */
+
+            // Si l'upload de logo n'a pas fonctionné...
+            if($uploadImages === false){
+                // On crée un message flash
+                $session->setMessage('flash', 'danger', "L'upload de l'image principale n'a pas fonctionné, Problème encore inconnu."); 
+                header('Location: ' . $router->url('admin_post', ['id' => $id]));
+                exit();     
+            }
 
             // ENREGISTREMENT DE LA COLLECTION D'IMAGE DANS LA BDD
             // Récup du nb d'image dans la collection postée
@@ -125,8 +137,8 @@ if(!empty($_POST)){
             for($i=0; $i<$countImages; $i++){
                 // Transformation des Images reçus en objets Image
                 $newImage = new Image();
-                $newImage->setName($imageNames['name'][$i]);/************** reçoit null ???*****************/
-                $newImage->setSize($imageNames['size'][$i]);
+                $newImage->setName($uploadImages['name'][$i]);/************** reçoit null ???*****************/
+                $newImage->setSize($uploadImages['size'][$i]);
                 $newImage->setPost_id($post->getId()); // On récup l'id du post nouvellement créé
 
                 // Ajout des images dans le post  
@@ -142,8 +154,16 @@ if(!empty($_POST)){
         $logoCollection = $_FILES['logo-collection'];
         // Si la collection de logo n'est pas vide
         if($logoCollection['error'][0] !== 4){
-            // Upload (et rename si l'un d'entre eux existe déjà) de la collection de logo dans le dossier dédié (retourne les noms des fichiers)
-            $logoNames = $filesManager->upload('logo-collection', 'assets/uploads/logo-collection/');
+            // Upload (et rename si l'un d'entre eux existe déjà) de la collection de logo dans le dossier dédié (retourne les noms des fichiers, ou false)
+            $uploadLogos = $filesManager->upload('logo-collection', 'assets/uploads/logo-collection/');
+
+            // Si l'upload de logo n'a pas fonctionné...
+            if($uploadLogos === false){
+                // On crée un message flash
+                $session->setMessage('flash', 'danger', "L'upload de l'image principale n'a pas fonctionné, Problème encore inconnu."); 
+                header('Location: ' . $router->url('admin_post', ['id' => $id]));
+                exit();     
+            }
 
             // ENREGISTREMENT DE LA COLLECTION DE LOGO DANS LA BDD
             // Récup du nb de logos dans la collection postée
@@ -151,8 +171,8 @@ if(!empty($_POST)){
             for($i=0; $i<$countLogos; $i++){
                 // Transformation des logos reçus en objets Logo
                 $logo = new Logo();
-                $logo->setName($logoNames['name'][$i]);
-                $logo->setSize($logoNames['size'][$i]);
+                $logo->setName($uploadLogos['name'][$i]);
+                $logo->setSize($uploadLogos['size'][$i]);
                 $logo->setPost_id($post->getId()); // On récup l'id du post nouvellement créé
 
                 // Ajout des logos dans le post

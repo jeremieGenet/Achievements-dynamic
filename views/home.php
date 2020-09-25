@@ -15,7 +15,7 @@ $messages = $session->getMessage('flash');
 $pdo = Connection::getPDO();
 
 //$posts = (new PostTable($pdo))->findByCategory(1, 3);
-$posts = (new PostTable($pdo))->findLatest(8); // Nombre de réalisations affichées
+$posts = (new PostTable($pdo))->findLatest(6); // Nombre de réalisations affichées
 //dd($posts);
 $errors = [];
 // Instanciation du formulaire de contact
@@ -103,7 +103,7 @@ $form = new Form($_POST, $errors);
     </div>
 </div>
 
-<!-- LANGUAGES -->
+<!-- LANGUAGES WEB -->
 <div id="languages" class="languages-section"> <!-- class="testimonials-section" -->
     <div class="container">
         <h2 class="section-title text-center  text-dark">Les<strong> principaux langages </strong>du Web </h2>

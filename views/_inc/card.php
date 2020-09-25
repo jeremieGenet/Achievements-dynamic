@@ -2,7 +2,7 @@
 
 <div class="card-deck">
     <?php foreach($posts as $post) : ?>
-    <div class="col-md-3 mb-4 p-0">
+    <div class="col-md-4 mb-4 p-0">
         <div class="card h-100">
             <div class="card-header">
                 <h5 class="card-title text-center"><?= $post->getTitle() ?></h5>

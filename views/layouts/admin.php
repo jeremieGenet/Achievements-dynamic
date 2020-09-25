@@ -86,17 +86,19 @@
             
             <!-- Debug session utilisateur (affichage) -->
             <?php 
-                
                 if(isset($_SESSION)){
                     var_dump($_SESSION);
                 }
                 if(isset($_SESSION['flash'])){
                     var_dump($_SESSION['flash']);
                 }
-                if(isset($_SESSION['infoUser'])){
-                    var_dump($_SESSION['infoUser']);
+                if(isset($messages)){
+                    var_dump($messages);
                 }
-
+                if(isset($_ENV)){
+                    //var_dump($_ENV); // Variables d'environnement
+                }
+                
                 //var_dump($_SERVER);
                 //var_dump($_SERVER['HTTP_REFERER']); // Dernière url absolue visitée
 

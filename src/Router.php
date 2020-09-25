@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-use App\Exception\{AuthException, AuthRoleException, PaginationException, NotFoundException};
+use App\Exception\{AuthException, AuthRoleException, PaginationException, NotFoundException, UploadFileException};
 use App\Session;
 use Exception;
 
@@ -56,6 +56,8 @@ class Router{
         return $this->router->generate($name, $params);
     }
 
+    
+
     // Lance l'affichage en fonction du layout
     public function run(): self
     {
@@ -79,6 +81,8 @@ class Router{
             //$layout = 'layouts/admin.php';
         }
         //dd($view);
+
+        
 
         if($blog){
             $layout = 'layouts/blog.php';
@@ -129,10 +133,11 @@ class Router{
             //dd($e, $e->getCode());
             header('Location: ' . $this->url('error', ['codeError' => $code ]).'?forbidden=3');
             exit();
-        }catch(Exception $e){
-            // On attrate et stop toutes les autres Exception ici
-            dd($e, $e->getCode());
+        }catch(UploadFileException $e){
 
+
+            // On attrape et stop toutes les autres Exception ici
+            dd($e, $e->getCode());
         }
         
 

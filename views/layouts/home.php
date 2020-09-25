@@ -78,12 +78,11 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav mr-5">
                         <li class="nav-item"><a class="active nav-link scrollto" href="#hero">Accueil</a></li>
-                        
-                        <!-- <li class="nav-item"><a class="nav-link scrollto" href="#frameworks">FrameWorks</a></li> -->
+                        <li class="nav-item"><a class="nav-link scrollto" href="#languages">Web</a></li>
                         <li class="nav-item"><a class="nav-link scrollto" href="#achievements">Réalisations</a></li>
-                        <li class="nav-item"><a class="nav-link scrollto" href="#services">Mes services</a></li>                        
+                        <li class="nav-item"><a class="nav-link scrollto" href="#services">Services</a></li>                        
                         <li class="nav-item"><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" target="_blank" href="/realisations">Blog</a></li>
+                        <li class="nav-item ml-5"><a class="nav-link" target="_blank" href="/realisations">Blog</a></li>
                 </div>
             </nav>                    
         </div>

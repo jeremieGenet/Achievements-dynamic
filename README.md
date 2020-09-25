@@ -1,4 +1,4 @@
-# Portfolio dynamique V2.5-local (avec multi-layout)
+# Portfolio dynamique V2.6-local (avec multi-layout)
 
 ## Technos :
   PHP, Javascript, Bootstrap (administration)

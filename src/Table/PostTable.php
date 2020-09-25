@@ -20,10 +20,11 @@ class PostTable extends Table{
         function exists()  Vérif si un item existe
     */
 
-    // Récup le prochain id de la table (l'id qui sera nouvellement créé)
+    // Récup le prochain id de la table (l'id qui sera nouvellement créé) (utilisé x2 dans FilesManager.php)
     public function getNextId()
     {
-        $req = $this->pdo->query("SHOW TABLE STATUS FROM portfolio2 LIKE '{$this->table}'");/*************A MODIFIER EN PRODUCTION******************************************** */
+        // PARAM D'ENVIRONNEMENT SUR LE NOM DE LA BASE DE DONNEE ($_ENV['local']['dbname'] = nom de la base de donnée)
+        $req = $this->pdo->query("SHOW TABLE STATUS FROM {$_ENV['local']['dbname']} LIKE '{$this->table}'");/*************A MODIFIER EN PRODUCTION******************************************** */
         $donnees = $req->fetch();
         return $donnees['Auto_increment'];
     }

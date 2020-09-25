@@ -820,7 +820,7 @@ a:focus {
     top: 130px;
   }
   .hero-carousel .carousel-inner .item-content-inner {
-    max-width: 300px;
+    /*max-width: 300px;*/
     padding-top: 120px;
   }
 }

@@ -1,6 +1,0 @@
-app.engine=phpcgi
-app.engine.version=7.2
-http.firewall=none
-environment=production
-container.image=legacy
-

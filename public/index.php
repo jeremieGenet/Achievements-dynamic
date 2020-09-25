@@ -1,8 +1,8 @@
 <?php
 use App\Router;
 
-require'../vendor/autoload.php';
-
+require'../vendor/autoload.php'; 
+require_once('../env.php'); // Variables d'environnement
 
 // Contante qui défini le timestamp avec les micro-secondes (pour le calcul du temps de génération d'une page dans le footer)
 define('DEBUG_TIME', microtime(true));
@@ -12,7 +12,7 @@ $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
-// Redirection générique pour toute url que possède un param "?page=1" vers la même url mais sans ce param (Evite de voir lors de la pagination dans l'url: ...?page=1)
+// Redirection générique pour les url qui possèdent un param "?page=1" vers la même url mais sans ce param (Evite de voir lors de la pagination dans l'url: ...?page=1)
 if(isset($_GET['page']) && $_GET['page'] === '1'){
     $uri = explode('?', $_SERVER['REQUEST_URI'])[0];
     $get = $_GET;
