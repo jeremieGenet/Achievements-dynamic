@@ -23,7 +23,7 @@ $categories = $tableCategories->findAll();
     <meta name="description" content="Blog qui regoupe mes réalisations">
 	<meta name="author" content="Jérémie Genet">    
 	<!-- Icon du site -->
-	<link rel="shortcut icon" href="../logo.png">
+	<link rel="shortcut icon" href="../../logo.png">
 
 	<!-- Fontawesome -->
     <link href="../../assets/plugins/fontawesome/css/fontawesome.css" rel="stylesheet">

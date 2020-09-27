@@ -10,7 +10,7 @@
         <meta name="description" content="administration du blog">
         <meta name="author" content="Jérémie Genet">
         <!-- Icon du site -->
-        <link rel="shortcut icon" href="logo.png">
+        <link rel="shortcut icon" href="../logo.png">
 
         <!-- Affichera "Mon site" si la variable "$title" n'est pas définie -->
         <title>
@@ -86,6 +86,7 @@
             
             <!-- Debug session utilisateur (affichage) -->
             <?php 
+                /*
                 if(isset($_SESSION)){
                     var_dump($_SESSION);
                 }
@@ -98,6 +99,7 @@
                 if(isset($_ENV)){
                     //var_dump($_ENV); // Variables d'environnement
                 }
+                */
                 
                 //var_dump($_SERVER);
                 //var_dump($_SERVER['HTTP_REFERER']); // Dernière url absolue visitée

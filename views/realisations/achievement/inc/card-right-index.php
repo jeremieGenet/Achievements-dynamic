@@ -37,8 +37,8 @@
                     <?php foreach($post->getLogoCollection() as $logo): ?>
                         <img 
                             src="<?= '../../assets/uploads/logo-collection/'.$logo->getName() ?>" 
-                            class="img-thumbnail mb-1" 
-                            style="width: 31%;"
+                            class="img-thumbnail"
+                            style="width: 30%;"
                             alt="<?= $logo->getName() ?>"
                         >
                     <?php endforeach ?>

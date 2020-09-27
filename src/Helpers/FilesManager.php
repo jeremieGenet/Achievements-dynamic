@@ -186,7 +186,7 @@ class FilesManager{
                         // Sinon si le param 'currentPostId' de "upload()" n'est pas défini (c'est que nous sommes en Création, donc on ajoute l'id du post qui va être créé)
                         }else{
                             // On récup l'id du post qui va être créé
-                            $nextPostId = $this->postTable->getNextId() - 1;
+                            $nextPostId = $this->postTable->getNextId();
                             //dd($nextPostId);
                             // On renomme le fichier avec des parenthèses et l'id du post
                             $newfile = $name .'('. $nextPostId . ')' . '.'. $ext; // ex : image(12).jpg

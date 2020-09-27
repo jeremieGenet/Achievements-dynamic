@@ -106,9 +106,16 @@ if(!empty($_POST)){
 
         // GESTION DE L'IMAGE PRINCIPALE
         // Upload (et rename si elle existe déjà) de l'image principale dans le dossier (retourne le nom du fichier)
-        $fileName = $filesManager->upload('picture', 'assets/uploads/img-main/');
+        $uploadImage = $filesManager->upload('picture', 'assets/uploads/img-main/');
         // Modif de l'image du post (avec le nom de fichier traité via la méthode "upload()")
-        $post->setPicture($fileName);
+        // Si l'upload de logo n'a pas fonctionné...
+        if($uploadImage === false){
+            // On crée un message flash
+            $session->setMessage('flash', 'danger', "L'upload de l'image principale n'a pas fonctionné (Extension en Majuscules?)."); 
+            header('Location: ' . $router->url('admin_post', ['id' => $id]));
+            exit();     
+        }
+        $post->setPicture($uploadImage);
 
         // ENREGISTREMENT DU POST DANS LA BDD (avant la collection d'images et de logo pour récup l'id du post dans les objets logo)
         $postTable->insert($post);
@@ -126,7 +133,7 @@ if(!empty($_POST)){
             // Si l'upload de logo n'a pas fonctionné...
             if($uploadImages === false){
                 // On crée un message flash
-                $session->setMessage('flash', 'danger', "L'upload de l'image principale n'a pas fonctionné, Problème encore inconnu."); 
+                $session->setMessage('flash', 'danger', "L'upload des Images de la collection n'a pas fonctionné (Extension en Majuscules?)."); 
                 header('Location: ' . $router->url('admin_post', ['id' => $id]));
                 exit();     
             }
@@ -160,7 +167,7 @@ if(!empty($_POST)){
             // Si l'upload de logo n'a pas fonctionné...
             if($uploadLogos === false){
                 // On crée un message flash
-                $session->setMessage('flash', 'danger', "L'upload de l'image principale n'a pas fonctionné, Problème encore inconnu."); 
+                $session->setMessage('flash', 'danger', "L'upload des logos n'a pas fonctionné (Extension en Majuscules?)."); 
                 header('Location: ' . $router->url('admin_post', ['id' => $id]));
                 exit();     
             }

@@ -121,7 +121,7 @@ if(!empty($_POST)){
             // Si l'upload de logo n'a pas fonctionné...
             if($uploadImages === false){
                 // On crée un message flash
-                $session->setMessage('flash', 'danger', "L'upload d'images n'a pas fonctionné (Problème encore inconnu."); 
+                $session->setMessage('flash', 'danger', "L'upload d'images de la collection n'a pas fonctionné (Extension en Majuscules?)."); 
                 header('Location: ' . $router->url('admin_post', ['id' => $id]));
                 exit();     
             }
@@ -160,7 +160,7 @@ if(!empty($_POST)){
             // Si l'upload de logo n'a pas fonctionné...
             if($uploadLogos === false){
                 // On crée un message flash
-                $session->setMessage('flash', 'danger', "L'upload de logo n'a pas fonctionné, (Problème encore inconnu."); 
+                $session->setMessage('flash', 'danger', "L'upload de logos n'a pas fonctionné, (Extension en Majuscules?)."); 
                 header('Location: ' . $router->url('admin_post', ['id' => $id]));
                 exit();     
             }
@@ -200,7 +200,7 @@ if(!empty($_POST)){
             // Si l'upload de logo n'a pas fonctionné...
             if($fileName === false){
                 // On crée un message flash
-                $session->setMessage('flash', 'danger', "L'upload de l'image principale n'a pas fonctionné, Problème encore inconnu."); 
+                $session->setMessage('flash', 'danger', "L'upload de l'image principale n'a pas fonctionné, (Extension en Majuscules?)."); 
                 header('Location: ' . $router->url('admin_post', ['id' => $id]));
                 exit();     
             }

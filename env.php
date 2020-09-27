@@ -8,7 +8,7 @@
 */
 
 // Variable de connexion en PROD (domaine => http://jeremie-genet.fr)
-$_ENV['prod']['host'] = 'host=jeremiegwy96.mysql';
+$_ENV['prod']['host'] = 'jeremiegwy96.mysql.db';
 $_ENV['prod']['dbname'] = 'jeremiegwy96';
 $_ENV['prod']['username'] = 'jeremiegwy96';
 $_ENV['prod']['password'] = '1664166433Expor';

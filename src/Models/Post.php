@@ -145,10 +145,11 @@ class Post{
     public function getCreatedAt_fr()
     {
         $timesTamp = $this->getCreatedAt()->getTimestamp();
-        //setlocale(LC_TIME, ['fr', 'fra', 'fr_FR', 'fr_FR.utf8']);
-        setlocale(LC_TIME, ['fr','utf8']);
+        setlocale(LC_TIME, ['fr', 'fra', 'fr_FR', 'fr_FR.utf8', 'utf8']);
+        //setlocale(LC_TIME, ['fr','utf8']);
         //return strftime('%A %d' .'/'. '%m' .'/'. '%Y', $timesTamp); // mercredi 20/10/2020
-        return strftime('%A %d %b %Y', $timesTamp); // mercredi 20 aout 2017
+        //return strftime('%A %d %b %Y', $timesTamp); // mercredi 20 aout 2017
+        return strftime('%d' .'/'. '%m' .'/'. '%Y', $timesTamp); // 20/10/2020
     }
 
 

@@ -50,10 +50,7 @@ h1, h2, h3{
     margin: 0em 1em 0em 1em;
     color: black;
 }
-.__card-categories{
-    padding-top: 2%;
-}
 .__card-header, .__card-createdAt{
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin-top: 0.25em;
+    margin-bottom: 0.5em;
 }
