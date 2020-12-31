@@ -52,19 +52,34 @@ class Router{
     }
 
     // Permet d'utiliser pour les liens la fonction "url()" plutôt que "$router->generate"
-    public function url(string $name, array $params = []){
+    public function url(string $name, array $params = [])
+    {
         return $this->router->generate($name, $params);
     }
 
+    /**
+     * Permet d'afficher une page et de lui donner les paramètres utiles à sont affichage
+     *
+     * @param string $file (fichier à inclure)
+     * @param array $parameters (les paramètres utiles au fichier)
+     * @return void
+     */
+    public static function render(string $file, $parameters = []){
+        // extract() permet d'extraire les données d'un tableau associatif
+        extract($parameters); 
+        // Permet d'inclure le fichier passé en param dans le dossier 'view'
+        include "../views/{$file}";
+    }
     
 
     // Lance l'affichage en fonction du layout
     public function run(): self
     {
         $match = $this->router->match(); // renvoie un tableau associatif des routes qui correspondent (qui match)
-        $view = $match['target']; // Récup du chemin du fichier du template désiré
+        $view = $match['target']; // Récup du chemin du fichier du template désiré (ex : "admin/home_admin.php")
         $params = $match['params']; // Permet de récup les params d'url (id, slug...)
         $router = $this;
+        //dd($admin);
 
         // CHANGEMENT DE LAYOUT
         // SI ADMINISTRATION ('admin/' dans l'url) ALORS NOUVEAU LAYOUT, sinon layout par défaut
@@ -122,7 +137,7 @@ class Router{
             header('Location: ' . $this->url('admin_home') . '?forbidden=2');
             exit();
         }catch(PaginationException $e){
-            // ERREUR (lorsque l'url de la pagination est modifiéé ou erronnée)
+            // ERREUR (lorsque l'url de la pagination est modifiée ou erronnée)
             $code = $e->getCode(); // Code de l'erreur
             // Redirection vers la page login.php (page de connexion)
             header('Location: ' . $this->url('error', ['codeError' => $code ]).'?forbidden=3');
@@ -131,12 +146,10 @@ class Router{
             // ERREUR
             $code = $e->getCode(); // Code de l'erreur
             //dd($e, $e->getCode());
-            header('Location: ' . $this->url('error', ['codeError' => $code ]).'?forbidden=3');
+            header('Location: ' . $this->url('error', ['codeError' => $code ]).'?forbidden=4');
             exit();
         }catch(UploadFileException $e){
-
-
-            // On attrape et stop toutes les autres Exception ici
+            // On attrape et stop toutes les autres Exceptions ici
             dd($e, $e->getCode());
         }
         

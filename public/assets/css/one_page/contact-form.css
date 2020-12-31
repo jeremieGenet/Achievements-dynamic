@@ -33,7 +33,7 @@
     box-shadow: none;
     outline: none; /* Supprime l'encadrement au focus de l'input ou textarea */
     border: none;
-    border-bottom: 2px solid #999;
+    border-bottom: 2px solid #999; 
     background-color: rgb(73, 77, 85);
     box-shadow: 3px 10px 10px  rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-out; /* Transition du zoom */
@@ -60,7 +60,7 @@
     position: absolute;
     top: 10px;
     left: 0;
-    color: #999;
+    color: rgb(194, 194, 194);
     transition: .5s;
     pointer-events: none;
 }

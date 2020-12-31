@@ -18,6 +18,12 @@
   - Redimensionnement d'images/collections (pour avoir un affichage calibré lors de la présentation des réalisations)
   - Gestion de layout multiple.
   - Permissions d'administration
+  
+  #### URLS (principales):
+  - https://jeremie-genet.fr
+  - https://jeremie-genet.fr/cv
+  - https://jeremie-genet.fr/realisations
+  - https://jeremie-genet.fr/admin
 
 ### Objectifs :
   Mettre en pratique et intégrer de nouvelles connaissances (front ou back). 
@@ -32,7 +38,7 @@ Administration:
     ESPACE MEMBRE :
         - Créer un formulaire de modification du profil d'utilisateur, avec ajout d'avatars.
         - Améliorer la page d'accueil de l'administration avec des stats sur les données du site (Nb d'articles, nb d'utilisateur)
-        - Ajouter Un table 'categories' et mettre les catégories actuelles comme sous-catégories (Grosse Mise à jour à prévoir, et modif de la bdd et des relations)
+        - Ajouter Une table 'categories' et mettre les catégories actuelles comme sous-catégories (Grosse Mise à jour à prévoir, et modif de la bdd et des relations)
 
 
 #### Pour lancer le projet (serveur interne PHP sur le dossier "public") :

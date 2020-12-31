@@ -10,8 +10,7 @@ $session = new Session();
 //dd($_SERVER['HTTP_ORIGIN']) = "http://jeremie-genet.ovh"
 // PREMIERE COUCHE DU POT DE MIEL
 // Vérif que le visiteur vient de bien de notre site ($_SERVER['HTTP_ORIGIN'] permet de voir d'ou vient le visiteur, et s'il ne vient pas de notre site cette superGlobale n'existe pas)
-if(isset($_SERVER['HTTP_ORIGIN']) && $_SERVER['HTTP_ORIGIN'] == $_ENV['form-contact-email']){ // EN PRODUCTION mettre : http://jeremie-genet.fr  au lieu de /  http://localhost:8000
-
+if(isset($_SERVER['HTTP_ORIGIN']) && $_SERVER['HTTP_ORIGIN'] == $_ENV['form-contact-email']){ // EN PRODUCTION mettre : https://jeremie-genet.fr  au lieu de /  http://localhost:8000
     // Vérif si le formulaire est envoyé en méthode POST
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
@@ -42,7 +41,7 @@ if(isset($_SERVER['HTTP_ORIGIN']) && $_SERVER['HTTP_ORIGIN'] == $_ENV['form-cont
 
                 // En-têtes additionnels
                 //$headers[] = 'To: Mary <mary@example.com>, Kelly <kelly@example.com>'; // Liste affichée des réceptionnaire du mail
-                $headers[] = 'From: Contact Site'.$name.' <'.$email.'>'; // Affichage de l'intitulé du mail (Anniversaire) dans la boite de réception du
+                $headers[] = 'From: Mon site '.$name.' <'.$email.'>'; // Affichage de l'intitulé du mail dans la boite de réception
                 //$headers[] = 'Cc: anniversaire_archive@example.com'; // Boîte de dialogue pour répondre
                 //$headers[] = 'Bcc: anniversaire_verif@example.com';
 
@@ -67,7 +66,7 @@ if(isset($_SERVER['HTTP_ORIGIN']) && $_SERVER['HTTP_ORIGIN'] == $_ENV['form-cont
                 // Vérif si l'email à bien été envoyé
                 // Param1= Destinataire, Param2= sujet du mail, Param3= Contenu du message, Param4= les paramètres du header (mail() retourne 'true' si le mail est parti)
                 if(mail('jamyjam82377@gmail.com', $subject, $messageFormated, implode("\r\n", $headers)) === true){
-                    $session->setMessage('flash', 'success', "Formulaire bien envoyé !");
+                    $session->setMessage('flash', 'success', "Votre message à bien été bien envoyé !");
                     header('Location: '.$router->url('home'));
                 }else{
                     //mail('jamyjam82377@gmail.com', $subject, $messageFormated, $headers);

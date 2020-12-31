@@ -1,8 +1,10 @@
 <?php
+
 namespace App\HTML;
 
 // Génére les champs d'un formulaire
-class Form{
+class Form
+{
 
     private $data;
     private $errors;
@@ -23,8 +25,8 @@ class Form{
      * @param string $name (représente le nom du champ input, mais aussi l'id. Représente aussi l'attribut 'for' de label)
      * @param string $label (représente le nom du label)
      * @return string (retourne un input + label de formulaire)
-     */ 
-    public function input(string $type, string $name, string $label, string $placeholder=""): string
+     */
+    public function input(string $type, string $name, string $label, string $placeholder = ""): string
     {
         // TODO : Ajouter l'attribut "required" au champs input
         $newClass = self::$class;
@@ -39,7 +41,7 @@ class Form{
 HTML;
     }
 
-    
+
     // Input type password (confirmation)
     public function inputPasswordConfirm(string $name, string $label): string
     {
@@ -57,7 +59,7 @@ HTML;
     }
 
     // INPUTS CHECK-BOX (pour les catégories) Retournera les id des catégories à la validation du formulaire: [0 => "1", 1 => "2", ...] 
-    public function inputCheckBox(int $id, string $category, string $name, string $checked=""): string
+    public function inputCheckBox(int $id, string $category, string $name, string $checked = ""): string
     {
         return <<<HTML
             <input class="{$this->getCheckBoxClass($name)}"  type="checkbox" name='category[]' value="{$id}" id="{$id} {$category}"  $checked >
@@ -66,19 +68,19 @@ HTML;
             </label>
 HTML;
     }
-        
+
 
     // Input pour un champ de type file (images)
-    public function inputFile(string $name, string $label, string $helpMessage=""): string
+    public function inputFile(string $name, string $label, string $helpMessage = ""): string
     {
         // TODO : Ajouter l'attribut "required" au champs input
-        
+
         $value = $this->getValue($name); // $value représente la valeur postée dans l'input du formulaire
 
         return <<<HTML
         <div class="form-group">
             <label for="field{$name}">{$label}</label>
-            <input type="file" id="field{$name}" class="{$this->getInputClass($name,'-file')}" name="{$name}" value="{$value}" aria-describedby="fileHelp{$name}">
+            <input type="file" id="field{$name}" class="{$this->getInputClass($name, '-file')}" name="{$name}" value="{$value}" aria-describedby="fileHelp{$name}">
             <small id="fileHelp{$name}" class="form-text text-muted">{$helpMessage}</small>
             <!-- Affichage de l'erreur dans une div class="invalid-feedback"-->
             {$this->getErrorFeedback($name)} 
@@ -93,11 +95,11 @@ HTML;
      * @param string $name (représente le nom du champ input, mais aussi l'id. Représente aussi l'attribut 'for' de label)
      * @param string $label (représente le nom du label)
      * @return string (retourne un input + label de formulaire)
-     */ 
-    public function textarea(string $name, string $label,  string $placeholder=""): string
+     */
+    public function textarea(string $name, string $label,  string $placeholder = ""): string
     {
         $value = $this->getValue($name); // $value représente la valeur entrée dans textarea
-        
+
         return <<<HTML
         <div class="form-group">
             <label for="field{$name}">{$label}</label>                                              <!-- "$value" représente la valeur entrée dans textarea -->
@@ -115,19 +117,19 @@ HTML;
         //dd($this->data);
         // Si les données reçues à l'instanciation de la class Form sont de type tableau alors on en retourne la valeur sinon...
         // (Si l'instanciation est sous la forme d'un tableau, exemple : "$form = new Form(['name' = 'Contenu de la donnée'], $errors);" alors...)
-        if(is_array($this->data)){
+        if (is_array($this->data)) {
             return $this->data[$name] ?? null; // On Retourne la valeur donnée dans le tableau ou null
             //dd($this->data[$name]); // Affiche "Contenu de la donnée" si l'instanciation a cette signature : "$form = new Form(['name' = 'Contenu de la donnée'], $errors)
 
-        // Sinon ... (on considère ici qu'il s'agit d'un objet et on paramètre le retour pour qu'il puisse recevoir les méthodes des objets)
-        }else{
+            // Sinon ... (on considère ici qu'il s'agit d'un objet et on paramètre le retour pour qu'il puisse recevoir les méthodes des objets)
+        } else {
             // "$method" va stocker le nom de la méthode utilisée (ex : getName() ou getSlug() ... )
             $method = 'get' . ucfirst($name); // ucfirst() permet de mettre la 1ere lettre d'une chaîne de caractère en majuscule
             //dd($method); // Affiche le nom de la méthode utilisée
             //dd($this->data);
             $value = $this->data->$method(); // Revient à écrire par exemple : $value = $this->post->getName() pour l'input "nom" du formulaire de modif d'un post
             // Si la donnée reçue est de type DateTime... (condition utile lors de la création d'un input de type date)
-            if($value instanceof \DateTimeInterface){
+            if ($value instanceof \DateTimeInterface) {
                 return $value->format('Y-m-d H:i:s'); // On formate au format date de MySQL (celui de notre bdd)
             }
             //dd($value); // null
@@ -142,7 +144,7 @@ HTML;
     {
         $inputClass = 'form-control' . $addFile;
         // Si il y a une erreur de validation alors...
-        if(isset($this->errors[$name])){
+        if (isset($this->errors[$name])) {
             $inputClass .= ' is-invalid'; // On ajoute à notre input la classe ' is-invalid' pour afficher l'erreur
             //$invalidFeedback = '<div class="invalid-feedback">' . implode('<br>', $this->errors[$name]) . '</div>'; // On affiche le détail de l'erreur
         }
@@ -154,7 +156,7 @@ HTML;
         $inputClass = 'form-check-input' . $addFile;
         // Si il y a une erreur de validation alors...
         //dd($this->errors[$name]);
-        if(isset($this->errors[$name])){
+        if (isset($this->errors[$name])) {
             $inputClass .= ' is-invalid'; // On ajoute à notre input la classe ' is-invalid' pour afficher l'erreur
             //$invalidFeedback = '<div class="invalid-feedback">' . implode('<br>', $this->errors[$name]) . '</div>'; // On affiche le détail de l'erreur
         }
@@ -165,11 +167,11 @@ HTML;
     private function getErrorFeedback($name)
     {
         // Si il y a une erreur de validation alors...
-        if(isset($this->errors[$name])){
+        if (isset($this->errors[$name])) {
             // Si les erreurs sont sous forme de tableau
-            if(is_array($this->errors[$name])){
+            if (is_array($this->errors[$name])) {
                 $error = implode('<br>', $this->errors[$name]); // Affichage des erreurs avec un saut de ligne (<br>)
-            }else{
+            } else {
                 $error = $this->errors[$name]; // Affichage simple de l'erreur
             }
             //dd($name, $this->errors[$name]); //retourne : "name"   "Le champ 'name' ne doit pas être vide"
@@ -177,5 +179,4 @@ HTML;
         }
         return ''; // Sinon on retourne un chaine vide
     }
-
 }

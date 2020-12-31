@@ -30,7 +30,6 @@ $categories = $tableCategories->findAll();
     <link href="../../assets/plugins/fontawesome/css/brands.css" rel="stylesheet">
     <link href="../../assets/plugins/fontawesome/css/solid.css" rel="stylesheet"> 
 	 
-	</script>
     <!-- Theme CSS -->  
 	<link id="theme-style" rel="stylesheet" href="../../assets/css/blog/themes/theme-7_purple2-1.css">
 	<!-- CSS perso --> 
@@ -42,7 +41,7 @@ $categories = $tableCategories->findAll();
 
 	<header class="header text-center">	 
 		  
-		<h1 class="blog-name text-dark pt-4">
+		<h1 class="blog-name pt-4">
 			<a href="<?= $router->url('home') ?>">
 				<span class="logo-icon-wrapper"><img class="logo-icon" style="width: 20px;" src="../../assets/icons&logos/one_page/logo.svg" alt="logo site"></span> 
 			</a>
@@ -114,12 +113,7 @@ $categories = $tableCategories->findAll();
 	</main>
 	
 	<footer class="footer text-center mt-auto py-4 bg-primary">
-		<div class="container">
-			<small class="copyright">
-				<p><strong class="text-light">© 2018 - 2020 . </strong> <strong class="text-dark"> Proudly created with by my fingers</strong> <i class="fas fa-heart"></i></p> 
-				<p>Page générée en <strong class="text-info"><?= round(1000 * (microtime(true) - DEBUG_TIME)) ?> millisecondes</strong></p>
-			</small>
-		</div>
+		<?php require('inc/footer.php') ?>
 	</footer>
     
     <!-- Javascript (jQuery, bootstrap) -->          

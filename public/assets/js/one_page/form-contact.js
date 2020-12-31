@@ -1,5 +1,5 @@
 /*
-    GESTION DU FORMULAIRE DE CONTACT de la page d'accueil one-page (Vérification des champs et affichage d'un message)
+    GESTION DU FORMULAIRE DE CONTACT de la page d'accueil one-page (Vérification des champs et affichage d'un message d'erreur)
 */
 
 // Création d'un message (utilisé lorsque la validation du formulaire est ok)

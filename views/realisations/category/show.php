@@ -31,7 +31,7 @@ $link = $router->url('achievements-category', ['id' => $category->getId(), 'slug
 ?>
 <!-- PAGE QUI LISTE LES ARTICLES QUI APPARTIENNENT A LA CATEGORIE CLIQUEE (sur la page de visu d'un article) -->
 <div class="main-wrapper">
-    <h1 class="text-dark text-center p-4">REALISATIONS de la <strong><?= htmlentities($title) ?></strong></h1>
+    <h1 class="text-center pt-5 heading">REALISATIONS de la <strong><?= htmlentities($title) ?></strong></h1>
 
     <!-- LISTE DES REALISATIONS -->
     <section class="blog-list px-3 py-5 p-md-5">

@@ -14,7 +14,7 @@
     <meta name="author" content="Jérémie Genet">
 
     <!-- Icon du site -->
-    <link rel="shortcut icon" href="logo.png">
+    <link rel="shortcut icon" href="../../logo.png">
     
     <!-- Fontawesome -->
     <link href="../../assets/plugins/fontawesome/css/fontawesome.css" rel="stylesheet">
@@ -95,13 +95,8 @@
     
 
     <!-- Footer -->
-    <footer class="footer text-center mt-auto">
-        <div class="container">
-            <small class="copyright">
-				<p><strong class="text-light">© 2018 - 2020 . </strong> <strong class="text-secondary"> Proudly created with by my fingers</strong> <i class="fas fa-heart"></i></p> 
-				<p>Page générée en <strong class="text-info"><?= round(1000 * (microtime(true) - DEBUG_TIME)) ?> millisecondes</strong></p>
-			</small>
-        </div>
+    <footer class="footer text-center">
+        <?php require('inc/footer.php') ?>
     </footer>
     
      

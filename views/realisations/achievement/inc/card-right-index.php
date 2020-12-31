@@ -13,7 +13,7 @@
             </div>
             <div class="__card-categories">
                 
-                <small class=""><strong>Catégories :</strong></small>
+                <small class=""><strong>Catégories :</strong>
                     <!-- CATEGORIES -->
                     <?php foreach($post->getCategories() as $category): ?>
                         <div class="badge">

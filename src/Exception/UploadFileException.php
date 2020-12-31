@@ -4,7 +4,7 @@ namespace App\Exception;
 /* Classe utilisé Dans FilesManager.php */
 class UploadFileException extends \Exception{
 
-    //public $message;
+    public $message;
     //public $code = 404;
 
     public function __construct(?string $table, ?int $id)

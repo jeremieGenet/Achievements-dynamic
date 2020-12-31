@@ -83,6 +83,7 @@
                         <li class="nav-item"><a class="nav-link scrollto" href="#services">Services</a></li>                        
                         <li class="nav-item"><a class="nav-link scrollto" href="#contact">Contact</a></li>
                         <li class="nav-item ml-5"><a class="nav-link" target="_blank" href="/realisations">Blog</a></li>
+                    </ul>
                 </div>
             </nav>                    
         </div>
@@ -160,13 +161,9 @@
     
     <!-- Footer -->
     <footer class="footer text-center">
-        <div class="container">
-            <small class="copyright">
-				<p><strong class="text-light">© 2018 - 2020 . </strong> <strong class="text-secondary"> Proudly created with by my fingers</strong> <i class="fas fa-heart"></i></p> 
-				<p>Page générée en <strong class="text-info"><?= round(1000 * (microtime(true) - DEBUG_TIME)) ?> millisecondes</strong></p>
-			</small>
-        </div>
+        <?php require('inc/footer.php') ?>
     </footer>
+    
     
      
     <!-- JAVASCRIPT -->  

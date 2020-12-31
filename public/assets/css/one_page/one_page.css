@@ -796,17 +796,6 @@ a:focus {
   .hero-carousel .carousel-inner .item {
     height: 660px;
   }
-  .testimonials-section .item .profile-image {
-    width: 60px;
-    height: 60px;
-  }
-  .testimonials-section .item .quote {
-    margin-left: 85px;
-    padding: 15px;
-  }
-  .testimonials-section .item.item-reversed .quote {
-    margin-right: 85px;
-  }
 }
 
 @media (min-width: 768px) {
@@ -815,7 +804,6 @@ a:focus {
     padding-left: 30px;
   }
   .hero-section .figure-holder .figure-image {
-    
     bottom: inherit;
     top: 130px;
   }

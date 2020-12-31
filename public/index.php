@@ -1,7 +1,8 @@
 <?php
+
 use App\Router;
 
-require'../vendor/autoload.php'; 
+require '../vendor/autoload.php';
 require_once('../env.php'); // Variables d'environnement
 
 // Contante qui défini le timestamp avec les micro-secondes (pour le calcul du temps de génération d'une page dans le footer)
@@ -13,12 +14,12 @@ $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
 // Redirection générique pour les url qui possèdent un param "?page=1" vers la même url mais sans ce param (Evite de voir lors de la pagination dans l'url: ...?page=1)
-if(isset($_GET['page']) && $_GET['page'] === '1'){
+if (isset($_GET['page']) && $_GET['page'] === '1') {
     $uri = explode('?', $_SERVER['REQUEST_URI'])[0];
     $get = $_GET;
     unset($get['page']);
     $query = http_build_query($get);
-    if(!empty($query)){
+    if (!empty($query)) {
         $uri = $uri . '?' . $query;
     }
     http_response_code(301);
@@ -40,7 +41,7 @@ $router->get('/cv', 'cv/cv.php', 'cv');
 /*
     REALISATIONS
 */
-$router->get('/realisations', 'realisations/achievement/index.php', 'achievements');
+$router->get('/realisations', 'realisations/achievement/index.php', 'achievements'); // Direction vers la page qui affiche les réalisations
 $router->get('/realisations/category/[*:slug]-[i:id]', 'realisations/category/show.php', 'achievements-category'); // Direction vers la page des réalisations de la catégorie selectionnée
 $router->get('/realisations/[*:slug]-[i:id]', 'realisations/achievement/show.php', 'achievement'); // Direction vers la vue d'une réalisation
 
@@ -76,16 +77,30 @@ $router->match('/admin/category/[i:id]', 'admin/category/edit.php', 'admin_categ
 // suppression articles en "post" pour le rooting, afin que l'url ne fonctionne que si on post un formulaire (SECURITE POUR LES REDUCTION D'URL)
 $router->post('/admin/category/[i:id]/delete', 'admin/category/delete.php', 'admin_category_delete'); // Direction vers l'administration Supprimer d'un article 
 $router->match('/admin/category/new', 'admin/category/new.php', 'admin_category_new'); // Direction vers l'administration Création d'un articles (match pour y accéder en "get" et en "post")
+/*
+    ADMINISTRATION
+    Calendrier
+*/
+$router->get('/admin/calendar', 'admin/calendar/index.php', 'calendar'); // Direction vers l'affichage du calendrier
+$router->get('/admin/calendar?month=[i:month]&year=[i:year]', 'admin/calendar/index.php', 'calendar_pagination'); // Route vers la pagination du calendrier (mois par mois)
+
+// Route vers la page de visualisation/modification de l'évènement
+$router->get('/admin/calendar/edit-event=[i:id]', 'admin/calendar/editEvent.php', 'event_edit');
+// Soumet le formulaire de modification de l'évènement
+$router->post('/admin/calendar/edit-event=[i:id]', 'admin/calendar/editEvent.php', 'editEvent_post');
+// Soumet la suppression de l'évènement
+$router->post('/admin/calendar/delete-event=[i:id]', 'admin/calendar/editEvent.php', 'deleteEvent');
+
+// Route vers la page de créaction d'un évènement (via le bouton bleu sur le calendrier)
+$router->get('/admin/calendar/add-event', 'admin/calendar/addEvent.php', 'addEvent_button');
+// Route vers la page de créaction d'un évènement (via le jour cliqué sur le calendrier)
+$router->get('/admin/calendar/add-event=[*:dayEvent]', 'admin/calendar/addEvent.php', 'addEvent_day');
+// Soumet le formulaire de création d'évènement
+$router->post('/admin/calendar/add-event', 'admin/calendar/addEvent.php', 'addEvent_post');
+
 
 /*
-    Voir Router.php pour la gestion des layout et Exceptions
+    Voir src/Router.php pour la gestion des layout et Exceptions
 */
 // LANCE LE SERVEUR (en fonction des layout et Exception)
 $router->run();
-
-
-
-
-
-
-

@@ -3,13 +3,15 @@ namespace App;
 
 use App\Exception\AuthException;
 use App\Exception\AuthRoleException;
+use Exception;
+
 //use App\Models\Post;
 
 class Auth{
 
     // Auth::check(['admin', 'user'])
     // PERMISSION QUI Vérifie si l'utilisateur est connecté (s'il n'y est pas envoie d'une exception)
-    public static function check($role="")
+    public static function check(string $role="")
     {
         // Si le statut de session est null (session_start() non actif) alors on démarre la session
         if(session_status() === PHP_SESSION_NONE){

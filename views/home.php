@@ -104,7 +104,7 @@ $form = new Form($_POST, $errors);
 </div>
 
 <!-- LANGUAGES WEB -->
-<div id="languages" class="languages-section"> <!-- class="testimonials-section" -->
+<div id="languages" class="languages-section">
     <div class="container">
         <h2 class="section-title text-center  text-dark">Les<strong> principaux langages </strong>du Web </h2>
         <div class="item mx-auto">

@@ -35,7 +35,7 @@
     <!-- Contenu du CV -->
     <?= $content ?>
 
-</div>
+</header>
 
     <!-- JAVASCRIPT -->  
     <!-- Jquery v3.3.1 (utile au fonctionnement de bootstrap, et de jquery.scrollTo) -->        

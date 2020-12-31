@@ -42,7 +42,10 @@ $title = "Curriculum Vitae web";
                     <a class="nav-link scrollto" href="#interests">CENTRES D'INTÉRÊTS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="../../assets/images/cv/Cv2.jpg">CV (téléchargeable)</a>
+                    <a class="nav-link" target="_blank" href="../../assets/images/cv/Cv.jpg">CV (autre)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="../../assets/images/cv/Cv2020.jpg">CV (téléchargeable)</a>
                 </li>
                 <!-- BOUTON DE RETOUR -->
                 <li class="nav-item">
@@ -62,7 +65,7 @@ $title = "Curriculum Vitae web";
                     <span class="text-primary">GENET</span>
                 </h1>
                 <div class="subheading mb-5">5 rue de la fontaine 52310 Oudincourt
-                    <a href="mailto:jeremiesamuel.genet@gmail.com">jeremiesamuel.genet@gmail.com</a>
+                    <a href="mailto:jeremiesamuel.genet@gmail.com">jeremie.genet.pro@gmail.com</a>
                 </div>
                 <p class="lead mb-5">
                     <span id="__white">Motivé et dynamique</span>, je suis <span id="__white">curieux</span> de comprendre ce qui m'entoure.<br>

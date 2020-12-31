@@ -20,4 +20,4 @@ $_ENV['local']['username'] = 'root';
 $_ENV['local']['password'] = '';
 
 // Variable d'env de la direction d'envoi du formulaire de contact (nom de domaine de l'hébergeur)
-$_ENV['form-contact-email'] = "http://jeremie-genet.fr";
+$_ENV['form-contact-email'] = "https://jeremie-genet.fr";

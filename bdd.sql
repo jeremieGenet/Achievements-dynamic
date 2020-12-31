@@ -5,7 +5,7 @@
         (Commande sql pour récup les informations sur la table comme le moteur, la version, le nb de ligne ou le prochaine id) 
 */
 
-/*********************** BDD PORTFOLIO V3 ********************************/
+/*********************** BDD PORTFOLIO V2 ********************************/
 CREATE DATABASE portfolio2 CHARACTER SET 'utf8';
 SET lc_time_names = 'fr_FR'; /* PERMET D'AFFICHER LES JOURS ET MOIS DES DATE EN FRANCAIS */
 

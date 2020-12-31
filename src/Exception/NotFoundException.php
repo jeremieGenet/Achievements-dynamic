@@ -5,7 +5,7 @@ namespace App\Exception;
 class NotFoundException extends \Exception{
 
     public $message;
-    public $code = 404;
+    //public $code = 404;
 
     public function __construct(?string $table, ?int $id)
     {
